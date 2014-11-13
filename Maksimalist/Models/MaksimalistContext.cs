@@ -16,6 +16,8 @@ namespace Maksimalist.Models
         public DbSet<SubCategory> SubCategory { get; set; }
         public DbSet<Gallery> Gallery { get; set; }
         public DbSet<Matter> Matter { get; set; }
+        public DbSet<Advert> Advert { get; set; }
+
 
 
 
@@ -39,6 +41,11 @@ namespace Maksimalist.Models
                .WithMany(t => t.Posts)
                .HasForeignKey(d => d.SubCategoryId)
                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Post>()
+               .HasRequired(t => t.Gallery)
+               .WithRequiredDependent(t => t.Post)
+               .WillCascadeOnDelete(false);
+
 
         }
 

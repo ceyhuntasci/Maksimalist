@@ -65,7 +65,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                    
 
                     var fileName = Path.GetFileName(file.FileName);
-
+                    matter.Name = fileName;
 
                     var path = Path.Combine(Server.MapPath("~/Images/Uploads/" + gallery.Name), fileName);
 
@@ -82,7 +82,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
             db.Gallery.Add(gallery);
             db.SaveChanges();
 
-            return RedirectToAction("Edit",gallery);
+            return RedirectToAction("Index");
             
         }
         
@@ -113,7 +113,9 @@ namespace Maksimalist.Areas.mmadmin.Controllers
             {
                 for (int i = 0; i < id.Count(); i++) {
                     var number = id[i];
-                    db.Matter.First(c => c.Id == number).Content = Content[i];
+                    var matter = db.Matter.First(c => c.Id == number);
+                    matter.Content = Content[i];
+                    matter.Order = i + 1;
         
                 db.SaveChanges();
                 }
@@ -145,10 +147,24 @@ namespace Maksimalist.Areas.mmadmin.Controllers
             Gallery gallery = db.Gallery.Find(id);
             foreach(var m in gallery.Matter.ToList())
             {
+                if (System.IO.File.Exists(Server.MapPath(m.Url)))
+                {
+                    System.IO.File.Delete(Server.MapPath(m.Url));
+              
+                  
+                }
+               
                 db.Matter.Remove(m);
+              
             }
-        
+            Directory.Delete(Server.MapPath("~/Images/Uploads/" + gallery.Name));
+            if (db.Post.FirstOrDefault(m => m.GalleryId == gallery.Id) != null) 
+            {
+                db.Post.FirstOrDefault(m => m.GalleryId == gallery.Id).GalleryId = null;
+            }
             db.Gallery.Remove(gallery);
+            
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }
