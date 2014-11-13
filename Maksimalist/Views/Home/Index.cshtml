@@ -1,0 +1,623 @@
+﻿@model IEnumerable<Maksimalist.Models.Post>
+    @{
+        ViewBag.Title = "Home Page";
+        IEnumerable<Maksimalist.Models.Post> mansetList = ViewBag.manset;
+    }
+    <section id="content" role="main" class="clearfix animated">
+
+        <div class="wrapper slider-under-menu">
+            <section class="posts-slider-section">
+
+
+
+                <div class="flexslider posts-slider loading">
+                    <ul class="slides">
+
+
+                       @Html.Partial("_Manset" , mansetList.ElementAt(0))
+
+                       @Html.Partial("_Manset", mansetList.ElementAt(1))
+
+
+                       @Html.Partial("_Manset", mansetList.ElementAt(2))
+
+
+
+                    </ul>
+                </div>
+
+
+            </section><!-- Slider -->
+        </div>
+        <div class="wrapper">
+            <div class="grids">
+                <div class="grid-8">
+
+
+                    <section class="wrapper home-section latest-reviews">
+
+                        <header class="section-header">
+                            <div class="title-with-sep">
+                                <h2 class="title">Latest Reviews</h2>
+                            </div>
+                        </header>
+
+
+
+
+                        <div class="grids entries">
+
+                             
+                           
+                         
+                                    @Html.Partial("_Post", Model.ElementAt(0))
+                                    @Html.Partial("_Post", Model.ElementAt(1))
+                                    @Html.Partial("_Post", Model.ElementAt(2))
+                                   
+                             
+                            
+
+                        </div>
+
+
+                    </section><!-- Featured Posts -->
+                    <section class="wrapper home-section latest-posts">
+                        <header class="section-header">
+                            <div class="title-with-sep">
+                                <h2 class="title">Latest Posts</h2>
+                            </div>
+                        </header>
+
+
+
+                        <div class="grids masonry-layout entries">
+
+                            <article class="post-27 post type-post status-publish format-gallery has-post-thumbnail hentry category-fashion tag-creative tag-nature tag-portrait grid-4" itemscope itemtype="http://schema.org/Article">
+                                <figure class="entry-image">
+                                    <a href="../gallery-post-format/index.html">
+                                        <img width="330" height="221" src="../wp-content/uploads/sites/2/2013/05/8470852074_4031c64512_o-330x221.jpg" class="attachment-masonry-size wp-post-image" alt="8470852074_4031c64512_o" itemprop="image" /><i class="icomoon-camera-retro"></i>
+                                    </a>
+                                </figure>
+
+                                <header class="entry-header">
+                                    <div class="entry-meta">
+                                        <span class="entry-category"><a href="../category/fashion/index.html">Fashion</a></span><time class="entry-date updated" datetime="2013-05-27T07:23:33+00:00" itemprop="datePublished">May 27, 2013</time>
+                                    </div>
+                                    <h2 class="entry-title" itemprop="headline">
+                                        <a href="../gallery-post-format/index.html">Gallery Post Format</a>
+                                    </h2>
+                                    <span class="vcard author">
+                                        By            <a href="../author/jane/index.html" class="url fn n" rel="author">
+                                            Jane Doe
+                                        </a>
+                                    </span>
+                                </header>
+
+                                <div class="entry-summary" itemprop="text">
+                                    <p>Vivamus diam eros, dictum sit amet cursus at, commodo ut purus. Praesent enim eros, egestas at placerat sed, vulputate vel metus. Sed et tempor&#8230;</p>
+
+                                    <a class="read-more-link" href="../gallery-post-format/index.html">Read More</a>
+                                </div>
+
+                            </article>
+                            <article class="post-67 post type-post status-publish format-standard has-post-thumbnail hentry category-travel tag-nature tag-river tag-sky grid-4" itemscope itemtype="http://schema.org/Article">
+                                <figure class="entry-image">
+                                    <a href="../typography/index.html">
+                                        <img width="330" height="220" src="../wp-content/uploads/sites/2/2013/05/typography-330x220.jpg" class="attachment-masonry-size wp-post-image" alt="typography" itemprop="image" />
+                                    </a>
+                                </figure>
+
+                                <header class="entry-header">
+                                    <div class="entry-meta">
+                                        <span class="entry-category"><a href="../category/travel/index.html">Travel</a></span><time class="entry-date updated" datetime="2013-05-27T07:22:57+00:00" itemprop="datePublished">May 27, 2013</time>
+                                    </div>
+                                    <h2 class="entry-title" itemprop="headline">
+                                        <a href="../typography/index.html">Typography</a>
+                                    </h2>
+                                    <span class="vcard author">
+                                        By            <a href="../author/jane/index.html" class="url fn n" rel="author">
+                                            Jane Doe
+                                        </a>
+                                    </span>
+                                </header>
+
+                                <div class="entry-summary" itemprop="text">
+                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,&#8230;</p>
+
+                                    <a class="read-more-link" href="../typography/index.html">Read More</a>
+                                </div>
+
+                            </article>
+                            <article class="post-38 post type-post status-publish format-audio has-post-thumbnail hentry category-music tag-music grid-4" itemscope itemtype="http://schema.org/Article">
+                                <figure class="entry-image">
+                                    <a href="../sound-cloud-audio/index.html">
+                                        <img width="330" height="220" src="../wp-content/uploads/sites/2/2013/05/street-330x220.jpg" class="attachment-masonry-size wp-post-image" alt="street" itemprop="image" /><i class="icomoon-music"></i>
+                                    </a>
+
+                                    <div class="score-line" style="width:82%;">
+                                        <span><i>8.2</i></span>
+                                    </div>
+                                </figure>
+
+                                <header class="entry-header">
+                                    <div class="entry-meta">
+                                        <span class="entry-category"><a href="../category/music/index.html">Music</a></span><time class="entry-date updated" datetime="2013-05-27T07:21:16+00:00" itemprop="datePublished">May 27, 2013</time>
+                                    </div>
+                                    <h2 class="entry-title" itemprop="headline">
+                                        <a href="../sound-cloud-audio/index.html">Sound Cloud Audio</a>
+                                    </h2>
+                                    <span class="vcard author">
+                                        By            <a href="../author/jane/index.html" class="url fn n" rel="author">
+                                            Jane Doe
+                                        </a>
+                                    </span>
+                                </header>
+
+                                <div class="entry-summary" itemprop="text">
+                                    <p>Fusce auctor condimentum nulla, ut sollicitudin est pulvinar at. Vivamus convallis gravida libero, in semper erat fermentum vel. Ut et dolor diam. Maecenas molestie&#8230;</p>
+
+                                    <a class="read-more-link" href="../sound-cloud-audio/index.html">Read More</a>
+                                </div>
+
+                            </article>
+                            <article class="post-33 post type-post status-publish format-standard has-post-thumbnail hentry category-photography tag-creative grid-4" itemscope itemtype="http://schema.org/Article">
+                                <figure class="entry-image">
+                                    <a href="../wordpress-gallery/index.html">
+                                        <img width="330" height="247" src="../wp-content/uploads/sites/2/2013/05/4035385401_bd80426129_o-330x247.jpg" class="attachment-masonry-size wp-post-image" alt="red tree" itemprop="image" />
+                                    </a>
+                                </figure>
+
+                                <header class="entry-header">
+                                    <div class="entry-meta">
+                                        <span class="entry-category"><a href="../category/photography/index.html">Photography</a></span><time class="entry-date updated" datetime="2013-05-27T07:08:44+00:00" itemprop="datePublished">May 27, 2013</time>
+                                    </div>
+                                    <h2 class="entry-title" itemprop="headline">
+                                        <a href="../wordpress-gallery/index.html">WordPress Gallery</a>
+                                    </h2>
+                                    <span class="vcard author">
+                                        By            <a href="../author/jane/index.html" class="url fn n" rel="author">
+                                            Jane Doe
+                                        </a>
+                                    </span>
+                                </header>
+
+                                <div class="entry-summary" itemprop="text">
+                                    <p>Integer ac nulla vitae tortor viverra commodo. Maecenas tristique fermentum nunc vel pretium. Ut in tortor volutpat felis porttitor dignissim. Nulla leo felis, rutrum&#8230;</p>
+
+                                    <a class="read-more-link" href="../wordpress-gallery/index.html">Read More</a>
+                                </div>
+
+                            </article>
+                            <article class="post-25 post type-post status-publish format-video has-post-thumbnail hentry category-style tag-creative tag-music tag-video grid-4" itemscope itemtype="http://schema.org/Article">
+                                <figure class="entry-image">
+                                    <a href="../vimeo-video-post/index.html">
+                                        <img width="330" height="220" src="../wp-content/uploads/sites/2/2013/05/girl-330x220.jpg" class="attachment-masonry-size wp-post-image" alt="girl" itemprop="image" /><i class="icomoon-camera"></i>
+                                    </a>
+                                </figure>
+
+                                <header class="entry-header">
+                                    <div class="entry-meta">
+                                        <span class="entry-category"><a href="../category/style/index.html">Style</a></span><time class="entry-date updated" datetime="2013-05-27T07:00:20+00:00" itemprop="datePublished">May 27, 2013</time>
+                                    </div>
+                                    <h2 class="entry-title" itemprop="headline">
+                                        <a href="../vimeo-video-post/index.html">Vimeo Video Post</a>
+                                    </h2>
+                                    <span class="vcard author">
+                                        By            <a href="../author/jane/index.html" class="url fn n" rel="author">
+                                            Jane Doe
+                                        </a>
+                                    </span>
+                                </header>
+
+                                <div class="entry-summary" itemprop="text">
+                                    <p>Quisque rhoncus, neque sit amet feugiat bibendum, est sem viverra eros, eget mattis dolor felis id leo. Vivamus tincidunt egestas venenatis. Proin tristique eros&#8230;</p>
+
+                                    <a class="read-more-link" href="../vimeo-video-post/index.html">Read More</a>
+                                </div>
+
+                            </article>
+                            <article class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion tag-music tag-video grid-4" itemscope itemtype="http://schema.org/Article">
+                                <figure class="entry-image">
+                                    <a href="../standard-post/index.html">
+                                        <img width="330" height="220" src="../wp-content/uploads/sites/2/2013/05/sea-330x220.jpg" class="attachment-masonry-size wp-post-image" alt="see" itemprop="image" />
+                                    </a>
+                                </figure>
+
+                                <header class="entry-header">
+                                    <div class="entry-meta">
+                                        <span class="entry-category"><a href="../category/fashion/index.html">Fashion</a></span><time class="entry-date updated" datetime="2013-05-26T19:40:36+00:00" itemprop="datePublished">May 26, 2013</time>
+                                    </div>
+                                    <h2 class="entry-title" itemprop="headline">
+                                        <a href="../standard-post/index.html">Standard Post</a>
+                                    </h2>
+                                    <span class="vcard author">
+                                        By            <a href="../author/jane/index.html" class="url fn n" rel="author">
+                                            Jane Doe
+                                        </a>
+                                    </span>
+                                </header>
+
+                                <div class="entry-summary" itemprop="text">
+                                    <p>Sed luctus leo quis sapien tempor eu convallis quam tincidunt. Maecenas lorem nisi, dictum eget sollicitudin vel, ornare a magna. Etiam volutpat consequat luctus&#8230;.</p>
+
+                                    <a class="read-more-link" href="../standard-post/index.html">Read More</a>
+                                </div>
+
+                            </article>
+                            <article class="post-148 post type-post status-publish format-standard has-post-thumbnail hentry category-travel tag-black-n-white tag-nature tag-river grid-4" itemscope itemtype="http://schema.org/Article">
+                                <figure class="entry-image">
+                                    <a href="../maecenas-nec-nunc-et-ligula-egestas/index.html">
+                                        <img width="330" height="220" src="../wp-content/uploads/sites/2/2013/05/8063924948_ccb29c487f_o-330x220.jpg" class="attachment-masonry-size wp-post-image" alt="8063924948_ccb29c487f_o" itemprop="image" />
+                                    </a>
+
+                                    <div class="score-line" style="width:66%;">
+                                        <span><i>6.6</i></span>
+                                    </div>
+                                </figure>
+
+                                <header class="entry-header">
+                                    <div class="entry-meta">
+                                        <span class="entry-category"><a href="../category/travel/index.html">Travel</a></span><time class="entry-date updated" datetime="2013-05-10T07:37:08+00:00" itemprop="datePublished">May 10, 2013</time>
+                                    </div>
+                                    <h2 class="entry-title" itemprop="headline">
+                                        <a href="../maecenas-nec-nunc-et-ligula-egestas/index.html">Maecenas nec nunc et ligula</a>
+                                    </h2>
+                                    <span class="vcard author">
+                                        By            <a href="../author/JackRiley/index.html" class="url fn n" rel="author">
+                                            Jack Riley
+                                        </a>
+                                    </span>
+                                </header>
+
+                                <div class="entry-summary" itemprop="text">
+                                    <p>Fusce nisl urna, rutrum eget condimentum nec, tincidunt sit amet massa. Pellentesque lacinia volutpat lacus. Integer vulputate orci ut felis pulvinar congue. Lorem ipsum dolor&#8230;</p>
+
+                                    <a class="read-more-link" href="../maecenas-nec-nunc-et-ligula-egestas/index.html">Read More</a>
+                                </div>
+
+                            </article>
+                            <article class="post-152 post type-post status-publish format-audio has-post-thumbnail hentry category-music tag-audio tag-creative tag-music grid-4" itemscope itemtype="http://schema.org/Article">
+                                <figure class="entry-image">
+                                    <a href="../nulla-consequat-massa-quis-enim/index.html">
+                                        <img width="330" height="330" src="../wp-content/uploads/sites/2/2013/05/7037866913_dd7b939b8d_b-330x330.jpg" class="attachment-masonry-size wp-post-image" alt="7037866913_dd7b939b8d_b" itemprop="image" /><i class="icomoon-music"></i>
+                                    </a>
+                                </figure>
+
+                                <header class="entry-header">
+                                    <div class="entry-meta">
+                                        <span class="entry-category"><a href="../category/music/index.html">Music</a></span><time class="entry-date updated" datetime="2012-12-05T13:39:08+00:00" itemprop="datePublished">December 5, 2012</time>
+                                    </div>
+                                    <h2 class="entry-title" itemprop="headline">
+                                        <a href="../nulla-consequat-massa-quis-enim/index.html">Nulla consequat massa quis enim</a>
+                                    </h2>
+                                    <span class="vcard author">
+                                        By            <a href="../author/GloriaPatterson/index.html" class="url fn n" rel="author">
+                                            Gloria
+                                        </a>
+                                    </span>
+                                </header>
+
+                                <div class="entry-summary" itemprop="text">
+                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,&#8230;</p>
+
+                                    <a class="read-more-link" href="../nulla-consequat-massa-quis-enim/index.html">Read More</a>
+                                </div>
+
+                            </article>
+
+                        </div>
+
+
+
+                    </section><!-- Latest Posts -->
+                </div><!-- .grid-8 -->
+
+                <div class="grid-4 column-2">
+                    <aside class="sidebar" role="complementary" itemscope itemtype="http://schema.org/WPSideBar">
+                        <div id="ti_latest_reviews-2" class="widget widget_ti_latest_reviews">
+                            <h3>Latest Reviews</h3>
+                            <ul class="score-box">
+                                <li class="clearfix">
+                                    <span class="total">8.2</span>
+                                    <a href="../sound-cloud-audio/index.html">
+                                        Sound Cloud Audio
+                                    </a>
+                                    <div class="score-outer">
+                                        <div class="score-line" style="width:82%;"><span></span></div>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="total">6.6</span>
+                                    <a href="../maecenas-nec-nunc-et-ligula-egestas/index.html">
+                                        Maecenas nec nunc et ligu...
+                                    </a>
+                                    <div class="score-outer">
+                                        <div class="score-line" style="width:66%;"><span></span></div>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="total">5.8</span>
+                                    <a href="../pellentesque-habitant-morbi/index.html">
+                                        Pellentesque habitant mor...
+                                    </a>
+                                    <div class="score-outer">
+                                        <div class="score-line" style="width:58%;"><span></span></div>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="total">7.8</span>
+                                    <a href="../phasellus-ullamcorper-ipsum-rutrum/index.html">
+                                        Phasellus ullamcorper ips...
+                                    </a>
+                                    <div class="score-outer">
+                                        <div class="score-line" style="width:78%;"><span></span></div>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span class="total">8.3</span>
+                                    <a href="../leo-eget-bibendum-sodales/index.html">
+                                        Leo eget bibendum sodales
+                                    </a>
+                                    <div class="score-outer">
+                                        <div class="score-line" style="width:83%;"><span></span></div>
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                        </div><div id="ti_latest_posts-3" class="widget widget_ti_latest_posts">
+                            <h3>Latest Posts</h3>
+                            <div class="widget-posts-entries">
+
+                                <ul class="clearfix">
+
+                                    <li>
+                                        <figure class="entry-image">
+                                            <a href="../gallery-post-format/index.html">
+                                                <img width="330" height="220" src="../wp-content/uploads/sites/2/2013/05/8470852074_4031c64512_o-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="8470852074_4031c64512_o" />
+                                            </a>
+                                        </figure>
+                                        <span><a href="../category/fashion/index.html">Fashion</a></span>                           	<a class="widget-post-title" href="../gallery-post-format/index.html">Gallery Post Format</a>
+                                    </li>
+
+
+                                    <li>
+                                        <figure class="entry-image">
+                                            <a href="../typography/index.html">
+                                                <img width="330" height="220" src="../wp-content/uploads/sites/2/2013/05/typography-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="typography" />
+                                            </a>
+                                        </figure>
+                                        <span><a href="../category/travel/index.html">Travel</a></span>                           	<a class="widget-post-title" href="../typography/index.html">Typography</a>
+                                    </li>
+
+
+                                    <li>
+                                        <figure class="entry-image">
+                                            <a href="../sound-cloud-audio/index.html">
+                                                <img width="330" height="220" src="../wp-content/uploads/sites/2/2013/05/street-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="street" />
+                                            </a>
+                                        </figure>
+                                        <span><a href="../category/music/index.html">Music</a></span>                           	<a class="widget-post-title" href="../sound-cloud-audio/index.html">Sound Cloud Audio</a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </div><div id="ti_most_commented-2" class="widget widget_ti_most_commented">
+                            <h3>Most Commented</h3>
+                            <ul>
+                                <li class="clearfix score-1">
+                                    <span>
+                                        <i>7</i>
+                                    </span>
+                                    <a href="../gallery-post-format/index.html">
+                                        Gallery Post Format
+                                    </a>
+                                </li>
+                                <li class="clearfix score-2">
+                                    <span>
+                                        <i>3</i>
+                                    </span>
+                                    <a href="../pellentesque-habitant-morbi/index.html">
+                                        Pellentesque habitant morbi
+                                    </a>
+                                </li>
+                                <li class="clearfix score-3">
+                                    <span>
+                                        <i>2</i>
+                                    </span>
+                                    <a href="../cum-sociis-natoque/index.html">
+                                        Cum sociis natoque
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div><div id="ti_site_authors-4" class="widget widget_ti_site_authors">
+                            <h3>Our Authors</h3>
+                            <div class="inner">
+                                <ul class="carousel">
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="../author/jane/index.html" title="Jane Doe" rel="author">
+                                            <img alt='Jane Doe' src='../wp-content/uploads/sites/2/2013/05/avatar-1.jpg' class='avatar avatar-78 photo' height='78' width='78' />
+                                        </a>
+                                    </li>
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="../author/JackRiley/index.html" title="Jack Riley" rel="author">
+                                            <img alt='Jack Riley' src='../wp-content/uploads/sites/2/2013/05/avatar-8.jpg' class='avatar avatar-78 photo' height='78' width='78' />
+                                        </a>
+                                    </li>
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="../author/BillKing/index.html" title="Bill King" rel="author">
+                                            <img alt='Bill King' src='http://themesindep.com/simplemag/wp-content/uploads/sites/2/2013/05/avatar-11.jpg' class='avatar avatar-78 photo' height='78' width='78' />
+                                        </a>
+                                    </li>
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="../author/EricBishop/index.html" title="Eric Bishop" rel="author">
+                                            <img alt='Eric Bishop' src='../wp-content/uploads/sites/2/2013/05/avatar-3.jpg' class='avatar avatar-78 photo' height='78' width='78' />
+                                        </a>
+                                    </li>
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="../author/ChristopherHughes/index.html" title="Christopher Hughes" rel="author">
+                                            <img alt='Christopher Hughes' src='../wp-content/uploads/sites/2/2013/05/avatar-7-78x78.jpg' class='avatar avatar-78 photo' height='78' width='78' />
+                                        </a>
+                                    </li>
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="../author/VincentMiller/index.html" title="Vincent Miller" rel="author">
+                                            <img alt='Vincent Miller' src='../wp-content/uploads/sites/2/2013/05/avatar-5.jpg' class='avatar avatar-78 photo' height='78' width='78' />
+                                        </a>
+                                    </li>
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="../author/CurtisThomas/index.html" title="Curtis Thomas" rel="author">
+                                            <img alt='Curtis Thomas' src='../wp-content/uploads/sites/2/2013/05/avatar-10.jpg' class='avatar avatar-78 photo' height='78' width='78' />
+                                        </a>
+                                    </li>
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="../author/GloriaPatterson/index.html" title="Gloria" rel="author">
+                                            <img alt='Gloria' src='../wp-content/uploads/sites/2/2014/07/Gloria_avatar_1406586316-78x78.jpg' class='avatar avatar-78 photo' height='78' width='78' />
+                                        </a>
+                                    </li>
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="../author/EricGraham/index.html" title="Eric Graham" rel="author">
+                                            <img alt='Eric Graham' src='../wp-content/uploads/sites/2/2013/05/avatar-9.jpg' class='avatar avatar-78 photo' height='78' width='78' />
+                                        </a>
+                                    </li>
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="../author/ShirleyMorgan/index.html" title="Shirley Morgan" rel="author">
+                                            <img alt='Shirley Morgan' src='../wp-content/uploads/sites/2/2014/08/Gloria_avatar_1406586316-78x78.jpg' class='avatar avatar-78 photo' height='78' width='78' />
+                                        </a>
+                                    </li>
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="../author/LynnRoberts/index.html" title="Lynn Roberts" rel="author">
+                                            <img alt='Lynn Roberts' src='../wp-content/uploads/sites/2/2013/05/avatar-5.jpg' class='avatar avatar-78 photo' height='78' width='78' />
+                                        </a>
+                                    </li>
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="../author/KarenBlack/index.html" title="Karen Black" rel="author">
+                                            <img alt='Karen Black' src='../wp-content/uploads/sites/2/2013/05/avatar-1.jpg' class='avatar avatar-78 photo' height='78' width='78' />
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <div class="clearfix">
+                                    <a class="prev carousel-nav" href="index.html#"><i class="icomoon-chevron-left"></i></a>
+                                    <a class="next carousel-nav" href="index.html#"><i class="icomoon-chevron-right"></i></a>
+                                </div>
+
+                            </div>
+
+                        </div><div id="ti_latest_comments-2" class="widget widget_ti_latest_comments">
+                            <h3>Latest Comments</h3>
+                            <ul>
+                                <li>
+                                    <header class="clearfix">
+                                        <figure>
+                                            <a href="../gallery-post-format/index.html">
+                                                <img alt='Gloria' src='../wp-content/uploads/sites/2/2014/07/Gloria_avatar_1406586316-40x40.jpg' class='avatar avatar-40 photo' height='40' width='40' />
+                                            </a>
+                                        </figure>
+                                        <span class="commentnum">
+                                            1
+                                        </span>
+                                        <span class="comment-author">
+                                            Gloria
+                                        </span>
+                                        <a class="comment-post" href="../gallery-post-format/index.html#comment-641">
+                                            Gallery Post Format
+                                        </a>
+                                    </header>
+                                    <div class="comment-text">
+                                        Agreed… Excellent composition, pov and light! Nam ut neque condimentum, vulputate mauris id, feugiat nisi.
+                                    </div>
+                                </li>
+                                <li>
+                                    <header class="clearfix">
+                                        <figure>
+                                            <a href="../gallery-post-format/index.html">
+                                                <img alt='Jane Doe' src='../wp-content/uploads/sites/2/2013/05/avatar-1.jpg' class='avatar avatar-40 photo' height='40' width='40' />
+                                            </a>
+                                        </figure>
+                                        <span class="commentnum">
+                                            2
+                                        </span>
+                                        <span class="comment-author">
+                                            Jane Doe
+                                        </span>
+                                        <a class="comment-post" href="../gallery-post-format/index.html#comment-639">
+                                            Gallery Post Format
+                                        </a>
+                                    </header>
+                                    <div class="comment-text">
+                                        Oh, thank you guys so much for supporting me and keeping in touch with me! Morbi facilisis quam quis velit fermentum ac molestie felis tincidunt
+                                    </div>
+                                </li>
+                                <li>
+                                    <header class="clearfix">
+                                        <figure>
+                                            <a href="../gallery-post-format/index.html">
+                                                <img alt='Shirley Morgan' src='../wp-content/uploads/sites/2/2014/08/Gloria_avatar_1406586316-40x40.jpg' class='avatar avatar-40 photo' height='40' width='40' />
+                                            </a>
+                                        </figure>
+                                        <span class="commentnum">
+                                            3
+                                        </span>
+                                        <span class="comment-author">
+                                            Shirley Morgan
+                                        </span>
+                                        <a class="comment-post" href="../gallery-post-format/index.html#comment-637">
+                                            Gallery Post Format
+                                        </a>
+                                    </header>
+                                    <div class="comment-text">
+                                        Fantastic. Another fave, of course I think they all are. Duis ornare vitae nibh vitae malesuada. Nunc blandit lorem quis metus volutpat tincidunt.
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div><div id="tag_cloud-3" class="widget widget_tag_cloud">
+                            <h3>Tags</h3><div class="tagcloud">
+                                <a href='../tag/audio/index.html' class='tag-link-24' title='1 topic' style='font-size: 8pt;'>Audio</a>
+                                <a href='../tag/black-n-white/index.html' class='tag-link-19' title='6 topics' style='font-size: 16.020833333333pt;'>Black n White</a>
+                                <a href='../tag/city/index.html' class='tag-link-23' title='2 topics' style='font-size: 10.625pt;'>City</a>
+                                <a href='../tag/creative/index.html' class='tag-link-14' title='17 topics' style='font-size: 22pt;'>Creative</a>
+                                <a href='../tag/forest/index.html' class='tag-link-25' title='1 topic' style='font-size: 8pt;'>forest</a>
+                                <a href='../tag/lake/index.html' class='tag-link-20' title='1 topic' style='font-size: 8pt;'>Lake</a>
+                                <a href='../tag/music/index.html' class='tag-link-12' title='5 topics' style='font-size: 15pt;'>Music</a>
+                                <a href='../tag/nature/index.html' class='tag-link-17' title='8 topics' style='font-size: 17.479166666667pt;'>Nature</a>
+                                <a href='../tag/paris/index.html' class='tag-link-22' title='1 topic' style='font-size: 8pt;'>Paris</a>
+                                <a href='../tag/portrait/index.html' class='tag-link-16' title='6 topics' style='font-size: 16.020833333333pt;'>Portrait</a>
+                                <a href='../tag/river/index.html' class='tag-link-15' title='3 topics' style='font-size: 12.375pt;'>River</a>
+                                <a href='../tag/sky/index.html' class='tag-link-21' title='4 topics' style='font-size: 13.833333333333pt;'>Sky</a>
+                                <a href='../tag/travel/index.html' class='tag-link-6' title='1 topic' style='font-size: 8pt;'>Travel</a>
+                                <a href='../tag/video/index.html' class='tag-link-13' title='2 topics' style='font-size: 10.625pt;'>Video</a>
+                            </div>
+                        </div>
+                    </aside><!-- .sidebar -->
+                </div>
+            </div><!-- .grids -->
+        </div><!-- .wrapper -->
+
+
+    </section>

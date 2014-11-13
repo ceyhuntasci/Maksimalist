@@ -1,0 +1,716 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en-US" class="modern">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Maksimalist</title>
+    <link rel='stylesheet' id='sc-frontend-style-css' href='~/Content/frontend-style-ver=4.0.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='main-style-css' href='~/Content/style-ver=4.0.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='redux-google-fonts-css' href='http://fonts.googleapis.com/css?family=Oswald%7CLato&subset=latin&ver=1411386557' type='text/css' media='all' />
+    <script type='text/javascript' src='~/Scripts/jquery-ver=1.11.1.js'></script>
+    <script type='text/javascript' src='~/Scripts/jquery-migrate.min-ver=1.2.1.js'></script>
+
+
+    <style type="text/css">
+        .main-menu > ul > li:hover > a {
+            color: #333;
+        }
+
+        .secondary-menu ul > li:hover > a {
+            color: #ffcc0d;
+        }
+
+        .main-menu > ul > .link-arrow > a:after {
+            border-color: transparent transparent #ffcc0d;
+        }
+
+        .main-menu > ul > li > .sub-menu {
+            border-top-color: #ffcc0d;
+        }
+
+        .modern .content-over-image figure:before {
+            opacity: 0.1;
+        }
+
+        #searchform input, #searchform button {
+            color: #ffffff;
+        }
+
+        .modern .content-over-image:hover figure:before {
+            opacity: 0.7;
+        }
+
+        .main-menu .sub-menu .sub-links a:after {
+            background-color: #ffffff;
+        }
+
+        .sidebar .widget {
+            border-bottom: 1px solid #000;
+        }
+
+        .footer-sidebar .widget_rss li:after, .footer-sidebar .widget_pages li a:after, .footer-sidebar .widget_nav_menu li a:after, .footer-sidebar .widget_categories ul li:after, .footer-sidebar .widget_recent_entries li:after, .footer-sidebar .widget_recent_comments li:after {
+            background-color: #8c919b;
+        }
+
+        .footer-sidebar .widget_ti_latest_comments .comment-text:after {
+            border-bottom-color: #242628;
+        }
+
+        .footer-sidebar .widget_ti_latest_comments .comment-text:before {
+            border-bottom-color: #585b61;
+        }
+
+        .footer-sidebar .widget_ti_latest_comments .comment-text {
+            border-color: #585b61;
+        }
+
+        .sub-menu-columns .sub-menu .sub-links > .menu-item-has-children > a {
+            color: #ffcc0d;
+        }
+
+        .title-with-sep {
+            background: url("~/Images/section-headr.png") repeat-x 0 50%;
+        }
+
+        @@media only screen and (min-width: 751px) {
+            #gallery-carousel, #gallery-carousel .gallery-item {
+                height: 580px;
+            }
+        }
+    </style>
+    <style type="text/css">
+        .main-menu > ul > li:hover > a {
+            color: #333;
+        }
+
+        .secondary-menu ul > li:hover > a {
+            color: #ffcc0d;
+        }
+
+        .main-menu > ul > .link-arrow > a:after {
+            border-color: transparent transparent #ffcc0d;
+        }
+
+        .main-menu > ul > li > .sub-menu {
+            border-top-color: #ffcc0d;
+        }
+
+        .modern .content-over-image figure:before {
+            opacity: 0.1;
+        }
+
+        #searchform input, #searchform button {
+            color: #ffffff;
+        }
+
+        .modern .content-over-image:hover figure:before {
+            opacity: 0.7;
+        }
+
+        .main-menu .sub-menu .sub-links a:after {
+            background-color: #ffffff;
+        }
+
+        .sidebar .widget {
+            border-bottom: 1px solid #000;
+        }
+
+        .footer-sidebar .widget_rss li:after, .footer-sidebar .widget_pages li a:after, .footer-sidebar .widget_nav_menu li a:after, .footer-sidebar .widget_categories ul li:after, .footer-sidebar .widget_recent_entries li:after, .footer-sidebar .widget_recent_comments li:after {
+            background-color: #8c919b;
+        }
+
+        .footer-sidebar .widget_ti_latest_comments .comment-text:after {
+            border-bottom-color: #242628;
+        }
+
+        .footer-sidebar .widget_ti_latest_comments .comment-text:before {
+            border-bottom-color: #585b61;
+        }
+
+        .footer-sidebar .widget_ti_latest_comments .comment-text {
+            border-color: #585b61;
+        }
+
+        .sub-menu-columns .sub-menu .sub-links > .menu-item-has-children > a {
+            color: #ffcc0d;
+        }
+
+        .title-with-sep {
+            background: url("wp-content/themes/simplemag/images/section-header.png") repeat-x 0 50%;
+        }
+    </style>
+    <style type="text/css" title="dynamic-css" class="options-output">
+        h1, h2, h3, h4, h5, h6, .main-menu a, .secondary-menu a, .widget_pages, .widget_categories, .widget_nav_menu, .tagline, .sub-title, .entry-meta, .entry-note, .read-more, #submit, .ltr .single .entry-content > p:first-of-type:first-letter, input#s, .single-author-box .vcard, .comment-author, .comment-meta, .comment-reply-link, #respond label, .copyright, #wp-calendar tbody, .latest-reviews i, .score-box .total {
+            font-family: Oswald;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .title-with-sep, .title-with-bg, .classic-layout .entry-title, .posts-slider .entry-title {
+            font-weight: normal;
+            font-style: normal;
+            font-size: 42px;
+        }
+
+        .main-menu > ul > li {
+            font-weight: normal;
+            font-style: normal;
+            font-size: 18px;
+        }
+
+        body {
+            font-family: Lato;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 16px;
+        }
+
+        body, .site-content, .layout-full .title-with-sep .title, .layout-full .title-with-sep .entry-title {
+            background-color: #fff;
+        }
+
+        .entry-image, .paging-navigation .current, .link-pages span, .score-line span, .entry-breakdown .item .score-line, .widget_ti_most_commented span, .all-news-link .read-more {
+            background-color: #ffcc0d;
+        }
+
+            .paging-navigation .current, .widget span i, .score-line span i, .all-news-link .read-more {
+                color: #000000;
+            }
+
+        #masthead, .main-menu-fixed {
+            background-color: #ffffff;
+        }
+
+        .top-strip, .secondary-menu .sub-menu, .top-strip #searchform input[type="text"], .top-strip .social li ul {
+            background-color: #000000;
+        }
+
+        .top-strip {
+            border-bottom: 0px solid #000;
+        }
+
+        .secondary-menu a {
+            color: #ffffff;
+        }
+
+            .secondary-menu a:hover {
+                color: #ffcc0d;
+            }
+
+        .secondary-menu li, .top-strip #searchform input[type="text"] {
+            border-color: #333333;
+        }
+
+        .top-strip .social li a {
+            color: #ffffff;
+        }
+
+        .main-menu, .sticky-active .main-menu-fixed {
+            background-color: #ffffff;
+        }
+
+            .main-menu > ul > li > a {
+                color: #000;
+            }
+
+                .main-menu > ul > li > a:hover {
+                    color: #333;
+                }
+
+            .main-menu > ul > li:after {
+                color: #eeeeee;
+            }
+
+        .main-menu {
+            border-top: 1px solid #000;
+        }
+
+        .main-menu {
+            border-bottom: 3px solid #000;
+        }
+
+            .main-menu .sub-menu {
+                border-top: 0px solid #000;
+                border-bottom: 0px solid #000;
+                border-left: 0px solid #000;
+                border-right: 0px solid #000;
+            }
+
+            .main-menu .sub-menu, .main-menu .sub-menu-two-columns .sub-menu:before {
+                background-color: #000000;
+            }
+
+        .sub-links li a {
+            color: #ffffff;
+        }
+
+            .sub-links li a:hover {
+                color: #ffcc0d;
+            }
+
+        .main-menu .sub-menu .sub-links a:after {
+            background-color: transparent;
+        }
+
+        .main-menu .sub-menu:after {
+            background-color: #242628;
+        }
+
+        .sub-posts li a {
+            color: #ffffff;
+        }
+
+            .sub-posts li a:hover {
+                color: #ffcc0d;
+            }
+
+        .modern .content-over-image figure:before {
+            background-color: #000000;
+        }
+
+        .sidebar {
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            border-left: 1px solid #000;
+            border-right: 1px solid #000;
+        }
+
+        .slide-dock {
+            background-color: #ffffff;
+        }
+
+            .slide-dock h3, .slide-dock a, .slide-dock p {
+                color: #000000;
+            }
+
+        .footer-sidebar, .widget_ti_most_commented li a {
+            background-color: #242628;
+        }
+
+            .footer-sidebar .widget h3 {
+                color: #ffcc0d;
+            }
+
+        .footer-sidebar {
+            color: #8c919b;
+        }
+
+            .footer-sidebar .widget a {
+                color: #8c919b;
+            }
+
+                .footer-sidebar .widget a:hover {
+                    color: #ffcc0d;
+                }
+
+            .widget-area-2, .widget-area-3, .footer-sidebar .widget {
+                border-top: 1px dotted #585b61;
+                border-bottom: 1px dotted #585b61;
+                border-left: 1px dotted #585b61;
+                border-right: 1px dotted #585b61;
+            }
+
+        .copyright {
+            background-color: #222222;
+        }
+
+            .copyright, .copyright a {
+                color: #8c919b;
+            }
+    </style>
+
+</head>
+<body class="home page page-id-10 page-template page-template-page-composer-php ltr page-home-page" itemscope itemtype="http://schema.org/WebPage">
+    <div id="pageslide" class="st-menu st-effect">
+        <a href="index.html#" id="close-pageslide"><i class="icomoon-remove-sign"></i></a>
+    </div><!-- Sidebar in Mobile View -->
+
+    <section id="site" class="layout-full">
+        <div class="site-content">
+
+            <header id="masthead" role="banner" class="clearfix with-menu" itemscope itemtype="http://schema.org/WPHeader">
+
+                <div class="no-print top-strip">
+                    <div class="wrapper clearfix">
+
+
+                        <form method="get" id="searchform" action="http://localhost:1924/" role="search">
+                            <input type="text" name="s" id="s" value="Search" onfocus="if(this.value=='Search')this.value='';" onblur="if(this.value=='')this.value='Search';" />
+                            <button type="submit">
+                                <i class="icomoon-search"></i>
+                            </button>
+                        </form><ul class="social">
+                            <li>
+                                <a href="index.html#" class="icomoon-share social-share-link"></a>
+                                <ul><li><a href="http://gdf" class="icomoon-feed" target="_blank"></a></li><li><a href="https://www.facebook.com/ThemesIndep" class="icomoon-facebook" target="_blank"></a></li><li><a href="https://twitter.com/themesindep" class="icomoon-twitter" target="_blank"></a></li><li><a href="http://dfds" class="icomoon-google-plus" target="_blank"></a></li><li><a href="http://cvdfs" class="icomoon-bloglovin" target="_blank"></a></li>		</ul>
+                            </li>
+                        </ul>
+                        <a href="index.html#" id="open-pageslide" data-effect="st-effect"><i class="icomoon-menu"></i></a>
+
+                        <nav class="secondary-menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+                            <ul id="secondary-nav" class="menu">
+                                <li id="menu-item-1121" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-10 current_page_item menu-item-has-children menu-item-1121">
+                                    <a href="index.html">Homepage</a>
+                                    <ul class="sub-menu">
+                                        <li id="menu-item-1126" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1126"><a href="homepage-2/index.html">Homepage II</a></li>
+                                        <li id="menu-item-1127" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1127"><a href="homepage-3/index.html">Homepage III</a></li>
+                                        <li id="menu-item-1129" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1129"><a href="homepage-4/index.html">Homepage IV</a></li>
+                                        <li id="menu-item-1130" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1130"><a href="homepage-5/index.html">Homepage V</a></li>
+                                        <li id="menu-item-1182" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1182"><a href="homepage-6/index.html">Homepage VI</a></li>
+                                    </ul>
+                                </li>
+                                <li id="menu-item-1089" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1089">
+                                    <a href="index.html#">Posts</a>
+                                    <ul class="sub-menu">
+                                        <li id="menu-item-1131" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1131"><a href="typography/index.html">Typography</a></li>
+                                        <li id="menu-item-1136" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1136"><a href="standard-post/index.html">Standard Post</a></li>
+                                        <li id="menu-item-1132" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1132"><a href="gallery-post-format/index.html">Gallery Post Format</a></li>
+                                        <li id="menu-item-1133" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1133"><a href="sound-cloud-audio/index.html">Sound Cloud Audio</a></li>
+                                        <li id="menu-item-1134" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1134"><a href="wordpress-gallery/index.html">WordPress Gallery</a></li>
+                                        <li id="menu-item-1135" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1135"><a href="vimeo-video-post/index.html">Vimeo Video Post</a></li>
+                                    </ul>
+                                </li>
+                                <li id="menu-item-588" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-588">
+                                    <a href="index.html#">Categories</a>
+                                    <ul class="sub-menu">
+                                        <li id="menu-item-1156" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1156"><a href="category/photography/index.html">With Small Slider</a></li>
+                                        <li id="menu-item-1155" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1155"><a href="category/fashion/index.html">With Big Slider</a></li>
+                                        <li id="menu-item-1154" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1154"><a href="category/travel/index.html">Classic Blog</a></li>
+                                        <li id="menu-item-1157" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1157"><a href="category/design/index.html">With Description</a></li>
+                                        <li id="menu-item-1158" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1158"><a href="category/style/index.html">Without SIdebar</a></li>
+                                    </ul>
+                                </li>
+                                <li id="menu-item-216" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-216">
+                                    <a href="index.html#">Pages</a>
+                                    <ul class="sub-menu">
+                                        <li id="menu-item-1166" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1166"><a href="site-authors/index.html">SIte Authors</a></li>
+                                        <li id="menu-item-1032" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1032"><a href="author/jane/index.html">Author Page</a></li>
+                                        <li id="menu-item-217" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-217"><a href="page-full-width/index.html">Page full width</a></li>
+                                        <li id="menu-item-218" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-218"><a href="page-with-sidebar/index.html">Page with sidebar</a></li>
+                                        <li id="menu-item-61" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61"><a href="shortcodes/index.html">Shortcodes</a></li>
+                                    </ul>
+                                </li>
+                                <li id="menu-item-1023" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1023">
+                                    <a href="index.html#">Menu Item</a>
+                                    <ul class="sub-menu">
+                                        <li id="menu-item-1027" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1027"><a href="index.html#">Menu Item</a></li>
+                                        <li id="menu-item-1028" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1028">
+                                            <a href="index.html#">Menu Item</a>
+                                            <ul class="sub-menu">
+                                                <li id="menu-item-1029" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1029"><a href="index.html#">Menu Item</a></li>
+                                                <li id="menu-item-1030" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1030"><a href="index.html#">Menu item</a></li>
+                                            </ul>
+                                        </li>
+                                        <li id="menu-item-1025" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1025"><a href="index.html#">Menu Item</a></li>
+                                        <li id="menu-item-1026" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1026"><a href="index.html#">Menu Item</a></li>
+                                        <li id="menu-item-1153" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1153"><a href="index.html#">Menu Item</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- .wrapper -->
+                </div><!-- .top-strip -->
+
+
+                <div id="branding" class="animated">
+                    <div class="wrapper">
+
+                        <div class="header header-default">
+                            <a class="logo" href="index.html">
+                                <img src="~/Images/logo.png" alt="SimpleMag - Magazine Theme For Creative Stuff" width="237" height="60" />
+                            </a><!-- Logo -->
+
+                            <span class="tagline" itemprop="description">Magazine Theme For Creative Stuff</span>
+                        </div><!-- .header-default -->
+                    </div><!-- .wrapper -->
+                </div><!-- #branding -->
+
+                <div class="no-print animated main-menu-container">
+                    <div class="main-menu-fixed">
+                        <nav class="wrapper main-menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+                            <ul id="main-nav" class="menu">
+                                <li id="menu-item-1094" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
+                                    <a href="index.html#">Drop Down</a>
+                                    <ul class="sub-links">
+                                        <li id="menu-item-1087" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="standard-post/index.html">Standard post</a></li>
+                                        <li id="menu-item-1088" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="gallery-post-format/index.html#comment-638">Post with comments</a></li>
+                                        <li id="menu-item-1086" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="vimeo-video-post/index.html">Vimeo video post</a></li>
+                                        <li id="menu-item-1083" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
+                                            <a href="sound-cloud-audio/index.html">Sound cloud audio</a>
+                                            <ul class="sub-links">
+                                                <li id="menu-item-1107" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="index.html#">Menu Item</a></li>
+                                                <li id="menu-item-1109" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="index.html#">Menu Item</a></li>
+                                                <li id="menu-item-1106" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="index.html#">Menu Item</a></li>
+                                                <li id="menu-item-1108" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="index.html#">Menu Item</a></li>
+                                            </ul>
+                                        </li>
+                                        <li id="menu-item-1085" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="gallery-post-format/index.html">Gallery post format</a></li>
+                                        <li id="menu-item-1084" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="wordpress-gallery/index.html">WordPress Gallery</a></li>
+                                    </ul>
+                                </li>
+                                <li id="menu-item-987" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
+                                    <a href="index.html#">Columns Menu</a>
+                                    <ul class="sub-links">
+                                        <li id="menu-item-988" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
+                                            <a href="index.html#">Categories</a>
+                                            <ul class="sub-links">
+                                                <li id="menu-item-1172" class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                                    <a href="category/design/index.html">With Description</a><div class="sub-menu"></div>
+                                                </li>
+                                                <li id="menu-item-1173" class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                                    <a href="category/style/index.html">Without Sidebar</a><div class="sub-menu"></div>
+                                                </li>
+                                                <li id="menu-item-1174" class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                                    <a href="category/photography/index.html">With Smal Slider</a><div class="sub-menu"></div>
+                                                </li>
+                                                <li id="menu-item-1175" class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                                    <a href="category/fashion/index.html">With Big Slider</a><div class="sub-menu"></div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li id="menu-item-989" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
+                                            <a href="index.html#">Pages</a>
+                                            <ul class="sub-links">
+                                                <li id="menu-item-1167" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="site-authors/index.html">SIte Authors</a></li>
+                                                <li id="menu-item-1168" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="author/jane/index.html">Author Page</a></li>
+                                                <li id="menu-item-1005" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="page-with-sidebar/index.html">Page with sidebar</a></li>
+                                                <li id="menu-item-1004" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="page-full-width/index.html">Page full width</a></li>
+                                            </ul>
+                                        </li>
+                                        <li id="menu-item-990" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
+                                            <a href="index.html#">Pages &#038; Posts</a>
+                                            <ul class="sub-links">
+                                                <li id="menu-item-1171" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="gallery-post-format/index.html#comment-638">Post With Comments</a></li>
+                                                <li id="menu-item-1013" class="menu-item menu-item-type-post_type menu-item-object-post"><a href="wordpress-gallery/index.html">WordPress Gallery</a></li>
+                                                <li id="menu-item-1008" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="shortcodes/index.html">Shortcodes</a></li>
+                                                <li id="menu-item-1006" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://themesindep.com/simplemag/?page_id=210">Contact</a></li>
+                                            </ul>
+                                        </li>
+                                        <li id="menu-item-991" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children">
+                                            <a href="index.html#">Posts</a>
+                                            <ul class="sub-links">
+                                                <li id="menu-item-1015" class="menu-item menu-item-type-post_type menu-item-object-post"><a href="standard-post/index.html">Standard Post</a></li>
+                                                <li id="menu-item-1011" class="menu-item menu-item-type-post_type menu-item-object-post"><a href="typography/index.html">Typography</a></li>
+                                                <li id="menu-item-1010" class="menu-item menu-item-type-post_type menu-item-object-post"><a href="gallery-post-format/index.html">Gallery Post Format</a></li>
+                                                <li id="menu-item-1014" class="menu-item menu-item-type-post_type menu-item-object-post"><a href="vimeo-video-post/index.html">Vimeo Video Post</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li id="menu-item-1176" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children">
+                                    <a href="category/photography/index.html">Mega Menu</a><div class="sub-menu">
+                                        <ul class="sub-posts">
+                                            <li>
+                                                <figure>
+                                                    <a href="wordpress-gallery/index.html"><img src="wp-content/uploads/sites/2/2013/05/4035385401_bd80426129_o-296x197.jpg" alt="WordPress Gallery" width="296" height="197" /></a>
+                                                </figure>
+                                                <a href="wordpress-gallery/index.html">WordPress Gallery</a>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a href="pellentesque-habitant-morbi/index.html"><img src="wp-content/uploads/sites/2/2013/05/5505788782_4feb50cf9b_o-296x197.jpg" alt="Pellentesque habitant morbi" width="296" height="197" /></a>
+                                                </figure>
+                                                <a href="pellentesque-habitant-morbi/index.html">Pellentesque habitant morbi</a>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a href="integer-ante-arcu-accumsan/index.html"><img src="wp-content/uploads/sites/2/2013/05/8750432549_b3419f3d64_o-296x197.jpg" alt="Integer ante arcu accumsan" width="296" height="197" /></a>
+                                                </figure>
+                                                <a href="integer-ante-arcu-accumsan/index.html">Integer ante arcu accumsan</a>
+                                            </li>
+                                        </ul>
+                                        <ul class="sub-links">
+                                            <li id="menu-item-992" class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                                <a href="category/travel/index.html">Travel</a><div class="sub-menu"></div>
+                                            </li>
+                                            <li id="menu-item-993" class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                                <a href="category/fashion/index.html">Fashion</a><div class="sub-menu"></div>
+                                            </li>
+                                            <li id="menu-item-994" class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                                <a href="category/design/index.html">Design</a><div class="sub-menu"></div>
+                                            </li>
+                                            <li id="menu-item-995" class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                                <a href="category/style/index.html">Style</a><div class="sub-menu"></div>
+                                            </li>
+                                            <li id="menu-item-1178" class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                                <a href="category/people/index.html">People</a><div class="sub-menu"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li id="menu-item-1177" class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                    <a href="category/travel/index.html">Mega Menu 2</a><div class="sub-menu">
+                                        <ul class="sub-posts">
+                                            <li>
+                                                <figure>
+                                                    <a href="typography/index.html"><img src="wp-content/uploads/sites/2/2013/05/typography-296x197.jpg" alt="Typography" width="296" height="197" /></a>
+                                                </figure>
+                                                <a href="typography/index.html">Typography</a>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a href="maecenas-nec-nunc-et-ligula-egestas/index.html"><img src="wp-content/uploads/sites/2/2013/05/8063924948_ccb29c487f_o-296x197.jpg" alt="Maecenas nec nunc et ligula" width="296" height="197" /></a>
+                                                </figure>
+                                                <a href="maecenas-nec-nunc-et-ligula-egestas/index.html">Maecenas nec nunc et ligula</a>
+                                            </li>
+                                            <li>
+                                                <figure>
+                                                    <a href="sed-ut-perspiciatis-unde-omnis/index.html"><img src="wp-content/uploads/sites/2/2012/01/5015475412_9977e514fe_o-296x197.jpg" alt="Sed ut perspiciatis unde omnis" width="296" height="197" /></a>
+                                                </figure>
+                                                <a href="sed-ut-perspiciatis-unde-omnis/index.html">Sed ut perspiciatis unde omnis</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header><!-- #masthead -->
+
+        </div><!-- .site-content -->
+
+    </section><!-- #site -->
+    <script type='text/javascript' src='~/Scripts/comment-reply.min-ver=4.0.js'></script>
+    <script type='text/javascript' src='~/Scripts/jquery.flexslider-min-ver=2.2.2.js'></script>
+    <script type='text/javascript' src='~/Scripts/jquery.caroufredsel-ver=6.2.1.js'></script>
+    <script type='text/javascript' src='~/Scripts/jquery.assets-ver=1.0.js'></script>
+    <script type='text/javascript' src='~/Scripts/jquery.custom-ver=1.0.js'></script>
+
+</body>
+@RenderBody()
+<footer id="footer" class="no-print animated" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+
+
+    <div class="footer-sidebar">
+        <div id="supplementary" class="wrapper clearfix columns col-3">
+            <div class="widget-area widget-area-1" role="complementary">
+                <div id="ti_featured_posts-3" class="widget widget_ti_featured_posts">
+                    <h3>Featured Posts</h3>
+                    <div class="flexslider">
+
+                        <ul class="slides">
+                            <li>
+                                <figure class="entry-image">
+                                    <a href="typography/index.html">
+                                        <img width="330" height="220" src="wp-content/uploads/sites/2/2013/05/typography-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="typography" />
+                                    </a>
+                                </figure>
+                                <a class="widget-post-title" href="typography/index.html">Typography</a>
+                            </li>
+                            <li>
+                                <figure class="entry-image">
+                                    <a href="sound-cloud-audio/index.html">
+                                        <img width="330" height="220" src="wp-content/uploads/sites/2/2013/05/street-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="street" />
+                                    </a>
+                                </figure>
+                                <a class="widget-post-title" href="sound-cloud-audio/index.html">Sound Cloud Audio</a>
+                            </li>
+                            <li>
+                                <figure class="entry-image">
+                                    <a href="standard-post/index.html">
+                                        <img width="330" height="220" src="wp-content/uploads/sites/2/2013/05/sea-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="see" />
+                                    </a>
+                                </figure>
+                                <a class="widget-post-title" href="standard-post/index.html">Standard Post</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div><div id="ti-about-site-2" class="widget widget_ti-about-site">
+                    <h3>About The Mag</h3><img src="wp-content/uploads/sites/2/2013/05/mag-logo.png" alt="SimpleMag" /><p>Simple Mag is a Graphic Design Magazine that provides information around creativity, creation, creative people and creative world</p>
+                    <ul class="social social-center clearfix"><li><a href="index.html#" aria-hidden="true" class="icomoon-feed" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-twitter" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-facebook" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-google-plus" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-linkedin" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-pinterest" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-instagram" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-flickr" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-youtube" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-behance" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-dribbble" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-soundcloud" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-lastfm" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-app-net" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-apple" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-windows" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-android" target="_blank"></a></li><li><a href="index.html#" aria-hidden="true" class="icomoon-stumbleupon" target="_blank"></a></li></ul>
+                </div>
+            </div><!-- #first .widget-area -->
+
+            <div class="widget-area widget-area-2" role="complementary">
+                <div id="ti_latest_posts-2" class="widget widget_ti_latest_posts">
+                    <h3>Latest Posts</h3>
+                    <div class="widget-posts-classic-entries">
+
+                        <ul class="clearfix">
+
+                            <li>
+                                <figure class="entry-image">
+                                    <a href="gallery-post-format/index.html">
+                                        <img width="330" height="220" src="wp-content/uploads/sites/2/2013/05/8470852074_4031c64512_o-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="8470852074_4031c64512_o" />
+                                    </a>
+                                </figure>
+                                <a class="widget-post-title" href="gallery-post-format/index.html">Gallery Post Format</a>
+                            </li>
+
+
+                            <li>
+                                <figure class="entry-image">
+                                    <a href="typography/index.html">
+                                        <img width="330" height="220" src="wp-content/uploads/sites/2/2013/05/typography-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="typography" />
+                                    </a>
+                                </figure>
+                                <a class="widget-post-title" href="typography/index.html">Typography</a>
+                            </li>
+
+
+                            <li>
+                                <figure class="entry-image">
+                                    <a href="sound-cloud-audio/index.html">
+                                        <img width="330" height="220" src="wp-content/uploads/sites/2/2013/05/street-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="street" />
+                                    </a>
+                                </figure>
+                                <a class="widget-post-title" href="sound-cloud-audio/index.html">Sound Cloud Audio</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- #second .widget-area -->
+
+            <div class="widget-area widget-area-3" role="complementary">
+                <div id="ti_video_embed-3" class="widget widget_ti_video_embed">
+                    <h3>Video</h3><figure class="video-wrapper"><iframe src="http://player.vimeo.com/video/57465392" width="1050" height="591" frameborder="0" title="RWANDA" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></figure>
+                    <p class="video-title">Video Title</p>
+
+                </div>		<div id="recent-posts-2" class="widget widget_recent_entries">
+                    <h3>Recent Posts</h3>		<ul>
+                        <li>
+                            <a href="gallery-post-format/index.html">Gallery Post Format</a>
+                            <span class="post-date">May 27, 2013</span>
+                        </li>
+                        <li>
+                            <a href="typography/index.html">Typography</a>
+                            <span class="post-date">May 27, 2013</span>
+                        </li>
+                        <li>
+                            <a href="sound-cloud-audio/index.html">Sound Cloud Audio</a>
+                            <span class="post-date">May 27, 2013</span>
+                        </li>
+                        <li>
+                            <a href="wordpress-gallery/index.html">WordPress Gallery</a>
+                            <span class="post-date">May 27, 2013</span>
+                        </li>
+                        <li>
+                            <a href="vimeo-video-post/index.html">Vimeo Video Post</a>
+                            <span class="post-date">May 27, 2013</span>
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- #third .widget-area -->
+        </div><!-- #supplementary -->
+    </div>
+    <div class="copyright">
+        <div class="wrapper">
+            <div class="grids">
+                <div class="grid-10">
+                    Powered by WordPress. <a href="http://www.themesindep.com">Created by ThemesIndep</a>
+                </div>
+                <div class="grid-2">
+                    <a href="index.html#" class="back-top">Back to top <i class="icomoon-chevron-up"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer><!-- #footer -->
+</html>

@@ -1,0 +1,54 @@
+﻿@model Maksimalist.Models.Author
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Signin Template for Bootstrap</title>
+    <script src="~/Scripts/jquery-ver=1.11.1.js"></script>
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+    <link href="~/Content/signin.css" rel="stylesheet" />
+    <script>
+        var resize = function () {
+            $('body').position({
+                of: $(window),
+                my: 'center center',
+                at: 'center center'
+            });
+        }
+        $(window).resize(resize);
+        $(document).ready(resize);
+    </script>
+
+
+
+
+
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true, "Login failed. Check your login details.");
+        <div class="container">
+            <div class="col-xs-6 col-xs-offset-3">
+                <img src="~/Images/logo.png" alt="" style="width: 30%; display: block; margin: auto" />
+                <form class="form-signin" role="form">
+                    <h2 class="form-signin-heading">Maksimalist Admin</h2>
+                    <input name="UserName" type="text" class="form-control" placeholder="Username" required autofocus>
+                    <input name="Password" type="password" class="form-control" placeholder="Password" required>
+
+                    <button class="btn btn-lg btn-default btn-block" type="submit" style="background-color:#222222;color:#ffffff">Sign in</button>
+                </form>
+            </div>
+        </div> <!-- /container -->
+    }
+</body>
+
+

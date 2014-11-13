@@ -1,0 +1,29 @@
+﻿@model Maksimalist.Models.Post
+<li class="post-38 post type-post status-publish format-audio has-post-thumbnail hentry category-music tag-music content-over-image">
+
+    <figure>
+        <a class="entry-link" href="#"></a>
+        <img width="1050" height="700" src="@Model.ImageUrl" class="attachment-big-size wp-post-image" alt="street" />
+    </figure>
+
+    <header class="entry-header">
+        <div class="inner">
+            <div class="inner-cell">
+                <div class="entry-meta">
+                    <span class="vcard author">
+                        By                                        <a href="../author/jane/index.html" class="url fn n" rel="author">
+                           @Model.Author.FirstName @Model.Author.LastName
+                        </a>
+                    </span>
+                    <span class="entry-category"><a href="../category/music/index.html">@Model.Category.Name</a></span><time class="entry-date updated" datetime=@Model.PostDate itemprop="datePublished">@Model.PostDate</time>
+                </div>
+                <h2 class="entry-title">
+                    @Model.Headline
+                </h2>
+                <span class="read-more">Read More</span>
+            </div>
+        </div>
+    </header>
+
+</li>
+

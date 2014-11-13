@@ -1,0 +1,116 @@
+﻿@model Maksimalist.Models.Author
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Author</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfilePicture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfilePicture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FacebookUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FacebookUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TwitterUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TwitterUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InstagramUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InstagramUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpotifyUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpotifyUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pinterest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pinterest)
+        </dd>
+
+        
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

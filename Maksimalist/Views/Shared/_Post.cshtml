@@ -1,0 +1,33 @@
+﻿﻿@model Maksimalist.Models.Post
+
+@if(Model.Manset){
+<article class="post-148 post type-post status-publish format-standard has-post-thumbnail hentry category-travel tag-black-n-white tag-nature tag-river grid-4">
+
+    <figure class="entry-image">
+        <a href="~/Post/Details/@Model.Id">
+            <img width="330" height="220" src="@Model.ImageUrl" class="attachment-rectangle-size wp-post-image" alt="8063924948_ccb29c487f_o" />
+        </a>
+   </figure>
+
+    <header class="entry-header">
+        <div class="entry-meta">
+            <span class="entry-category"><a href="../category/travel/index.html">@Model.Category.Name</a></span><time class="entry-date updated" datetime="@Model.PostDate" itemprop="datePublished">@Model.PostDate</time>
+        </div>
+        <h2 class="entry-title">
+            <a href="~/Post/Details/@Model.Id">@Model.Headline</a>
+        </h2>
+        <span class="vcard author">
+            By                            <a href="~/Authors/Details/@Model.Author.Id" class="url fn n" rel="author">
+    @Model.Author.FirstName @Model.Author.LastName
+</a>
+        </span>
+    </header>
+
+    <div class="entry-summary">
+        <p>@(Model.Bottomline)&#8230;</p>
+    </div>
+</article>
+}
+    else{
+    <h2>deneme</h2>
+ }
