@@ -180,7 +180,6 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\DateType.cs" />
     <Compile Include="Models\Gallery.cs" />
-    <Compile Include="Models\GalleryImageViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MaksimalistContext.cs" />
     <Compile Include="Models\Matter.cs" />

@@ -10,7 +10,7 @@
     <script src="~/ckeditor/ckeditor.js"></script>
     <script src="~/bundles/jqueryval"></script>
     <link rel="stylesheet" href="~/Content/bootstrap.min.css">
-
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <link href="~/Content/dropzone.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/bootstrap-tagsinput/bootstrap-tagsinput.css">
     <script src="~/Scripts/dropzone.js"></script>
@@ -51,9 +51,32 @@
                 </div>
             </div>
             <div class="form-group">
+                @Html.LabelFor(model => model.HasGallery, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.HasGallery)
+                        @Html.ValidationMessageFor(model => model.HasGallery, "", new { @class = "text-danger"  })
+                    </div>
+                </div>
+            </div>
+            <script>
+                $("#HasGallery").click(function () {
+                    if ($("#HasGallery").is(":checked")) {
+                        $("#GalleryId")
+                            .removeAttr("disabled")
+                        
+                    }
+                    else {
+                        $("#GalleryId")
+                            .attr("disabled", "disabled")
+                    
+                    }
+                });
+            </script>
+            <div class="form-group">
                 @Html.LabelFor(model => model.GalleryId, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.GalleryId, new { htmlAttributes = new { @class = "form-control" } })
+                    <input class="form-control text-box single-line" id="GalleryId" name="GalleryId" type="number" value="" disabled>
                     @Html.ValidationMessageFor(model => model.GalleryId, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -130,15 +153,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.HasGallery, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.HasGallery)
-                        @Html.ValidationMessageFor(model => model.HasGallery, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
+           
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
@@ -152,7 +167,7 @@
         @Html.ActionLink("Back to List", "Index")
     </div>
 
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
+   
     <script src="~/Scripts/bootstrap.js"></script>
 
 

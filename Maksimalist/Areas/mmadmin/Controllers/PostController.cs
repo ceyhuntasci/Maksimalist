@@ -58,8 +58,9 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Create([Bind(Include = "Id,CategoryId,AuthorId,SubCategoryId,GalleryId,Headline,Bottomline,Content,UrlSlug,PostDate,HasGallery,Manset")] Post post,HttpPostedFileBase file, string[] Tags)
+        public ActionResult Create([Bind(Include = "Id,CategoryId,AuthorId,GalleryId,SubCategoryId,Headline,Bottomline,Content,UrlSlug,PostDate,HasGallery,Manset")] Post post,HttpPostedFileBase file, string[] Tags)
         {
+
             if (ModelState.IsValid)
             {
                 if (file != null && file.ContentLength > 0)
@@ -69,11 +70,11 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                    
                    
                  
-                    var path = Path.Combine(Server.MapPath("~/Images/Uploads/"+post.Headline), fileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/Uploads/"+post.UrlSlug), fileName);
                    
-                    Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/"+post.Headline));
+                    Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/"+post.UrlSlug));
                     file.SaveAs(path);
-                    post.ImageUrl = "/Images/Uploads/"+post.Headline+"/"+fileName;
+                    post.ImageUrl = "/Images/Uploads/"+post.UrlSlug+"/"+fileName;
 
                 }
                
@@ -103,6 +104,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
 
 
                 db.Post.Add(post);
+              
                 db.SaveChanges();
 
 

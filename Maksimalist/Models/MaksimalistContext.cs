@@ -41,12 +41,12 @@ namespace Maksimalist.Models
                .WithMany(t => t.Posts)
                .HasForeignKey(d => d.SubCategoryId)
                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Post>()
-               .HasRequired(t => t.Gallery)
-               .WithRequiredDependent(t => t.Post)
+               .HasOptional(t => t.Gallery)
+               .WithMany(t => t.Posts)
+               .HasForeignKey(d => d.GalleryId)
                .WillCascadeOnDelete(false);
-
-
         }
 
     }
