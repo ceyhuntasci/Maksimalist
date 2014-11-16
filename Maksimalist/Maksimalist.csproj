@@ -181,6 +181,7 @@
     <Compile Include="Models\DateType.cs" />
     <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\imagesviewmodel.cs" />
     <Compile Include="Models\MaksimalistContext.cs" />
     <Compile Include="Models\Matter.cs" />
     <Compile Include="Models\Post.cs" />
@@ -615,6 +616,7 @@
     <Content Include="fonts\Simple-Line-Icons.ttf" />
     <Content Include="fonts\Simple-Line-Icons.woff" />
     <Content Include="fonts\Simple-Line-Iconsd41d.eot" />
+    <Content Include="Areas\mmadmin\Views\Post\uploadPartial.cshtml" />
     <None Include="Properties\PublishProfiles\dotaanti.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\comment-reply.min-ver=4.0.js" />

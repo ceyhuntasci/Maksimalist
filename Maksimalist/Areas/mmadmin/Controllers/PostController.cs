@@ -15,8 +15,8 @@ namespace Maksimalist.Areas.mmadmin.Controllers
     public class PostController : Controller
     {
         private MaksimalistContext db = new MaksimalistContext();
-    
-        
+
+
         // GET: Posts
         public ActionResult Index()
         {
@@ -58,33 +58,33 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Create([Bind(Include = "Id,CategoryId,AuthorId,GalleryId,SubCategoryId,Headline,Bottomline,Content,UrlSlug,PostDate,HasGallery,Manset")] Post post,HttpPostedFileBase file, string[] Tags)
+        public ActionResult Create([Bind(Include = "Id,CategoryId,AuthorId,GalleryId,SubCategoryId,Headline,Bottomline,Content,UrlSlug,PostDate,HasGallery,Manset")] Post post, HttpPostedFileBase file, string[] Tags)
         {
 
             if (ModelState.IsValid)
             {
                 if (file != null && file.ContentLength > 0)
                 {
-            
+
                     var fileName = Path.GetFileName(file.FileName);
-                   
-                   
-                 
-                    var path = Path.Combine(Server.MapPath("~/Images/Uploads/"+post.UrlSlug), fileName);
-                   
-                    Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/"+post.UrlSlug));
+
+
+
+                    var path = Path.Combine(Server.MapPath("~/Images/Uploads/" + post.UrlSlug), fileName);
+
+                    Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/" + post.UrlSlug));
                     file.SaveAs(path);
-                    post.ImageUrl = "/Images/Uploads/"+post.UrlSlug+"/"+fileName;
+                    post.ImageUrl = "/Images/Uploads/" + post.UrlSlug + "/" + fileName;
 
                 }
-               
+
                 foreach (var i in Tags)
                 {
                     Tag x = new Tag();
                     x.Name = i;
                     List<Post> tagList = new List<Post>();
                     List<Tag> postList = new List<Tag>();
-                   
+
                     tagList.Add(post);
                     x.Posts = tagList;
                     if (db.Tag.Where(linq => linq.Name == x.Name).FirstOrDefault() != null)
@@ -92,7 +92,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                         x = db.Tag.Where(linq => linq.Name == x.Name).FirstOrDefault();
                         postList.Add(x);
                         post.Tags = postList;
-                       
+
                     }
 
                     else
@@ -104,7 +104,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
 
 
                 db.Post.Add(post);
-              
+
                 db.SaveChanges();
 
 
@@ -179,7 +179,24 @@ namespace Maksimalist.Areas.mmadmin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        public void uploadnow(HttpPostedFileWrapper upload)
+        {
+            if (upload != null)
+            {
+                string ImageName = upload.FileName;
+                string path = System.IO.Path.Combine(Server.MapPath("~/Images"), ImageName);
+                upload.SaveAs(path);
+            }
+        }
+        public ActionResult uploadPartial()
+        {
+            var appData = Server.MapPath("~/Images");
+            var images = Directory.GetFiles(appData).Select(x => new imagesviewmodel
+            {
+                Url = Url.Content("/Images/" + Path.GetFileName(x))
+            });
+            return View(images);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

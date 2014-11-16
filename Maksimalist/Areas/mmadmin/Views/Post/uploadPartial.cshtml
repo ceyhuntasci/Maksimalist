@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Maksimalist.Models.imagesviewmodel>
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <title>EHEHEHHE</title>
+</head>
+<body>
+    @foreach (var image in Model)
+    {
+        <a href="#" class="returnImage" data-url="@Request.Url.GetLeftPart(UriPartial.Authority)@image.Url">
+            <img src="@image.Url" alt="Hejsan" id="#image" data-source="@image.Url" width="200" height="200" />
+        </a>
+    }
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".returnImage").click("click", function (e) {
+                var urlImage = $(this).attr("data-url");
+                window.opener.updateValue("cke_114_textInput", urlImage);
+                window.close();
+            });
+        });
+    </script>
+
+</body>
+</html>

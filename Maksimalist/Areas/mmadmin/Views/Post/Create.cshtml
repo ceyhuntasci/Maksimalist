@@ -105,7 +105,14 @@
                 </div>
             </div>
             <script>
-                CKEDITOR.replace('Content');
+                CKEDITOR.replace('Content', {
+                    filebrowserImageBrowseUrl: '../Post/uploadPartial',
+                    filebrowserImageUploadUrl: '../Post/uploadnow'
+                });
+                function updateValue(id, value) {
+                    // this gets called from the popup window and updates the field with a new value 
+                    document.getElementById(id).value = value;
+                }
             </script>
 
             <div class="form-group">
