@@ -158,6 +158,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\mmadmin\Controllers\AdvertController.cs" />
     <Compile Include="Areas\mmadmin\Controllers\AuthorController.cs" />
     <Compile Include="Areas\mmadmin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\mmadmin\Controllers\GalleryController.cs" />
@@ -196,6 +197,11 @@
     <Content Include="Areas\mmadmin\Views\Gallery\Details.cshtml" />
     <Content Include="Areas\mmadmin\Views\Gallery\Edit.cshtml" />
     <Content Include="Areas\mmadmin\Views\Gallery\Index.cshtml" />
+    <Content Include="Areas\mmadmin\Views\Advert\Create.cshtml" />
+    <Content Include="Areas\mmadmin\Views\Advert\Delete.cshtml" />
+    <Content Include="Areas\mmadmin\Views\Advert\Details.cshtml" />
+    <Content Include="Areas\mmadmin\Views\Advert\Edit.cshtml" />
+    <Content Include="Areas\mmadmin\Views\Advert\Index.cshtml" />
     <None Include="Areas\mmadmin\Views\Home\Index.cshtml" />
     <Content Include="bootstrap-tagsinput\bootstrap-tagsinput-angular.js" />
     <Content Include="bootstrap-tagsinput\bootstrap-tagsinput-angular.min.js" />

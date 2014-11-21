@@ -18,10 +18,19 @@ namespace Maksimalist.Areas.mmadmin.Controllers
 
 
         // GET: Posts
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var post = db.Post.Include(p => p.Author).Include(p => p.Category);
-            return View(post.ToList());
+           
+            var posts = from m in db.Post
+                        select m;
+            posts = db.Post.Include(p => p.Author).Include(p => p.Category);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                posts = posts.Where(s => s.Tags.Any(c => c.Name.ToUpper().Contains(searchString)) || s.Headline.ToUpper().Contains(searchString));
+                posts.Include(p => p.Author).Include(p => p.Category);
+            }
+            return View(posts);
+    
 
         }
 
@@ -46,7 +55,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         {
             ViewBag.AuthorId = new SelectList(db.Author, "Id", "FirstName");
             ViewBag.CategoryId = new SelectList(db.Category, "Id", "Name");
-            ViewBag.SubCategoryId = new SelectList(db.SubCategory, "Id", "Name");
+            ViewBag.SubCategoryId = new SelectList(db.Category.FirstOrDefault().SubCategory.ToList(), "Id", "Name");
             ViewBag.Tags = new List<String>();
 
             return View();
@@ -63,6 +72,22 @@ namespace Maksimalist.Areas.mmadmin.Controllers
 
             if (ModelState.IsValid)
             {
+                int j = 2;
+                var tempName = post.Headline;
+                while (true)
+                {
+                
+                    if (db.Post.FirstOrDefault(x => x.Headline == post.Headline) == null)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        post.Headline = tempName + "-" + j;
+                        j++;
+                    }
+
+                }
                 if (file != null && file.ContentLength > 0)
                 {
 
@@ -197,6 +222,19 @@ namespace Maksimalist.Areas.mmadmin.Controllers
             });
             return View(images);
         }
+        public ActionResult GetSubCategories(int id)
+        {
+            List<SelectListItem> subcategories = new List<SelectListItem>();
+            //The below code is hardcoded for demo. you mat replace with DB data 
+            //based on the  input coming to this method ( product id)
+            foreach (var z in db.Category.Find(id).SubCategory.ToList())
+            {
+                SelectListItem item = new SelectListItem{ Value=z.Id.ToString() , Text=z.Name};
+                subcategories.Add(item);
+            }
+            
+            return Json(subcategories, JsonRequestBehavior.AllowGet);
+        } 
         protected override void Dispose(bool disposing)
         {
             if (disposing)

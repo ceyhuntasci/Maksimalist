@@ -17,9 +17,15 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         private MaksimalistContext db = new MaksimalistContext();
 
         // GET: mmadmin/Gallery
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Gallery.ToList());
+            var galleries = from m in db.Gallery
+                        select m; 
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                galleries = galleries.Where(s => s.Name.Contains(searchString));
+            } 
+            return View(galleries);
         }
 
         // GET: mmadmin/Gallery/Details/5
