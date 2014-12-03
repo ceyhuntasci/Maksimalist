@@ -176,6 +176,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411160129015_InitialCreate.cs" />
+    <Compile Include="Migrations\201411160129015_InitialCreate.Designer.cs">
+      <DependentUpon>201411160129015_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412031458014_Cihan.cs" />
+    <Compile Include="Migrations\201412031458014_Cihan.Designer.cs">
+      <DependentUpon>201412031458014_Cihan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412031704305_Latest.cs" />
+    <Compile Include="Migrations\201412031704305_Latest.Designer.cs">
+      <DependentUpon>201412031704305_Latest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412031705181_Vertical.cs" />
+    <Compile Include="Migrations\201412031705181_Vertical.Designer.cs">
+      <DependentUpon>201412031705181_Vertical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Advert.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Category.cs" />
@@ -568,6 +585,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\ruler.png" />
     <Content Include="Images\spritemap.png" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -703,6 +721,20 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201411160129015_InitialCreate.resx">
+      <DependentUpon>201411160129015_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412031458014_Cihan.resx">
+      <DependentUpon>201412031458014_Cihan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412031704305_Latest.resx">
+      <DependentUpon>201412031704305_Latest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412031705181_Vertical.resx">
+      <DependentUpon>201412031705181_Vertical.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

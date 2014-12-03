@@ -26,7 +26,7 @@ namespace Maksimalist.Models
         public DateTime PostDate { get; set; }
         public Boolean Manset { get; set; }
         public Boolean HasGallery { get; set; }
-
+        public Boolean Vertical { get; set; }
         public virtual Gallery Gallery { get; set; }
         public virtual Author Author { get; set; }
         public virtual Category Category { get; set; }

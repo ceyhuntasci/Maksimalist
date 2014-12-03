@@ -1,23 +1,26 @@
 ﻿@model Maksimalist.Models.Gallery
 @{
-   
+
     Layout = null;
 }
 <head>
     <title>Edit</title>
-    
+
 
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
     <style>
         #sortable {
             list-style-type: decimal;
-           
         }
 
+        textarea {
+            resize: none;
+        }
 
-       
+      
 
         #actions {
             margin: 2em 0;
@@ -25,60 +28,24 @@
 
 
         /* Mimic table appearance */
-        div.table {
-            display: table;
+
+
+        div.table .file-row > div {
+            display: table-cell;
+            vertical-align: top;
+            padding: 8px;
+            padding-top: 0px;
         }
 
-            div.table .file-row {
-                display: table-row;
-            }
-
-                div.table .file-row > div {
-                    display: table-cell;
-                    vertical-align: top;
-                    border-top: 1px solid #ddd;
-                    padding: 8px;
-                }
-
-                div.table .file-row:nth-child(odd) {
-                    background: #f9f9f9;
-                }
-
-
-
-        /* The total progress gets shown by event listeners */
-        #total-progress {
-            opacity: 0;
-            transition: opacity 0.3s linear;
-        }
-
-        /* Hide the progress bar when finished */
-        #previews .file-row.dz-success .progress {
-            opacity: 0;
-            transition: opacity 0.3s linear;
-        }
-
-        /* Hide the delete button initially */
-        #previews .file-row .delete {
-            display: none;
-        }
-
-        /* Hide the start and cancel buttons and show the delete button */
-
-        #previews .file-row.dz-success .start,
-        #previews .file-row.dz-success .cancel {
-            display: none;
-        }
-
-        #previews .file-row.dz-success .delete {
-            display: block;
+        img {
+            border-radius: 5px;
         }
     </style>
     <script>
-    $(function () {
-        $("#sortable").sortable();
-        $("#sortable").disableSelection();
-    });
+        $(function () {
+            $("#sortable").sortable();
+            $("#sortable").disableSelection();
+        });
     </script>
 </head>
 
@@ -93,31 +60,35 @@
 
             @foreach (var item in Model.Matter)
             {
-                
+
                 <li class="ui-state-default">
-                    <div class="file-row dz-image-preview" >
+                    <div class="file-row dz-image-preview">
                         <!-- This is used as the file preview template -->
-                      
+
                         <div>
-                            <span class="preview"><img style="width:80px;height:80px;" src="@item.Url"></span>
+                            <span class="preview"><img style="width:100px;height:100px;" src="@item.Url"></span>
                         </div>
                         <div>
-                           <input type="hidden" name="id" value="@item.Id"/>
-                  
+                            <input type="hidden" name="id" value="@item.Id" />
+
                         </div>
                         <div>
-                            <textarea class="form-control"rows="4" cols="100" name="Content">@item.Content</textarea>
+                            @item.Name
+                        </div>
+                        <div>
+                            <textarea class="form-control" rows="4" cols="100" name="Content">@item.Content</textarea>
                         </div>
 
 
                     </div>
                 </li>
             }
-
+            
 
         </ul>
+        <button type="Submit" class="btn btn-default btn-lg text-center" id="SaveButton" >Save</button>
     </div>
-    <button type="Submit">Save</button>
+   
 }
 
 

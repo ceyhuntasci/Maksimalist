@@ -47,12 +47,7 @@ jQuery(document).ready(function($) {
 
 
 	/* Sticky menu */
-	$('.main-menu-fixed').hcSticky({
-		offResolutions: [-960],
-		stickTo: document,
-		wrapperClassName: 'sticky-menu-container'
-	});
-
+	
 
 	/* Sidebar in Mobile View */
 	var sidebar = $('#pageslide');
