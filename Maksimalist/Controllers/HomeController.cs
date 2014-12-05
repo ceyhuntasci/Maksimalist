@@ -23,9 +23,14 @@ namespace Maksimalist.Controllers
             
            
             ViewBag.manset = manset.Take(6);
-    
+            
             IEnumerable<Maksimalist.Models.Post> x = postlar.ToList();
-          
+            Advert ad = db.Advert.First();
+            Post popular = db.Post.First();
+            RightNavViewModel rn = new RightNavViewModel();
+            rn.Advert = ad;
+            rn.Post = popular;
+            ViewBag.RightNav = rn;
             return View(x);
         }
 

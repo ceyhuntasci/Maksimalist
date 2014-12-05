@@ -33,6 +33,12 @@ namespace Maksimalist.Controllers
             {
                 return HttpNotFound();
             }
+            Advert ad = db.Advert.First();
+            Post popular = db.Post.First();
+            RightNavViewModel rn = new RightNavViewModel();
+            rn.Advert = ad;
+            rn.Post = popular;
+            ViewBag.RightNav = rn;
             return View(post);
         }
 

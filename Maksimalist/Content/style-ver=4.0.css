@@ -1647,12 +1647,7 @@ figure:hover .image-caption {
 	width:100%;		
 }
 
-	.ltr .entry-content > p:first-of-type:first-letter {
-		font-size:70px;
-		float:left;
-		line-height:60px;
-		padding:4px 12px 0 0;	
-	}
+	
 	
 	.page-content h1,
 	.entry-content h1,

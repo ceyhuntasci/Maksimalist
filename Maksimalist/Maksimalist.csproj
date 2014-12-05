@@ -203,6 +203,7 @@
     <Compile Include="Models\MaksimalistContext.cs" />
     <Compile Include="Models\Matter.cs" />
     <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\RightNavViewModel.cs" />
     <Compile Include="Models\SubCategory.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -642,6 +643,7 @@
     <Content Include="fonts\Simple-Line-Iconsd41d.eot" />
     <Content Include="Areas\mmadmin\Views\Post\uploadPartial.cshtml" />
     <None Include="Properties\PublishProfiles\dotaanti.com - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\test.maksimalist.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\comment-reply.min-ver=4.0.js" />
     <Content Include="Scripts\dropzone.js" />
@@ -713,6 +715,9 @@
     <Content Include="Views\Matter\Details.cshtml" />
     <Content Include="Views\Matter\Edit.cshtml" />
     <Content Include="Views\Matter\Index.cshtml" />
+    <Content Include="Views\Shared\_Post2.cshtml" />
+    <Content Include="Views\Shared\_Post3.cshtml" />
+    <Content Include="Views\Shared\_rightnav.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
