@@ -1,0 +1,109 @@
+﻿@model Maksimalist.Models.Post
+@{
+    ViewBag.Title = "Galeri";
+}
+
+<section id="content-container" class="slideshow-container">
+    <header class="bottom-ruler hide-overflow">
+        <h1 class="slideshow-header">
+            The Best Red Carpet Looks From The British Fashion Awards
+        </h1>
+    </header>
+    <ol id="slideshow-78806" class="slideshow">
+
+        @{
+            int iter = 0;
+        }
+        @foreach (var i in Model.Gallery.Matter)
+        {
+            iter++;
+            <li class="slide">
+                <div class="large-col col-left right-ruler">
+
+                    <div class="slide-image-container med-col col-right inset-left-1 inset-right-1 left-ruler offset-left-1">
+                        <div class="prev-arrow icon-arrow-left Prev-Arrow inactive"></div>
+
+                        <div class="image-container">
+
+                            <img class="slide-image displayOnVisible" src="@i.Url">
+
+                        </div>
+                        <div class="next-arrow icon-arrow-right Next-Arrow inactive"></div>
+                    </div>
+
+                    <div class="small-col popout">
+                        <div class="small-col bottom-ruler hide-overflow inset-left-1">
+                            <div class="menu-article-share">
+                               <p>SHARES</p>
+                            </div>
+                            <div class="col-right inset-right-half">
+                                <a class="share-button-email icon-mail" href="mailto:%20?subject=Refinery29:%20The%20Best%20Red%20Carpet%20Looks%20From%20The%20British%20Fashion%20Awards&amp;body=The%20Best%20Red%20Carpet%20Looks%20From%20The%20British%20Fashion%20Awards%0D%0Ahttp%3A%2F%2Fwww.refinery29.com%2F2014%2F12%2F78806%2Fbritish-fashion-awards-red-carpet-outfits%3Futm_source%3Demail%26utm_medium%3Demail_share" sl-processed="1"></a>
+                            </div>
+                            <div class="col-right">
+                                <button class="share-button-pinterest icon-pinterest"></button>
+                            </div>
+                            <div class="col-right">
+                                <button class="share-button-facebook icon-facebook"></button>
+                            </div>
+                        </div>
+
+                        <div class="inset-left-1">
+                            <div class="col-right">
+                                <span class="slide-number-text displayOnVisible">@iter of @Model.Gallery.Matter.Count()</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="left inset-left-1 inset-right-1 popout-drag">
+
+                        <p class="displayOnVisible slideshow-p-text">@i.Content</p>
+
+                    </div>
+                </div>
+            </li>
+        }
+
+    </ol>
+
+
+    <div class="breadcrumb" itemscope="itemscope" itemprop="breadcrumb" itemtype="http://schema.org/WebPage">
+        <a href="/red-carpet-looks" itemprop="url"><span itemprop="name">Red-Carpet Patrol</span></a> /
+        <span itemprop="title" class="sub">British Fashion Awards Red Carpet Outfits - Rihanna</span>
+
+
+    </div><!--/.breadcrumb-->
+
+</section>
+
+<script>
+    $(document).ready(function () {
+        $(".slide").first().addClass("active isVisible");
+    });
+    $(".Prev-Arrow").click(function () {
+        if ($(".active").is(':first-child')) {
+
+        }
+        else {
+            $(".active").removeClass("active isVisible").prev().addClass("active isVisible");
+        }
+    });
+    $(".Next-Arrow").click(function () {
+        if ($(".active").is(':last-child')) {
+
+        }
+        else {
+            $(".active").removeClass("active isVisible").next().addClass("active isVisible");
+        }
+
+    });
+    $(".slide-image-container").hover(
+   function () {
+       $(".Prev-Arrow").removeClass("inactive");
+       $(".Next-Arrow").removeClass("inactive");
+   }, function () {
+       $(".Prev-Arrow").addClass("inactive");
+       $(".Next-Arrow").addClass("inactive");
+   }
+ );
+</script>

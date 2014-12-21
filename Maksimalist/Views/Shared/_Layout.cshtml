@@ -8,10 +8,10 @@
     <link rel='stylesheet' id='sc-frontend-style-css' href='~/Content/frontend-style-ver=4.0.css' type='text/css' media='all' />
     <link rel='stylesheet' id='main-style-css' href='~/Content/style-ver=4.0.css' type='text/css' media='all' />
     <link rel='stylesheet' id='redux-google-fonts-css' href='http://fonts.googleapis.com/css?family=Oswald%7CLato&subset=latin&ver=1411386557' type='text/css' media='all' />
-    <script type='text/javascript' src='~/Scripts/jquery-ver=1.11.1.js'></script>
-    <script type='text/javascript' src='~/Scripts/jquery-migrate.min-ver=1.2.1.js'></script>
-
-
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    
     <style type="text/css">
         .main-menu > ul > li:hover > a {
             color: #333;
@@ -69,9 +69,7 @@
             color: #ffcc0d;
         }
 
-        .title-with-sep {
-            background: url("~/Images/section-headr.png") repeat-x 0 50%;
-        }
+        
 
         @@media only screen and (min-width: 751px) {
             #gallery-carousel, #gallery-carousel .gallery-item {
@@ -136,9 +134,7 @@
             color: #ffcc0d;
         }
 
-        .title-with-sep {
-            background: url("wp-content/themes/simplemag/images/section-header.png") repeat-x 0 50%;
-        }
+
     </style>
     <style type="text/css" title="dynamic-css" class="options-output">
         h1, h2, h3, h4, h5, h6, .main-menu a, .secondary-menu a, .widget_pages, .widget_categories, .widget_nav_menu, .tagline, .sub-title, .entry-meta, .entry-note, .read-more, #submit, .ltr .single .entry-content > p:first-of-type:first-letter, input#s, .single-author-box .vcard, .comment-author, .comment-meta, .comment-reply-link, #respond label, .copyright, #wp-calendar tbody, .latest-reviews i, .score-box .total {
@@ -409,11 +405,11 @@
     <header id="masthead" role="banner" class="clearfix with-menu" itemscope="" itemtype="http://schema.org/WPHeader">
         <div class="main-nav-container">
 
-            <a class="logo" href="index.html">
+            <a class="logo" href="~/">
                 <img src="~/Images/logo.png" style="width:130px; height:120px;" alt="SimpleMag - Magazine Theme For Creative Stuff">
             </a><!-- Logo -->
             <div class="main-nav-top">
-                <form method="get" id="searchform" action="http://themesindep.com/simplemag/" role="search">
+                <form method="post" id="searchform" action="/Search/">
                     <input type="text" name="s" id="s" value="Search" onfocus="if(this.value=='Search')this.value='';" onblur="if(this.value=='')this.value='Search';">
                     <button type="submit">
                         <i class="icomoon-search"></i>
@@ -443,7 +439,7 @@
                         <nav class="main-menu" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
                             <ul id="main-nav" class="menu">
                                 <li id="menu-item-1094" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub-links-only link-arrow">
-                                    <a href="index.html#">MODA</a>
+                                    <a href="~/kategori/moda">MODA</a>
                                     <div class="sub-menu">
                                         <ul class="sub-links">
                                             <li id="menu-item-1087" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="standard-post/index.html">Standard post</a></li>
@@ -466,7 +462,7 @@
                                     </div>
                                 </li>
                                 <li id="menu-item-1094" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub-links-only link-arrow">
-                                    <a href="index.html#">GÜZELLİK</a>
+                                    <a href="~/kategori/guzellik">GÜZELLİK</a>
                                     <div class="sub-menu">
                                         <ul class="sub-links">
                                             <li id="menu-item-1087" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="standard-post/index.html">Standard post</a></li>
@@ -489,7 +485,7 @@
                                     </div>
                                 </li>
                                 <li id="menu-item-1094" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub-links-only link-arrow">
-                                    <a href="index.html#">ALIŞVERİŞ</a>
+                                    <a href="~/kategori/alisveris">ALIŞVERİŞ</a>
                                     <div class="sub-menu">
                                         <ul class="sub-links">
                                             <li id="menu-item-1087" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="standard-post/index.html">Standard post</a></li>
@@ -512,7 +508,7 @@
                                     </div>
                                 </li>
                                 <li id="menu-item-1094" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub-links-only link-arrow">
-                                    <a href="index.html#">ÜNLÜLER</a>
+                                    <a href="~/kategori/unluler">ÜNLÜLER</a>
                                     <div class="sub-menu">
                                         <ul class="sub-links">
                                             <li id="menu-item-1087" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="standard-post/index.html">Standard post</a></li>
@@ -535,7 +531,7 @@
                                     </div>
                                 </li>
                                 <li id="menu-item-1094" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub-links-only link-arrow">
-                                    <a href="index.html#">ŞEHİR-YAŞAM</a>
+                                    <a href="~/kategori/sehir-yasam">ŞEHİR-YAŞAM</a>
                                     <div class="sub-menu">
                                         <ul class="sub-links">
                                             <li id="menu-item-1087" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="standard-post/index.html">Standard post</a></li>
@@ -558,7 +554,7 @@
                                     </div>
                                 </li>
                                 <li id="menu-item-1094" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub-links-only link-arrow">
-                                    <a href="index.html#">GELİN</a>
+                                    <a href="~/kategori/gelin">GELİN</a>
                                     <div class="sub-menu">
                                         <ul class="sub-links">
                                             <li id="menu-item-1087" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="standard-post/index.html">Standard post</a></li>
@@ -581,7 +577,7 @@
                                     </div>
                                 </li>
                                 <li id="menu-item-1094" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children sub-links-only link-arrow">
-                                    <a href="index.html#" style="color:#7ed798">MAKSİMALİST-VİDEO</a>
+                                    <a href="~/kategori/video" style="color:#7ed798">MAKSİMALİST-VİDEO</a>
                                     <div class="sub-menu">
                                         <ul class="sub-links">
                                             <li id="menu-item-1087" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="standard-post/index.html">Standard post</a></li>

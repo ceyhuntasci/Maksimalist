@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -11,22 +12,36 @@ namespace Maksimalist.Models
     public class Post
     {
         public int Id { get; set; }
+        [DisplayName("Kategori")]
         public int CategoryId { get; set; }
+        [DisplayName("Alt Kategori")]
         public int SubCategoryId { get; set; }
+        [DisplayName("Yazar")]
         public int AuthorId { get; set; }
         
         public int? GalleryId { get; set; }
+        [DisplayName("Başlık")]
         public string Headline { get; set; }
+        [DisplayName("Alt Başlık")]
         public string Bottomline { get; set; }
         [AllowHtml]
+        [DisplayName("İçerik")]
         public string Content { get; set; }
         public string UrlSlug { get; set; }
+        [DisplayName("Manşet Görseli")]
         public string ImageUrl { get; set; }
-  
+        [DisplayName("İçerik Görseli")]
+        public string ContentImage { get; set; }
+        [DisplayName("Video Linki")]
+        public string VideoUrl { get; set; }
+        [DisplayName("Tarih")]
         public DateTime PostDate { get; set; }
+
         public Boolean Manset { get; set; }
+        [DisplayName("Galerisi Var Mı?")]
         public Boolean HasGallery { get; set; }
-        public Boolean Vertical { get; set; }
+        [DisplayName("Video Haberi")]
+        public Boolean HasVideo { get; set; } 
         public virtual Gallery Gallery { get; set; }
         public virtual Author Author { get; set; }
         public virtual Category Category { get; set; }

@@ -172,6 +172,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MatterController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -192,12 +193,34 @@
     <Compile Include="Migrations\201412031705181_Vertical.Designer.cs">
       <DependentUpon>201412031705181_Vertical.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412091931388_ContentImage.cs" />
+    <Compile Include="Migrations\201412091931388_ContentImage.Designer.cs">
+      <DependentUpon>201412091931388_ContentImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412101316186_Video.cs" />
+    <Compile Include="Migrations\201412101316186_Video.Designer.cs">
+      <DependentUpon>201412101316186_Video.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412101329448_VideoUrl.cs" />
+    <Compile Include="Migrations\201412101329448_VideoUrl.Designer.cs">
+      <DependentUpon>201412101329448_VideoUrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412161818011_EmailGrubu.cs" />
+    <Compile Include="Migrations\201412161818011_EmailGrubu.Designer.cs">
+      <DependentUpon>201412161818011_EmailGrubu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412211820066_UrlSlug.cs" />
+    <Compile Include="Migrations\201412211820066_UrlSlug.Designer.cs">
+      <DependentUpon>201412211820066_UrlSlug.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Advert.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\DateType.cs" />
+    <Compile Include="Models\EmailGrubu.cs" />
     <Compile Include="Models\Gallery.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\imagesviewmodel.cs" />
     <Compile Include="Models\MaksimalistContext.cs" />
@@ -572,21 +595,26 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Calmaca.css" />
     <Content Include="Content\dropzone.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\frontend-style-ver=4.0.css" />
     <Content Include="Content\metisMenu.min.css" />
+    <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\signin.css" />
+    <Content Include="Content\Soon_03.gif" />
     <Content Include="Content\style-ver=4.0.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\icomoon.svg" />
     <Content Include="fonts\Simple-Line-Icons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\ruler.png" />
+    <Content Include="Images\section-header.png" />
     <Content Include="Images\spritemap.png" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -642,7 +670,11 @@
     <Content Include="fonts\Simple-Line-Icons.woff" />
     <Content Include="fonts\Simple-Line-Iconsd41d.eot" />
     <Content Include="Areas\mmadmin\Views\Post\uploadPartial.cshtml" />
+    <Content Include="fonts\arrowfont.woff" />
+    <Content Include="fonts\FuturaStd-BookOblique.otf" />
+    <Content Include="fonts\icomoon.eot" />
     <None Include="Properties\PublishProfiles\dotaanti.com - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\maksimalist.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\test.maksimalist.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\comment-reply.min-ver=4.0.js" />
@@ -664,6 +696,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\metisMenu.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\owl.carousel.js" />
+    <Content Include="Scripts\owl.carousel.min.js" />
+    <Content Include="Scripts\Popup.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sb-admin-2.js" />
@@ -718,6 +753,10 @@
     <Content Include="Views\Shared\_Post2.cshtml" />
     <Content Include="Views\Shared\_Post3.cshtml" />
     <Content Include="Views\Shared\_rightnav.cshtml" />
+    <Content Include="Views\Shared\_ModaPost.cshtml" />
+    <Content Include="Views\Post\Search.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Post\Galeri.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -739,6 +778,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412031705181_Vertical.resx">
       <DependentUpon>201412031705181_Vertical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412091931388_ContentImage.resx">
+      <DependentUpon>201412091931388_ContentImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412101316186_Video.resx">
+      <DependentUpon>201412101316186_Video.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412101329448_VideoUrl.resx">
+      <DependentUpon>201412101329448_VideoUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412161818011_EmailGrubu.resx">
+      <DependentUpon>201412161818011_EmailGrubu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412211820066_UrlSlug.resx">
+      <DependentUpon>201412211820066_UrlSlug.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

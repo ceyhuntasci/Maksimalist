@@ -52,6 +52,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         {
             if (ModelState.IsValid)
             {
+                subCategory.UrlSlug = toUrlSlug(subCategory.Name);
                 db.SubCategory.Add(subCategory);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -115,6 +116,11 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             SubCategory subCategory = db.SubCategory.Find(id);
+            var posts = db.Post.Where(x => x.SubCategory == subCategory).ToList();
+            foreach (var post in posts)
+            {
+                post.SubCategory = null;
+            }
             db.SubCategory.Remove(subCategory);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -127,6 +133,17 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public string toUrlSlug(string turkish)
+        {
+            string urlSlug = turkish.Replace("ı", "i");
+            urlSlug = turkish.Replace(" ", "");
+            urlSlug = turkish.Replace("ö", "o");
+            urlSlug = turkish.Replace("ç", "c");
+            urlSlug = turkish.Replace("ü", "u");
+            urlSlug = turkish.Replace("ş", "s");
+            urlSlug = turkish.Replace("ğ", "g");
+            return urlSlug;
         }
     }
 }

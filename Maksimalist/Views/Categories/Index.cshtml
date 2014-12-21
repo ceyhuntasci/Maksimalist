@@ -1,33 +1,36 @@
-﻿@model IEnumerable<Maksimalist.Models.Category>
+﻿@model Maksimalist.Models.Category
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Details";
+   
 }
 
-<h2>Index</h2>
+<section id="content" role="main" class="clearfix animated">
+    <div class="wrapper">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+        <header class="entry-header page-header">
+            <div class="title-with-sep page-title">
+                <h1 class="entry-title">
+                    @Model.Name
+                </h1>
+            </div>
+        </header>
 
-</table>
+
+
+
+
+
+
+
+        <div class="grids masonry-layout entries" style="position: relative; height: 1100px;">
+            @foreach(var i in Model.Posts){
+                @Html.Partial("_ModaPost", i)
+            }
+        </div>
+
+
+
+    </div>
+</section>

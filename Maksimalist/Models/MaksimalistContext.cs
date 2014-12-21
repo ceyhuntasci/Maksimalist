@@ -18,7 +18,7 @@ namespace Maksimalist.Models
         public DbSet<Matter> Matter { get; set; }
         public DbSet<Advert> Advert { get; set; }
 
-
+        public DbSet<EmailGrubu> EmailGrubu { get; set; }
 
 
 

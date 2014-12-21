@@ -48,7 +48,7 @@
                     $("#CategoryId").change(function () {
                         var self = $(this);
                         var items = "";
-                        $.getJSON("@Url.Action("GetSaleNumbers", "Post",new{area="mmadmin"})/" + self.val(),
+                        $.getJSON("@Url.Action("GetSubCategories", "Post",new{area="mmadmin"})/" + self.val(),
                                                                             function (data) {
                                                                                 $.each(data, function (index, item) {
                                                                                     items += "<option value='" + item.Value + "'>" + item.Text
@@ -59,7 +59,7 @@
                     });
                 });
             </script>
-           
+
             <div class="form-group">
                 @Html.LabelFor(model => model.SubCategoryId, "SubCategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -67,6 +67,7 @@
                     @Html.ValidationMessageFor(model => model.SubCategoryId, "", new { @class = "text-danger" })
                 </div>
             </div>
+
             <div class="form-group">
                 @Html.LabelFor(model => model.HasGallery, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -76,6 +77,54 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasVideo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.HasVideo)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <div class="col-md-10">
+                    <input name="file1" type="file" /> <p class="help-block">320x384</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ContentImage, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <div class="col-md-10">
+                    <input name="file2" type="file" id="ContentImage" />
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.VideoUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" id="VideoUrl" name="VideoUrl" type="text" value="" disabled="disabled">
+                </div>
+            </div>
+            <script>
+                $("#HasVideo").click(function () {
+                    if ($("#HasVideo").is(":checked")) {
+                        $("#VideoUrl")
+                            .removeAttr("disabled")
+                        $("#ContentImage")
+                            .attr("disabled", "disabled")
+                            .val(null)
+
+                    }
+                    else {
+                        $("#VideoUrl")
+                            .attr("disabled", "disabled")
+                            .val(null)
+                        $("#ContentImage")
+                         .removeAttr("disabled")
+                    }
+                });
+            </script>
             <script>
                 $("#HasGallery").click(function () {
                     if ($("#HasGallery").is(":checked")) {
@@ -118,7 +167,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextAreaFor(model => model.Content, new { htmlAttributes = new { @class = "form-control"} })
                     @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -133,29 +182,14 @@
                 }
             </script>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.UrlSlug, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.UrlSlug, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.UrlSlug, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ImageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-
-                <div class="col-md-10">
-                    <input name="file" type="file" />
-                </div>
 
 
 
-            </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.PostDate, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.PostDate, new { htmlAttributes = new { @class = "form-control" } })
+                    <input class="form-control text-box single-line" data-val="true" data-val-date="The field Tarih must be a date." data-val-required="Tarih alanı gereklidir." id="PostDate" name="PostDate" type="datetime" value="@DateTime.Today.ToString("dd.MM.yyyy")">
                     @Html.ValidationMessageFor(model => model.PostDate, "", new { @class = "text-danger" })
                 </div>
             </div>

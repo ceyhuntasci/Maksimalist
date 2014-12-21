@@ -1,10 +1,10 @@
 ﻿@model Maksimalist.Models.Post
 
-<li data-tb-region-item="" data-tb-owning-region-name="Today's Hot Stories" data-tb-owning-region-index="0" data-tb-shadow-region-item="0-0">
-    <a class="ga-trackable" href="/secret-santa-2014-gift-guide">
+<li>
+    <a class="ga-trackable" href="~/haber/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">
 
-        <img src="http://s3.r29static.com/bin/entry/e9b/x,80/1333878/unnamed.jpg" alt="unnamed" width="460" height="552" data-tb-shadow-region-image="0">
+        <img style=" height:initial" src="@Model.ImageUrl" width="320" height="384">
 
-        <h2 class="" style="word-wrap: break-word;"><span data-tb-shadow-region-title="0">@Model.Headline</span></h2>
+        <h2 class="" style="word-wrap: break-word;"><span>@Model.Headline</span></h2>
     </a>
 </li>

@@ -1,11 +1,9 @@
 ﻿﻿@model Maksimalist.Models.Post
 
-@if (Model.Manset)
-{
     <article class="post-148 post type-post status-publish format-standard has-post-thumbnail hentry category-travel tag-black-n-white tag-nature tag-river grid-4" style="width:325px">
 
         <figure class="entry-image" style="text-align:center; height:210px;width:325px; text-align:center">
-            <a href="~/Post/Details/@Model.Id">
+            <a href="~/haber/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">
                 <img width="325" height="210" src="@Model.ImageUrl" class="attachment-rectangle-size wp-post-image" alt="8063924948_ccb29c487f_o" itemprop="image" />
                 @{if (Model.HasGallery)
                 {
@@ -17,17 +15,13 @@
 
         <header class="entry-header">
             <div class="entry-meta">
-                <span class="entry-category"><a href="../category/travel/index.html">@Model.Category.Name</a></span><time class="entry-date updated" datetime="@Model.PostDate" itemprop="datePublished">@String.Format("{0:dd MMMM yyyy}", Model.PostDate)</time>
+                <span class="entry-category"><a href="~/kategori/@Model.Category.UrlSlug">@Model.Category.Name</a></span><time class="entry-date updated" datetime="@Model.PostDate" itemprop="datePublished">@String.Format("{0:dd MMMM yyyy}", Model.PostDate)</time>
             </div>
             <h2 class="entry-title">
-                <a href="~/Post/Details/@Model.Id">@Model.Headline</a>
+                <a href="~/haber/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">@Model.Headline</a>
             </h2>
 
         </header>
 
     </article>
-}
-else
-{
-    <h2>deneme</h2>
 }

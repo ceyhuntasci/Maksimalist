@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Create";
     Layout = null;
+
 }
 <html>
 <head>
@@ -10,7 +11,7 @@
     <script src="~/ckeditor/ckeditor.js"></script>
     <script src="~/bundles/jqueryval"></script>
     <link rel="stylesheet" href="~/Content/bootstrap.min.css">
-
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <link href="~/Content/dropzone.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/bootstrap-tagsinput/bootstrap-tagsinput.css">
     <script src="~/Scripts/dropzone.js"></script>
@@ -29,14 +30,6 @@
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
-                @Html.LabelFor(model => model.CategoryId, "CategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
                 @Html.LabelFor(model => model.AuthorId, "AuthorId", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("AuthorId", null, htmlAttributes: new { @class = "form-control" })
@@ -44,16 +37,113 @@
                 </div>
             </div>
             <div class="form-group">
+                @Html.LabelFor(model => model.CategoryId, "CategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(function () {
+                    $("#CategoryId").change(function () {
+                        var self = $(this);
+                        var items = "";
+                        $.getJSON("@Url.Action("GetSaleNumbers", "Post",new{area="mmadmin"})/" + self.val(),
+                                                                            function (data) {
+                                                                                $.each(data, function (index, item) {
+                                                                                    items += "<option value='" + item.Value + "'>" + item.Text
+                                                                                                                                        + "</option>";
+                                                                                });
+                                                                                $("#SubCategoryId").html(items);
+                                                                            });
+                    });
+                });
+            </script>
+
+            <div class="form-group">
                 @Html.LabelFor(model => model.SubCategoryId, "SubCategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("SubCategoryId", null, htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.SubCategoryId, "", new { @class = "text-danger" })
                 </div>
             </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasGallery, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.HasGallery)
+                        @Html.ValidationMessageFor(model => model.HasGallery, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.HasVideo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.HasVideo)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <div class="col-md-10">
+                    <input name="file1" type="file" /> <p class="help-block">320x384</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ContentImage, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <div class="col-md-10">
+                    <input name="file2" type="file" id="ContentImage" />
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.VideoUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" id="VideoUrl" name="VideoUrl" type="text" value="" disabled="disabled">
+                </div>
+            </div>
+            <script>
+                $("#HasVideo").click(function () {
+                    if ($("#HasVideo").is(":checked")) {
+                        $("#VideoUrl")
+                            .removeAttr("disabled")
+                        $("#ContentImage")
+                            .attr("disabled", "disabled")
+                            .val(null)
+
+                    }
+                    else {
+                        $("#VideoUrl")
+                            .attr("disabled", "disabled")
+                            .val(null)
+                        $("#ContentImage")
+                         .removeAttr("disabled")
+                    }
+                });
+            </script>
+            <script>
+                $("#HasGallery").click(function () {
+                    if ($("#HasGallery").is(":checked")) {
+                        $("#GalleryId")
+                            .removeAttr("disabled")
+
+                    }
+                    else {
+                        $("#GalleryId")
+                            .attr("disabled", "disabled")
+                            .val(null)
+
+                    }
+                });
+            </script>
             <div class="form-group">
                 @Html.LabelFor(model => model.GalleryId, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.GalleryId, new { htmlAttributes = new { @class = "form-control" } })
+                    <input class="form-control text-box single-line" id="GalleryId" name="GalleryId" type="number" value="" disabled>
                     @Html.ValidationMessageFor(model => model.GalleryId, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -82,32 +172,24 @@
                 </div>
             </div>
             <script>
-                CKEDITOR.replace('Content');
+                CKEDITOR.replace('Content', {
+                    filebrowserImageBrowseUrl: '../Post/uploadPartial',
+                    filebrowserImageUploadUrl: '../Post/uploadnow'
+                });
+                function updateValue(id, value) {
+                    // this gets called from the popup window and updates the field with a new value
+                    document.getElementById(id).value = value;
+                }
             </script>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.UrlSlug, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.UrlSlug, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.UrlSlug, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ImageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-
-                <div class="col-md-10">
-                    <input name="file" type="file" />
-                </div>
 
 
 
-            </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.PostDate, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.PostDate, new { htmlAttributes = new { @class = "form-control" } })
+                    <input class="form-control text-box single-line" data-val="true" data-val-date="The field Tarih must be a date." data-val-required="Tarih alanı gereklidir." id="PostDate" name="PostDate" type="datetime" value="@DateTime.Today.ToString("dd.MM.yyyy")">
                     @Html.ValidationMessageFor(model => model.PostDate, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -130,15 +212,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.HasGallery, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.HasGallery)
-                        @Html.ValidationMessageFor(model => model.HasGallery, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
+
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
@@ -152,7 +226,7 @@
         @Html.ActionLink("Back to List", "Index")
     </div>
 
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
+
     <script src="~/Scripts/bootstrap.js"></script>
 
 

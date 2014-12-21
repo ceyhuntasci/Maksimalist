@@ -1,0 +1,452 @@
+﻿@model IEnumerable<Maksimalist.Models.Post>
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<section id="content" role="main" class="clearfix animated">
+    <div class="wrapper">
+
+        <header class="entry-header page-header">
+            <small>Search Results for:</small><br>                <div class="title-with-sep">
+                <h1 class="title">@ViewBag.Search</h1>
+            </div>
+        </header><!-- .page-header -->
+
+        <div class="grids">
+            <div class="grid-8 column-1">
+
+
+                <div class="entries list-layout">
+
+
+                    @Html.Partial("_Post", @Model.ElementAt(0))
+
+               
+
+
+                </div>
+
+
+
+            </div><!-- .grid-8 -->
+
+            <div class="grid-4 column-2">
+                <aside class="sidebar" role="complementary" itemscope="" itemtype="http://schema.org/WPSideBar">
+                    <div id="ti_latest_reviews-2" class="widget widget_ti_latest_reviews">
+                        <h3>Latest Reviews</h3>
+                        <ul class="score-box">
+                            <li class="clearfix">
+                                <span class="total">8.2</span>
+                                <a href="http://themesindep.com/simplemag/sound-cloud-audio/">
+                                    Sound Cloud Audio
+                                </a>
+                                <div class="score-outer">
+                                    <div class="score-line" style="width:82%;"><span></span></div>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <span class="total">6.6</span>
+                                <a href="http://themesindep.com/simplemag/maecenas-nec-nunc-et-ligula-egestas/">
+                                    Maecenas nec nunc et ligu...
+                                </a>
+                                <div class="score-outer">
+                                    <div class="score-line" style="width:66%;"><span></span></div>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <span class="total">5.8</span>
+                                <a href="http://themesindep.com/simplemag/pellentesque-habitant-morbi/">
+                                    Pellentesque habitant mor...
+                                </a>
+                                <div class="score-outer">
+                                    <div class="score-line" style="width:58%;"><span></span></div>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <span class="total">7.8</span>
+                                <a href="http://themesindep.com/simplemag/phasellus-ullamcorper-ipsum-rutrum/">
+                                    Phasellus ullamcorper ips...
+                                </a>
+                                <div class="score-outer">
+                                    <div class="score-line" style="width:78%;"><span></span></div>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <span class="total">8.3</span>
+                                <a href="http://themesindep.com/simplemag/leo-eget-bibendum-sodales/">
+                                    Leo eget bibendum sodales
+                                </a>
+                                <div class="score-outer">
+                                    <div class="score-line" style="width:83%;"><span></span></div>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </div><div id="ti_latest_posts-3" class="widget widget_ti_latest_posts">
+                        <h3>Latest Posts</h3>
+                        <div class="widget-posts-entries">
+
+
+                            <ul class="clearfix">
+
+
+                                <li>
+                                    <figure class="entry-image inview">
+                                        <a href="http://themesindep.com/simplemag/gallery-post-format/">
+                                            <img width="330" height="220" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2013/05/8470852074_4031c64512_o-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="8470852074_4031c64512_o">
+                                        </a>
+                                    </figure>
+                                    <span><a href="http://themesindep.com/simplemag/category/fashion/">Fashion</a></span>                           	<a class="widget-post-title" href="http://themesindep.com/simplemag/gallery-post-format/">Gallery Post Format</a>
+                                </li>
+
+
+                                <li>
+                                    <figure class="entry-image inview">
+                                        <a href="http://themesindep.com/simplemag/typography/">
+                                            <img width="330" height="220" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2013/05/typography-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="typography">
+                                        </a>
+                                    </figure>
+                                    <span><a href="http://themesindep.com/simplemag/category/travel/">Travel</a></span>                           	<a class="widget-post-title" href="http://themesindep.com/simplemag/typography/">Typography</a>
+                                </li>
+
+
+                                <li>
+                                    <figure class="entry-image inview">
+                                        <a href="http://themesindep.com/simplemag/sound-cloud-audio/">
+                                            <img width="330" height="220" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2013/05/street-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="street">
+                                        </a>
+                                    </figure>
+                                    <span><a href="http://themesindep.com/simplemag/category/music/">Music</a></span>                           	<a class="widget-post-title" href="http://themesindep.com/simplemag/sound-cloud-audio/">Sound Cloud Audio</a>
+                                </li>
+
+
+                            </ul>
+                        </div>
+
+                    </div><div id="ti_most_commented-2" class="widget widget_ti_most_commented">
+                        <h3>Most Commented</h3>
+                        <ul>
+                            <li class="clearfix score-1">
+                                <span>
+                                    <i>7</i>
+                                </span>
+                                <a href="http://themesindep.com/simplemag/gallery-post-format/">
+                                    Gallery Post Format
+                                </a>
+                            </li>
+                            <li class="clearfix score-2">
+                                <span>
+                                    <i>3</i>
+                                </span>
+                                <a href="http://themesindep.com/simplemag/pellentesque-habitant-morbi/">
+                                    Pellentesque habitant morbi
+                                </a>
+                            </li>
+                            <li class="clearfix score-3">
+                                <span>
+                                    <i>2</i>
+                                </span>
+                                <a href="http://themesindep.com/simplemag/cum-sociis-natoque/">
+                                    Cum sociis natoque
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div><div id="ti_featured_posts-4" class="widget widget_ti_featured_posts">
+                        <h3>Featured Posts</h3>
+                        <div class="flexslider">
+
+
+
+                            <div class="flex-viewport" style="overflow: hidden; position: relative; height: 215px;">
+                                <ul class="slides" style="width: 1000%; margin-left: -560px;">
+                                    <li class="clone" aria-hidden="true" style="width: 280px; float: left; display: block;">
+                                        <figure class="entry-image">
+                                            <a href="http://themesindep.com/simplemag/standard-post/">
+                                                <img width="330" height="220" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2013/05/sea-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="see" draggable="false">
+                                            </a>
+                                        </figure>
+                                        <a class="widget-post-title" href="http://themesindep.com/simplemag/standard-post/">Standard Post</a>
+                                    </li>
+
+                                    <li class="" style="width: 280px; float: left; display: block;">
+                                        <figure class="entry-image">
+                                            <a href="http://themesindep.com/simplemag/typography/">
+                                                <img width="330" height="220" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2013/05/typography-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="typography" draggable="false">
+                                            </a>
+                                        </figure>
+                                        <a class="widget-post-title" href="http://themesindep.com/simplemag/typography/">Typography</a>
+                                    </li>
+                                    <li class="flex-active-slide" style="width: 280px; float: left; display: block;">
+                                        <figure class="entry-image">
+                                            <a href="http://themesindep.com/simplemag/sound-cloud-audio/">
+                                                <img width="330" height="220" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2013/05/street-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="street" draggable="false">
+                                            </a>
+                                        </figure>
+                                        <a class="widget-post-title" href="http://themesindep.com/simplemag/sound-cloud-audio/">Sound Cloud Audio</a>
+                                    </li>
+                                    <li class="" style="width: 280px; float: left; display: block;">
+                                        <figure class="entry-image">
+                                            <a href="http://themesindep.com/simplemag/standard-post/">
+                                                <img width="330" height="220" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2013/05/sea-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="see" draggable="false">
+                                            </a>
+                                        </figure>
+                                        <a class="widget-post-title" href="http://themesindep.com/simplemag/standard-post/">Standard Post</a>
+                                    </li>
+
+
+                                    <li class="clone" aria-hidden="true" style="width: 280px; float: left; display: block;">
+                                        <figure class="entry-image">
+                                            <a href="http://themesindep.com/simplemag/typography/">
+                                                <img width="330" height="220" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2013/05/typography-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="typography" draggable="false">
+                                            </a>
+                                        </figure>
+                                        <a class="widget-post-title" href="http://themesindep.com/simplemag/typography/">Typography</a>
+                                    </li>
+                                </ul>
+                            </div><ul class="flex-direction-nav"><li><a class="flex-prev" href="#"><i class="icomoon-chevron-left"></i></a></li><li><a class="flex-next" href="#"><i class="icomoon-chevron-right"></i></a></li></ul>
+                        </div>
+
+                    </div><div id="ti_site_authors-4" class="widget widget_ti_site_authors">
+                        <h3>Our Authors</h3>
+                        <div class="inner">
+                            <div class="caroufredsel_wrapper" style="display: block; text-align: start; float: none; position: relative; top: auto; right: auto; bottom: auto; left: auto; z-index: auto; width: 280px; height: 55px; margin: 0px; overflow: hidden;">
+                                <ul class="carousel" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 3px; margin: 0px; width: 940px; height: 55px;">
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="http://themesindep.com/simplemag/author/jane/" title="Jane Doe" rel="author">
+                                            <img alt="Jane Doe" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2014/11/avatar-1-78x78.jpg" class="avatar avatar-78 photo" height="78" width="78">
+                                        </a>
+                                    </li>
+
+
+
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="http://themesindep.com/simplemag/author/BillKing/" title="Bill King" rel="author">
+                                            <img alt="Bill King" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2014/11/avatar-11-78x78.jpg" class="avatar avatar-78 photo" height="78" width="78">
+                                        </a>
+                                    </li>
+
+
+
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="http://themesindep.com/simplemag/author/ChristopherHughes/" title="Christopher Hughes" rel="author">
+                                            <img alt="Christopher Hughes" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2014/11/avatar-7-78x78.jpg" class="avatar avatar-78 photo" height="78" width="78">
+                                        </a>
+                                    </li>
+
+
+
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="http://themesindep.com/simplemag/author/CurtisThomas/" title="Curtis Thomas" rel="author">
+                                            <img alt="Curtis Thomas" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2014/11/avatar-10-78x78.jpg" class="avatar avatar-78 photo" height="78" width="78">
+                                        </a>
+                                    </li>
+
+
+
+
+
+                                    <li class="clearfix" style="margin-right: 2px;">
+                                        <a class="author-avatar" href="http://themesindep.com/simplemag/author/EricGraham/" title="Eric Graham" rel="author">
+                                            <img alt="Eric Graham" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2014/11/avatar-9-78x78.jpg" class="avatar avatar-78 photo" height="78" width="78">
+                                        </a>
+                                    </li>
+
+
+
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="http://themesindep.com/simplemag/author/LynnRoberts/" title="Lynn Roberts" rel="author">
+                                            <img alt="Lynn Roberts" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2014/11/avatar-5-78x78.jpg" class="avatar avatar-78 photo" height="78" width="78">
+                                        </a>
+                                    </li>
+
+
+
+
+                                </ul>
+                            </div><div class="caroufredsel_wrapper" style="display: block; text-align: start; float: none; position: relative; top: auto; right: auto; bottom: auto; left: auto; z-index: auto; width: 280px; height: 55px; margin: 0px; overflow: hidden;">
+                                <ul id="carouselX" class="carousel" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 3px; margin: 0px; width: 940px; height: 55px;">
+
+
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="http://themesindep.com/simplemag/author/JackRiley/" title="Jack Riley" rel="author">
+                                            <img alt="Jack Riley" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2014/11/avatar-8-78x78.jpg" class="avatar avatar-78 photo" height="78" width="78">
+                                        </a>
+                                    </li>
+
+
+
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="http://themesindep.com/simplemag/author/EricBishop/" title="Eric Bishop" rel="author">
+                                            <img alt="Eric Bishop" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2014/11/avatar-3-78x78.jpg" class="avatar avatar-78 photo" height="78" width="78">
+                                        </a>
+                                    </li>
+
+
+
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="http://themesindep.com/simplemag/author/VincentMiller/" title="Vincent Miller" rel="author">
+                                            <img alt="Vincent Miller" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2014/11/avatar-4-78x78.jpg" class="avatar avatar-78 photo" height="78" width="78">
+                                        </a>
+                                    </li>
+
+
+
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="http://themesindep.com/simplemag/author/GloriaPatterson/" title="Gloria" rel="author">
+                                            <img alt="Gloria" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2014/11/avatar-2-78x78.jpg" class="avatar avatar-78 photo" height="78" width="78">
+                                        </a>
+                                    </li>
+
+
+
+
+
+                                    <li class="clearfix" style="margin-right: 2px;">
+                                        <a class="author-avatar" href="http://themesindep.com/simplemag/author/ShirleyMorgan/" title="Shirley Morgan" rel="author">
+                                            <img alt="Shirley Morgan" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2014/11/avatar-12-78x78.jpg" class="avatar avatar-78 photo" height="78" width="78">
+                                        </a>
+                                    </li>
+
+
+
+
+
+                                    <li class="clearfix">
+                                        <a class="author-avatar" href="http://themesindep.com/simplemag/author/KarenBlack/" title="Karen Black" rel="author">
+                                            <img alt="Karen Black" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2014/11/avatar-6-78x78.jpg" class="avatar avatar-78 photo" height="78" width="78">
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            <div class="clearfix">
+                                <a class="prev carousel-nav" href="#" style="display: block;"><i class="icomoon-chevron-left"></i></a>
+                                <a class="next carousel-nav" href="#" style="display: block;"><i class="icomoon-chevron-right"></i></a>
+                            </div>
+
+                        </div>
+
+                    </div><div id="ti_latest_comments-2" class="widget widget_ti_latest_comments">
+                        <h3>Latest Comments</h3>
+                        <ul>
+                            <li>
+                                <header class="clearfix">
+                                    <figure>
+                                        <a href="http://themesindep.com/simplemag/gallery-post-format/">
+                                            <img alt="Gloria" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2014/11/avatar-2-40x40.jpg" class="avatar avatar-40 photo" height="40" width="40">
+                                        </a>
+                                    </figure>
+                                    <span class="commentnum">
+                                        1
+                                    </span>
+                                    <span class="comment-author">
+                                        Gloria
+                                    </span>
+                                    <a class="comment-post" href="http://themesindep.com/simplemag/gallery-post-format/#comment-641">
+                                        Gallery Post Format
+                                    </a>
+                                </header>
+                                <div class="comment-text">
+                                    Agreed… Excellent composition, pov and light! Nam ut neque condimentum, vulputate mauris id, feugiat nisi.
+                                </div>
+                            </li>
+                            <li>
+                                <header class="clearfix">
+                                    <figure>
+                                        <a href="http://themesindep.com/simplemag/gallery-post-format/">
+                                            <img alt="Jane Doe" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2014/11/avatar-1-40x40.jpg" class="avatar avatar-40 photo" height="40" width="40">
+                                        </a>
+                                    </figure>
+                                    <span class="commentnum">
+                                        2
+                                    </span>
+                                    <span class="comment-author">
+                                        Jane Doe
+                                    </span>
+                                    <a class="comment-post" href="http://themesindep.com/simplemag/gallery-post-format/#comment-639">
+                                        Gallery Post Format
+                                    </a>
+                                </header>
+                                <div class="comment-text">
+                                    Oh, thank you guys so much for supporting me and keeping in touch with me! Morbi facilisis quam quis velit fermentum ac molestie felis tincidunt
+                                </div>
+                            </li>
+                            <li>
+                                <header class="clearfix">
+                                    <figure>
+                                        <a href="http://themesindep.com/simplemag/gallery-post-format/">
+                                            <img alt="Shirley Morgan" src="http://themesindep.com/simplemag/wp-content/uploads/sites/2/2014/11/avatar-12-40x40.jpg" class="avatar avatar-40 photo" height="40" width="40">
+                                        </a>
+                                    </figure>
+                                    <span class="commentnum">
+                                        3
+                                    </span>
+                                    <span class="comment-author">
+                                        Shirley Morgan
+                                    </span>
+                                    <a class="comment-post" href="http://themesindep.com/simplemag/gallery-post-format/#comment-637">
+                                        Gallery Post Format
+                                    </a>
+                                </header>
+                                <div class="comment-text">
+                                    Fantastic. Another fave, of course I think they all are. Duis ornare vitae nibh vitae malesuada. Nunc blandit lorem quis metus volutpat tincidunt.
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div><div id="tag_cloud-3" class="widget widget_tag_cloud">
+                        <h3>Tags</h3><div class="tagcloud">
+                            <a href="http://themesindep.com/simplemag/tag/audio/" class="tag-link-24" title="1 topic" style="font-size: 8pt;">Audio</a>
+                            <a href="http://themesindep.com/simplemag/tag/black-n-white/" class="tag-link-19" title="6 topics" style="font-size: 16.020833333333pt;">Black n White</a>
+                            <a href="http://themesindep.com/simplemag/tag/city/" class="tag-link-23" title="2 topics" style="font-size: 10.625pt;">City</a>
+                            <a href="http://themesindep.com/simplemag/tag/creative/" class="tag-link-14" title="17 topics" style="font-size: 22pt;">Creative</a>
+                            <a href="http://themesindep.com/simplemag/tag/forest/" class="tag-link-25" title="1 topic" style="font-size: 8pt;">forest</a>
+                            <a href="http://themesindep.com/simplemag/tag/lake/" class="tag-link-20" title="1 topic" style="font-size: 8pt;">Lake</a>
+                            <a href="http://themesindep.com/simplemag/tag/music/" class="tag-link-12" title="5 topics" style="font-size: 15pt;">Music</a>
+                            <a href="http://themesindep.com/simplemag/tag/nature/" class="tag-link-17" title="8 topics" style="font-size: 17.479166666667pt;">Nature</a>
+                            <a href="http://themesindep.com/simplemag/tag/paris/" class="tag-link-22" title="1 topic" style="font-size: 8pt;">Paris</a>
+                            <a href="http://themesindep.com/simplemag/tag/portrait/" class="tag-link-16" title="6 topics" style="font-size: 16.020833333333pt;">Portrait</a>
+                            <a href="http://themesindep.com/simplemag/tag/river/" class="tag-link-15" title="3 topics" style="font-size: 12.375pt;">River</a>
+                            <a href="http://themesindep.com/simplemag/tag/sky/" class="tag-link-21" title="4 topics" style="font-size: 13.833333333333pt;">Sky</a>
+                            <a href="http://themesindep.com/simplemag/tag/travel/" class="tag-link-6" title="1 topic" style="font-size: 8pt;">Travel</a>
+                            <a href="http://themesindep.com/simplemag/tag/video/" class="tag-link-13" title="2 topics" style="font-size: 10.625pt;">Video</a>
+                        </div>
+                    </div>
+                </aside><!-- .sidebar -->
+            </div>
+        </div><!-- .grids -->
+
+        <nav class="navigation paging-navigation" role="navigation">
+            <div class="loop-pagination">
+                <span class="page-numbers current">1</span>
+                <a class="page-numbers" href="http://themesindep.com/simplemag/page/2/?s=lorem">2</a>
+                <span class="page-numbers dots">…</span>
+                <a class="page-numbers" href="http://themesindep.com/simplemag/page/4/?s=lorem">4</a>
+                <a class="next page-numbers" href="http://themesindep.com/simplemag/page/2/?s=lorem">Next</a>
+            </div>
+        </nav><!-- .navigation -->
+
+    </div>
+</section>
+

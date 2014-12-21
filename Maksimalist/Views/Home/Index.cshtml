@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Maksimalist.Models.Post>
+﻿@model Maksimalist.Models.HomeViewModel
 <head>
     <title>Index</title>
     <meta charset="utf-8" />
@@ -47,13 +47,15 @@
             width: 25%;
             display: list-item;
             text-align: -webkit-match-parent;
+                    height:384px;
+
         }
 
             #hero-stories ul li img {
                 float: left;
                 width: 100%;
                 max-height: 384px;
-                height: auto;
+
             }
 
             #hero-stories ul li h2 {
@@ -126,17 +128,17 @@
     <div class="wrapperzzz">
 
         <ul class="MansetList">
-            @Html.Partial("_Manset", Model.ElementAt(0))
-            @Html.Partial("_Manset", Model.ElementAt(1))
-            @Html.Partial("_Manset", Model.ElementAt(2))
-            @Html.Partial("_Manset", Model.ElementAt(3))
+            @Html.Partial("_Manset", Model.Manset.ElementAt(0))
+            @Html.Partial("_Manset", Model.Manset.ElementAt(1))
+            @Html.Partial("_Manset", Model.Manset.ElementAt(2))
+            @Html.Partial("_Manset", Model.Manset.ElementAt(3))
         </ul>
     </div>
 </section>
 
 <div class="wrapper">
-    <div class="grids" style="width:1200px; margin-top:20px;">
-        <div class="grid-8">
+    <div class="grids" style="margin-top:20px;">
+        <div class="grid-9">
 
 
             <section class="wrapper home-section latest-reviews">
@@ -149,11 +151,10 @@
                 </header>
 
                 <div class="grids entries">
-
-                    @Html.Partial("_Post", Model.ElementAt(0))
-                    @Html.Partial("_Post", Model.ElementAt(1))
-                    @Html.Partial("_Post", Model.ElementAt(2))
-
+                    @foreach (var i in Model.Moda)
+                    {
+                        @Html.Partial("_Post", i)
+                    }
                 </div>
 
                 <header class="section-header">
@@ -165,10 +166,10 @@
 
                 <div class="grids entries">
 
-                    @Html.Partial("_Post", Model.ElementAt(0))
-                    @Html.Partial("_Post", Model.ElementAt(1))
-                    @Html.Partial("_Post", Model.ElementAt(2))
-
+                    @foreach (var i in Model.Guzellik)
+                    {
+                        @Html.Partial("_Post", i)
+                    }
                 </div>
                 <header class="section-header">
                     <div class="title-with-sep">
@@ -179,9 +180,10 @@
 
                 <div class="grids entries">
 
-                    @Html.Partial("_Post", Model.ElementAt(0))
-                    @Html.Partial("_Post", Model.ElementAt(1))
-                    @Html.Partial("_Post", Model.ElementAt(2))
+                    @foreach (var i in Model.Alisveris)
+                    {
+                        @Html.Partial("_Post", i)
+                    }
 
                 </div>
                 <header class="section-header">
@@ -193,64 +195,50 @@
 
                 <div class="grids entries">
 
-                    @Html.Partial("_Post", Model.ElementAt(0))
-                    @Html.Partial("_Post", Model.ElementAt(1))
-                    @Html.Partial("_Post", Model.ElementAt(2))
+                    @foreach (var i in Model.Unluler)
+                    {
+                        @Html.Partial("_Post", i)
+                    }
 
                 </div>
-                <div style="width:750px;height:500px;">
-                    <div style="width:350px;height:408px; display:inline-block">
-                        <header class="One-Article">
-                            <div class="One-Article-Div">
-                                <h2 class="title" style="font-size:26px; margin-bottom:20px;">ŞEHİR-YAŞAM</h2>
-                                
-                                <div class="grids entries">
-
-                                    @Html.Partial("_Post2", Model.ElementAt(0))
-
-                                </div>
-                            </div>
-                        </header>
-
-
-                    </div>
-                    
-                        <div style="width:350px;height:408px; display:inline-block">
-                            <header class="One-Article">
-                                <div class="One-Article-Div">
-                                    <h2 class="title" style="font-size:26px; margin-bottom:20px;">GELİN</h2>
-                                    
-                                    <div class="grids entries">
-
-                                        @Html.Partial("_Post2", Model.ElementAt(0))
-
-                                    </div>
-                                </div>
-                            </header>
-
-
+                <div style="width:380px;display:inline-block">
+                    <header class="section-header">
+                        <div class="title-with-sep">
+                            <h2 class="title">ŞEHİR-YAŞAM</h2>
                         </div>
+                    </header>
 
+                    <div class="grids entries">
 
-                    <div class="grids entries" style="width:1200px;">
-                        <h2 class="title" style="font-size:26px; margin-bottom:20px; text-align:center">VİDEOLAR</h2>
-
-                       
-                        @Html.Partial("_Post3", Model.ElementAt(0))
-                        @Html.Partial("_Post3", Model.ElementAt(0))
-                        @Html.Partial("_Post3", Model.ElementAt(0))
-
-                    </div>
-
-
+                        @foreach (var i in Model.SehirYasam)
+                        {
+                            @Html.Partial("_Post", i)
+                        }
 
                     </div>
+                </div>
+                <div style="width:380px;display:inline-block">
+                    <header class="section-header">
+                        <div class="title-with-sep">
+                            <h2 class="title">GELİN</h2>
+                        </div>
+                    </header>
+
+                    <div class="grids entries">
+
+                        @foreach (var i in Model.Gelin)
+                        {
+                            @Html.Partial("_Post", i)
+                        }
+
+                    </div>
+                </div>
             </section>
         </div>
 
 
 
-    @Html.Partial("_rightnav", (Maksimalist.Models.RightNavViewModel)ViewBag.RightNav)
+        @Html.Partial("_rightnav", (Maksimalist.Models.RightNavViewModel)ViewBag.RightNav)
 
 
     </div><!-- .grid-8 -->

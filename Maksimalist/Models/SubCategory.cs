@@ -10,7 +10,7 @@ namespace Maksimalist.Models
         public int Id { get; set; }
         public int CategoryId { get; set; }
         public string Name { get; set; }
-        
+        public string UrlSlug { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
