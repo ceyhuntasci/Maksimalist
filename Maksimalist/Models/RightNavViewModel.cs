@@ -8,6 +8,6 @@ namespace Maksimalist.Models
     public class RightNavViewModel
     {
         public Advert Advert { get; set; }
-        public Post Post { get; set; }
+        public List<Post> Posts { get; set; }
     }
 }

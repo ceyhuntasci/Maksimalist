@@ -21,14 +21,15 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         public ActionResult Index(string searchString)
         {
 
-            var posts = from m in db.Post
-                        select m;
-            posts = db.Post.Include(p => p.Author).Include(p => p.Category);
+            var posts = db.Post.Include(p => p.Author).Include(p => p.Category);
+
             if (!String.IsNullOrEmpty(searchString))
             {
-                posts = posts.Where(s => s.Tags.Any(c => c.Name.ToUpper().Contains(searchString)) || s.Headline.ToUpper().Contains(searchString));
+                posts = posts.Where(s => s.Tags.Any(c => c.Name.Contains(searchString)) || s.Headline.Contains(searchString));
                 posts.Include(p => p.Author).Include(p => p.Category);
+                return View(posts);
             }
+            posts = posts.OrderByDescending(x => x.Id).Take(10);
             return View(posts);
 
 
@@ -76,7 +77,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                 var tempName = post.Headline;
                 while (true)
                 {
-                
+
                     if (db.Post.FirstOrDefault(x => x.Headline == post.Headline) == null)
                     {
                         break;
@@ -109,7 +110,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                         {
                             System.IO.File.Move(s, Path.Combine(Server.MapPath("~/Images/Uploads/" + post.UrlSlug), Path.GetFileName(s)));
 
-          
+
                         }
                         post.Content = post.Content.Replace("Images/Temp", "Images/Uploads/" + post.UrlSlug);
                     }
@@ -150,9 +151,9 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                     {
                         db.Tag.Add(x);
                     }
-                    
-                }
 
+                }
+                post.HitCount = 0;
 
                 db.Post.Add(post);
 
@@ -163,14 +164,14 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AuthorId = new SelectList(db.Author, "Id", "FirstName", post.AuthorId);
-            ViewBag.CategoryId = new SelectList(db.Category, "Id", "Name", post.CategoryId);
-            ViewBag.SubCategoryId = new SelectList(db.SubCategory, "Id", "Name", post.AuthorId);
+            ViewBag.AuthorId = new SelectList(db.Author, "Id", "FirstName");
+            ViewBag.CategoryId = new SelectList(db.Category, "Id", "Name");
+            ViewBag.SubCategoryId = new SelectList(db.Category.FirstOrDefault().SubCategory.ToList(), "Id", "Name");
 
             return View(post);
         }
 
-        // GET: Posts/Edit/5
+        [HttpGet]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -185,8 +186,19 @@ namespace Maksimalist.Areas.mmadmin.Controllers
 
             ViewBag.AuthorId = new SelectList(db.Author, "Id", "FirstName", post.AuthorId);
             ViewBag.CategoryId = new SelectList(db.Category, "Id", "Name", post.CategoryId);
-            ViewBag.SubCategoryId = new SelectList(db.Category.FirstOrDefault().SubCategory.ToList(), "Id", "Name");
-            ViewBag.Tags = new List<String>();
+            ViewBag.SubCategoryId = new SelectList(db.SubCategory.Where(x => x.Name == post.SubCategory.Name).ToList(), "Id", "Name");
+            if (post.HasGallery)
+            {
+                ViewBag.HasGallery = "checked";
+            }
+            if (post.HasVideo)
+            {
+                ViewBag.HasVideo = "checked";
+            }
+            if (post.Manset)
+            {
+                ViewBag.Manset = "checked";
+            }
             return View(post);
         }
 
@@ -194,20 +206,156 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CategoryId,SubCategoryId,AuthorId,Headline,Bottomline,Content,UrlSlug,ImageUrl,PostDate,Manset")] Post post)
+
+        public ActionResult Edit([Bind(Include = "Id,CategoryId,AuthorId,GalleryId,SubCategoryId,Headline,Bottomline,Content,PostDate,HasGallery,Manset,HasVideo,VideoUrl")] Post post, HttpPostedFileBase file1, HttpPostedFileBase file2, string[] Tags)
         {
+            Post post2 = db.Post.Find(post.Id);
             if (ModelState.IsValid)
             {
-                db.Entry(post).State = EntityState.Modified;
+               
+                post2.AuthorId = post.AuthorId;
+                post2.Bottomline = post.Bottomline;
+                post2.CategoryId = post.CategoryId;
+                post2.Content = post.Content;
+                post2.GalleryId = post.GalleryId;
+                post2.HasGallery = post.HasGallery;
+                post2.HasVideo = post.HasVideo;
+               
+                post2.Manset = post.Manset;
+                post2.PostDate = post.PostDate;
+                post2.SubCategoryId = post.SubCategoryId;
+                post2.VideoUrl = post.VideoUrl;
+
+                if (post2.Headline != post.Headline)
+                {
+                    int j = 2;
+                    var tempName = post.Headline;
+                    while (true)
+                    {
+
+                        if (db.Post.FirstOrDefault(x => x.Headline == post.Headline) == null)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            post.Headline = tempName + "-" + j;
+                            j++;
+                        }
+
+                    }
+                }
+               
+
+                string oldUrlSlug = post2.UrlSlug;
+                post2.UrlSlug = toUrlSlug(post.Headline);
+                #region FileControl
+                if (post2.Headline != post.Headline)
+                {
+                    Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/" + post2.UrlSlug));
+                    string[] tempfiles = System.IO.Directory.GetFiles(Server.MapPath("~/Images/Uploads/" + oldUrlSlug));
+                    foreach (string s in tempfiles)
+                    {
+                        System.IO.File.Move(s, Path.Combine(Server.MapPath("~/Images/Uploads/" + post2.UrlSlug), Path.GetFileName(s)));
+
+                    }
+                    Directory.Delete(Server.MapPath("~/Images/Uploads/" + oldUrlSlug));
+                    post2.ImageUrl = post2.ImageUrl.Replace(oldUrlSlug, post2.UrlSlug);
+                    post2.ContentImage = post2.ContentImage.Replace(oldUrlSlug, post2.UrlSlug);
+                    post2.Content = post2.Content.Replace("Images/Uploads/" + oldUrlSlug, "Images/Uploads/" + post2.UrlSlug);
+                }
+               
+
+                if (file1 != null && file1.ContentLength > 0)
+                {
+
+                    var fileName = Path.GetFileName(file1.FileName);
+
+
+
+                    var path = Path.Combine(Server.MapPath("~/Images/Uploads/" + post2.UrlSlug), fileName);
+
+                    Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/" + post2.UrlSlug));
+                    file1.SaveAs(path);
+                    post2.ImageUrl = "/Images/Uploads/" + post2.UrlSlug + "/" + fileName;
+
+                    if (Directory.GetFiles(Server.MapPath("~/Images/Temp")) != null)
+                    {
+                        string[] tempfiles = System.IO.Directory.GetFiles(Server.MapPath("~/Images/Temp"));
+                        foreach (string s in tempfiles)
+                        {
+                            System.IO.File.Move(s, Path.Combine(Server.MapPath("~/Images/Uploads/" + post2.UrlSlug), Path.GetFileName(s)));
+
+
+                        }
+                        post2.Content = post2.Content.Replace("Images/Temp", "Images/Uploads/" + post2.UrlSlug);
+                    }
+
+                }
+                if (file2 != null && file2.ContentLength > 0)
+                {
+
+                    var fileName = Path.GetFileName(file2.FileName);
+
+
+
+                    var path = Path.Combine(Server.MapPath("~/Images/Uploads/" + post2.UrlSlug), fileName);
+
+                    Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/" + post2.UrlSlug));
+                    file2.SaveAs(path);
+                    post2.ContentImage = "/Images/Uploads/" + post2.UrlSlug + "/" + fileName;
+
+                } 
+                #endregion
+                post2.Headline = post.Headline;
+                #region TagControl
+                foreach (var i in post2.Tags)
+                {
+                    if (!Tags.Contains(i.Name))
+                    {
+                        i.Posts.Remove(post2);
+                    }
+                }
+                foreach (var i in Tags)
+                {
+
+
+                    Tag x = new Tag();
+                    x.Name = i;
+                    List<Post> postList = new List<Post>();
+                    List<Tag> tagList = new List<Tag>();
+
+                    postList.Add(post2);
+
+                    if (db.Tag.Where(linq => linq.Name == x.Name).FirstOrDefault() != null && post2.Tags.Where(lin => lin.Name == x.Name).FirstOrDefault() != null)
+                    {
+
+                    }
+
+                    if (db.Tag.Where(linq => linq.Name == x.Name).FirstOrDefault() != null && post2.Tags.Where(lin => lin.Name == x.Name).FirstOrDefault() == null)
+                    {
+                        x = db.Tag.Where(linq => linq.Name == x.Name).FirstOrDefault();
+
+                        post2.Tags.Add(x);
+
+                    }
+                    else if (db.Tag.Where(linq => linq.Name == x.Name).FirstOrDefault() == null && post2.Tags.Where(lin => lin.Name == x.Name).FirstOrDefault() == null)
+                    {
+                        x.Posts = postList;
+                        db.Tag.Add(x);
+                    }
+
+                } 
+                #endregion
+
+                db.Entry(post2).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.AuthorId = new SelectList(db.Author, "Id", "FirstName", post.AuthorId);
             ViewBag.CategoryId = new SelectList(db.Category, "Id", "Name", post.CategoryId);
             ViewBag.SubCategoryId = new SelectList(db.Category.FirstOrDefault().SubCategory.ToList(), "Id", "Name");
-            ViewBag.Tags = new List<String>();
-            return View(post);
+            return View(post2);
         }
 
         // GET: Posts/Delete/5
@@ -231,6 +379,32 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Post post = db.Post.Find(id);
+            if (System.IO.Directory.Exists(Server.MapPath("~/Images/Uploads/" + post.UrlSlug)))
+            {
+                System.IO.DirectoryInfo downloadedMessageInfo = new DirectoryInfo(Server.MapPath("~/Images/Uploads/" + post.UrlSlug));
+
+                foreach (FileInfo file in downloadedMessageInfo.GetFiles())
+                {
+                    file.Delete();
+                }
+                foreach (DirectoryInfo dir in downloadedMessageInfo.GetDirectories())
+                {
+                    dir.Delete(true);
+                }
+                Directory.Delete(Server.MapPath("~/Images/Uploads/" + post.UrlSlug));
+            }
+            if (post.Tags.ToList().FirstOrDefault() != null)
+            {
+                foreach (var i in post.Tags.ToList())
+                {
+                    i.Posts.Remove(post);
+                    if (i.Posts.FirstOrDefault() == null)
+                    {
+                        db.Tag.Remove(i);
+                    }
+                } 
+            }
+
             db.Post.Remove(post);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -278,12 +452,18 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         public string toUrlSlug(string turkish)
         {
             string urlSlug = turkish.Replace("ı", "i");
-            urlSlug = turkish.Replace(" ", "-");
-            urlSlug = turkish.Replace("ö", "o");
-            urlSlug = turkish.Replace("ç", "c");
-            urlSlug = turkish.Replace("ü", "u");
-            urlSlug = turkish.Replace("ş", "s");
-            urlSlug = turkish.Replace("ğ", "g");
+            urlSlug = urlSlug.Replace("İ", "i");
+            urlSlug = urlSlug.Replace(" ", "-");
+            urlSlug = urlSlug.Replace("ö", "o");
+            urlSlug = urlSlug.Replace("ç", "c");
+            urlSlug = urlSlug.Replace("ü", "u");
+            urlSlug = urlSlug.Replace("ş", "s");
+            urlSlug = urlSlug.Replace("ğ", "g");
+            urlSlug = urlSlug.Replace("Ö", "o");
+            urlSlug = urlSlug.Replace("Ç", "c");
+            urlSlug = urlSlug.Replace("Ü", "u");
+            urlSlug = urlSlug.Replace("Ş", "s");
+            urlSlug = urlSlug.Replace("Ğ", "g");
             return urlSlug;
         }
     }

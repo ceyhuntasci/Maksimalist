@@ -12,19 +12,55 @@ namespace Maksimalist.Controllers
     public class SearchController : Controller
     {
         MaksimalistContext db = new MaksimalistContext();
-        public ActionResult Index(string s)
+        [OutputCache(Duration = 30)]
+        public ActionResult Index(string s, string page)
         {
+            if (String.IsNullOrEmpty(s))
+            {
+                return HttpNotFound();
+            }
+
             ViewBag.Search = s;
-            var posts = from m in db.Post
-                        select m;
-            posts = db.Post.Include(au => au.Author).Include(p => p.Category);
+            Advert ad = db.Advert.First();
+            List<Post> popular = db.Post.OrderByDescending(x => x.HitCount).Take(3).ToList();
+            popular.OrderBy(x => x.HitCount).ToList();
+            RightNavViewModel rn = new RightNavViewModel();
+            rn.Advert = ad;
+            rn.Posts = popular;
+            ViewBag.RightNav = rn;
+            ViewBag.Page = 1;
+            ViewBag.Title = s;
+            List<Post> posts = new List<Post>();
+            List<Post> postCollection = new List<Post>();
             if (!String.IsNullOrEmpty(s))
             {
-                posts = posts.Where(x=> x.Tags.Any(c => c.Name.ToUpper().Contains(s)) || x.Headline.ToUpper().Contains(s));
-                posts.Include(p => p.Author).Include(p => p.Category);
+               
+                postCollection = db.Post.Where(x => x.Tags.Any(c => c.Name.ToUpper().Contains(s)) || x.Headline.ToUpper().Contains(s)).ToList();
+                double ceiling = (double)postCollection.Count() / (double)5;
+                ViewBag.PageCount = Math.Ceiling(ceiling);
+                posts = postCollection.Take(5).ToList();
+
+            }
+            if (!String.IsNullOrEmpty(page))
+            {
+                int p = 0;
+                if (Int32.TryParse(page, out p))
+                {
+                    ViewBag.Page = p;
+                    p = p - 1;
+                    p = p * 5;
+                    posts = postCollection.Skip(p).Take(5).ToList();
+                    
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+               
             }
             return View(posts);
-  
+
+
         }
     }
 }

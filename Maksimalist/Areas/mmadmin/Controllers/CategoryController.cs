@@ -11,6 +11,7 @@ using System.Web.Security;
 
 namespace Maksimalist.Areas.mmadmin.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         private MaksimalistContext db = new MaksimalistContext();
@@ -134,12 +135,18 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         public string toUrlSlug(string turkish)
         {
             string urlSlug = turkish.Replace("ı", "i");
-            urlSlug = turkish.Replace(" ", "");
-            urlSlug = turkish.Replace("ö", "o");
-            urlSlug = turkish.Replace("ç", "c");
-            urlSlug = turkish.Replace("ü", "u");
-            urlSlug = turkish.Replace("ş", "s");
-            urlSlug = turkish.Replace("ğ", "g");
+            urlSlug = urlSlug.Replace("İ", "i");
+            urlSlug = urlSlug.Replace(" ", "-");
+            urlSlug = urlSlug.Replace("ö", "o");
+            urlSlug = urlSlug.Replace("ç", "c");
+            urlSlug = urlSlug.Replace("ü", "u");
+            urlSlug = urlSlug.Replace("ş", "s");
+            urlSlug = urlSlug.Replace("ğ", "g");
+            urlSlug = urlSlug.Replace("Ö", "o");
+            urlSlug = urlSlug.Replace("Ç", "c");
+            urlSlug = urlSlug.Replace("Ü", "u");
+            urlSlug = urlSlug.Replace("Ş", "s");
+            urlSlug = urlSlug.Replace("Ğ", "g");
             return urlSlug;
         }
     }

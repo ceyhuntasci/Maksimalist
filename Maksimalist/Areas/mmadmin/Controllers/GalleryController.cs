@@ -11,7 +11,7 @@ using System.IO;
 
 namespace Maksimalist.Areas.mmadmin.Controllers
 {
-    
+    [Authorize]
     public class GalleryController : Controller
     {
         private MaksimalistContext db = new MaksimalistContext();
@@ -58,7 +58,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         {
             List<Matter> matterList = new List<Matter>();
             Gallery gallery = new Gallery();
-            gallery.Name = GalleryName;
+            gallery.Name = toUrlSlug(GalleryName);
 
            
             for (int i = 0; i < Request.Files.Count; i++)
@@ -73,11 +73,11 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                     var fileName = Path.GetFileName(file.FileName);
                     matter.Name = fileName;
 
-                    var path = Path.Combine(Server.MapPath("~/Images/Uploads/" + gallery.Name), fileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/Uploads/Galeri/" + gallery.Name), fileName);
 
-                    Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/" + gallery.Name));
+                    Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/Galeri/" + gallery.Name));
                     file.SaveAs(path);
-                    matter.Url = "/Images/Uploads/" + gallery.Name + "/" + fileName;
+                    matter.Url = "/Images/Uploads/Galeri/" + gallery.Name + "/" + fileName;
 
                     matterList.Add(matter);
                   
@@ -163,7 +163,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                 db.Matter.Remove(m);
               
             }
-            Directory.Delete(Server.MapPath("~/Images/Uploads/" + gallery.Name));
+            Directory.Delete(Server.MapPath("~/Images/Uploads/Galeri/" + gallery.Name));
             if (db.Post.FirstOrDefault(m => m.GalleryId == gallery.Id) != null) 
             {
                 db.Post.FirstOrDefault(m => m.GalleryId == gallery.Id).GalleryId = null;
@@ -174,7 +174,23 @@ namespace Maksimalist.Areas.mmadmin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        public string toUrlSlug(string turkish)
+        {
+            string urlSlug = turkish.Replace("ı", "i");
+            urlSlug = urlSlug.Replace("İ", "i");
+            urlSlug = urlSlug.Replace(" ", "-");
+            urlSlug = urlSlug.Replace("ö", "o");
+            urlSlug = urlSlug.Replace("ç", "c");
+            urlSlug = urlSlug.Replace("ü", "u");
+            urlSlug = urlSlug.Replace("ş", "s");
+            urlSlug = urlSlug.Replace("ğ", "g");
+            urlSlug = urlSlug.Replace("Ö", "o");
+            urlSlug = urlSlug.Replace("Ç", "c");
+            urlSlug = urlSlug.Replace("Ü", "u");
+            urlSlug = urlSlug.Replace("Ş", "s");
+            urlSlug = urlSlug.Replace("Ğ", "g");
+            return urlSlug;
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

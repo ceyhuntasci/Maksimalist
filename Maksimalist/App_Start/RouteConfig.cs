@@ -16,18 +16,20 @@ namespace Maksimalist
             routes.MapRoute(
                  name: "Anasayfa",
                  url: "",
-                 defaults: new { controller = "Home", action = "Index" },
+                 defaults: new { controller = "Home", action = "About" },
                  namespaces: new[] { "Maksimalist.Controllers" }
              );
             routes.MapRoute(
                name: "Kategori",
-               url: "kategori/{kategori}",
-               defaults: new { controller = "Categories", action = "Index" },
-               namespaces: new[] { "Maksimalist.Controllers" }
+               url: "kategori/{kategori}/{altkategori}",
+               defaults: new { controller = "Categories", action = "Details" , altkategori=""},
+               namespaces: new[] { "Maksimalist.Controllers" },
+               constraints: new { kategori = "(?!anan).*" } 
            );
+         
             routes.MapRoute(
                name: "Haber",
-               url: "haber/{kategori}/{altKategori}/{urlSlug}",
+               url: "post/{kategori}/{altKategori}/{urlSlug}",
                defaults: new { controller = "Post", action = "Details" },
                namespaces: new[] { "Maksimalist.Controllers" }
            );
@@ -39,12 +41,24 @@ namespace Maksimalist
            );
             routes.MapRoute(
               name: "Galeri",
-              url: "haber/galeri/{kategori}/{altKategori}/{urlSlug}",
+              url: "post/galeri/{kategori}/{altKategori}/{urlSlug}",
               defaults: new { controller = "Post", action = "Galeri" },
               namespaces: new[] { "Maksimalist.Controllers" }
               );
 
-      
+            routes.MapRoute(
+                 name: "He Şu",
+                 url: "anasayfa/index/",
+                 defaults: new { controller = "Home", action = "Index" },
+                 namespaces: new[] { "Maksimalist.Controllers" }
+                 );
+            routes.MapRoute(
+                 name: "getresult",
+                 url: "getResult/{email}/kaydet",
+                 defaults: new { controller = "Home", action = "GetResult" },
+                 namespaces: new[] { "Maksimalist.Controllers" }
+                 );
+
         }
     }
 }

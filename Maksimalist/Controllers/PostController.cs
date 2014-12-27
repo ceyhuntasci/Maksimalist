@@ -15,33 +15,41 @@ namespace Maksimalist.Controllers
     {
         private MaksimalistContext db = new MaksimalistContext();
 
-        // GET: Post
+        [OutputCache(Duration = 30)]
         public ActionResult Index()
         {
             var post = db.Post.Include(p => p.Author).Include(p => p.Category);
             return View(post.ToList());
         }
 
-        // GET: Post/Details/5
+         [OutputCache(Duration = 30)]
         public ActionResult Details(string urlSlug, string kategori, string altKategori)
         {
         
            Post post = db.Post.Where(x => x.UrlSlug == urlSlug && x.Category.UrlSlug == kategori && x.SubCategory.UrlSlug == altKategori).FirstOrDefault();
           
+           
             if (post == null)
             {
                 return HttpNotFound();
             }
-
+        
+            post.HitCount = post.HitCount + 1;
+            db.SaveChanges();
            
             Advert ad = db.Advert.First();
-            Post popular = db.Post.First();
+            List<Post> popular = db.Post.OrderByDescending(x => x.HitCount).Take(3).ToList();
+            popular.OrderBy(x => x.HitCount).ToList();
             RightNavViewModel rn = new RightNavViewModel();
             rn.Advert = ad;
-            rn.Post = popular;
+            rn.Posts = popular;
             ViewBag.RightNav = rn;
+            ViewBag.Title = post.Headline;
+            ViewBag.Image = post.ImageUrl;
+            ViewBag.last3post = db.Post.Where(x => x.Author.UserName == post.Author.UserName).OrderByDescending(x => x.PostDate).Take(3).ToList();
             return View(post);
         }
+         [OutputCache(Duration = 30)]
         public ActionResult Galeri(string urlSlug, string kategori, string altKategori)
         {
 
@@ -50,21 +58,18 @@ namespace Maksimalist.Controllers
             {
                 return HttpNotFound();
             }
+            post.Gallery.Matter = post.Gallery.Matter.OrderByDescending(x => x.Order).ToList();
+
             Advert ad = db.Advert.First();
-            Post popular = db.Post.First();
+            List<Post> popular = db.Post.OrderBy(x => x.HitCount).Take(3).ToList();
+            popular.OrderBy(x => x.HitCount).ToList();
             RightNavViewModel rn = new RightNavViewModel();
             rn.Advert = ad;
-            rn.Post = popular;
+            rn.Posts = popular;
             ViewBag.RightNav = rn;
+            ViewBag.Title = post.Headline;
+            ViewBag.Image = post.ImageUrl;
             return View(post);
-        }
-
-        // GET: Post/Create
-        public ActionResult Create()
-        {
-            ViewBag.AuthorId = new SelectList(db.Author, "Id", "FirstName");
-            ViewBag.CategoryId = new SelectList(db.Category, "Id", "Name");
-            return View();
         }
 
         protected override void Dispose(bool disposing)

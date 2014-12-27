@@ -12,6 +12,7 @@ using System.Web.Security;
 
 namespace Maksimalist.Areas.mmadmin.Controllers
 {
+
     public class LoginController : Controller
     {
         // GET: mmadmin/Login
@@ -46,9 +47,9 @@ namespace Maksimalist.Areas.mmadmin.Controllers
 
                     
                    authenticationManager.User.AddIdentity(id);
-                   
-       
-                    return RedirectToAction("Index", "Home");
+
+
+                   return RedirectToAction("Index", "Main");
                 }
                 else
                 {

@@ -2,11 +2,20 @@
     <article class="post-148 post type-post status-publish format-standard has-post-thumbnail hentry category-travel tag-black-n-white tag-nature tag-river grid-3">
 
         <figure class="entry-image">
-            <a href="~/haber/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">
-                <img width="270" height="180" src="@Model.ImageUrl" class="attachment-rectangle-size wp-post-image"/>@if (Model.HasGallery){<i class="icomoon-camera"></i>}
-               
-        
-            </a>
+            @if (Model.HasGallery)
+            { <a href="~/haber/galeri/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">
+                <img width="270" height="180" src="@Model.ImageUrl" class="attachment-rectangle-size wp-post-image" /><i class="icomoon-camera-retro"></i>
+            </a>}
+            else if(Model.HasVideo)
+            {  <a href="~/haber/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">
+                <img width="270" height="180" src="@Model.ImageUrl" class="attachment-rectangle-size wp-post-image" /><i class="icomoon-camera"></i>
+            </a>}
+            else
+            {
+                <a href="~/haber/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">
+                    <img width="270" height="180" src="@Model.ImageUrl" class="attachment-rectangle-size wp-post-image" />
+                </a>
+            }
         </figure>
 
         <header class="entry-header">
@@ -14,9 +23,15 @@
                 <span class="entry-category"><a href="~/kategori/@Model.Category.UrlSlug">@Model.Category.Name</a></span><time class="entry-date updated" datetime="@Model.PostDate">@String.Format("{0:dd MMMM yyyy}", Model.PostDate)</time>
             </div>
             <h2 class="entry-title">
-                <a href="~/haber/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">@Model.Headline</a>
+                @if (Model.HasGallery)
+                {<a href="~/haber/galeri/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">@Model.Headline</a>}
+                else
+                {  <a href="~/haber/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">@Model.Headline</a>}
+               
             </h2>
             
         </header>
-
+        <div class="entry-summary">
+            <p>@Model.Bottomline</p>
+        </div>
     </article>

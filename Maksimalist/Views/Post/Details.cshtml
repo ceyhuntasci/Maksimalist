@@ -1,28 +1,51 @@
 ﻿﻿@model Maksimalist.Models.Post
 
-<!DOCTYPE html>
-<!--[if lt IE 9]><html lang="en-US" class="oldie"><![endif]-->
-<!--[if (gte IE 9) | !(IE)]><!-->
-<html lang="en-US" class="modern">
-<!--<![endif]-->
+@{
+    List<Maksimalist.Models.Post> last3post = ViewBag.last3post;
+}
+
 <body class="single single-post postid-1 single-format-standard ltr" itemscope itemtype="http://schema.org/WebPage">
     <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '780985738613644',
-                xfbml: true,
-                version: 'v2.2'
-            });
-        };
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '780985738613644',
+            xfbml: true,
+            version: 'v2.1'
+        });
+    };
 
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) { return; }
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+    FB.ui({
+        method: 'share_open_graph',
+        action_type: 'og.likes',
+        action_properties: JSON.stringify({
+            object: 'https://developers.facebook.com/docs/',
+        })
+    }, function (response) { });
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    $("#Selam").click(function () {
+        fb.ui;
+    });
     </script>
+
+    <div id="fb-root"></div>
+    <script>
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&appId=780985738613644&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
     <main id="content" class="clearfix animated" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
 
         <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion tag-music tag-video" itemscope itemtype="http://schema.org/Article">
@@ -30,9 +53,9 @@
                 <div class="entry-meta">
                     <span class="vcard author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
                         <span>By</span>
-                       
-                            <span itemprop="name">@Model.Author.FirstName @Model.Author.LastName</span>
-                        
+
+                        <span itemprop="name">@Model.Author.FirstName @Model.Author.LastName</span>
+
                     </span>
                     <span class="entry-category"><a href="/kategori/@Model.Category.Name">@Model.Category.Name</a></span><time class="entry-date updated">@String.Format("{0:dd MMMM yyyy}", Model.PostDate)</time>
                 </div>
@@ -42,14 +65,14 @@
                 </div>
             </header>
 
-            <div class="wrapper" style="width:1200px">
+            <div class="wrapper">
                 <div class="grids">
                     <div class="grid-8 column-1">
 
-                       @if (Model.HasVideo)
-                       {@Html.Raw(@Model.VideoUrl)}
-                       else
-                       {
+                        @if (Model.HasVideo)
+                        {@Html.Raw(@Model.VideoUrl)}
+                        else
+                        {
 
                             <div class="entry-media">
                                 <figure class="base-image"><img width="690" height="460" src="@Model.ContentImage" class="attachment-medium-size wp-post-image" alt="see" itemprop="image" /></figure>
@@ -72,10 +95,7 @@
                             <h3 class="title">Share on</h3>
                             <ul>
                                 <li class="share-facebook">
-                                    <a href="@Model.Author.FacebookUrl" target="blank">
-                                        <i class="icomoon-facebook"></i>
-                                        Facebook
-                                    </a>
+                                    <button id="Selam">Hello</button>
                                 </li>
                                 <li class="share-twitter">
                                     <a href="@Model.Author.TwitterUrl" target="_blank">
@@ -112,7 +132,7 @@
                         <div class="single-box author-box single-author-box">
                             <ul class="author-tabs-button clearfix">
                                 <li><a href="index.html#author-bio">Bio</a></li>
-                                <li><a href="index.html#author-posts">Latest Posts</a></li>
+                                <li><a href="index.html#author-posts">Son Yazıları</a></li>
                             </ul>
 
                             <div class="author-tabs-content">
@@ -120,16 +140,16 @@
 
                                     <div id="author-bio">
                                         <div class="avatar">
-                                            <a href="../author/jane/index.html">
+                                           
                                                 <img alt='@Model.Author.FirstName @Model.Author.LastName' src='@Model.Author.ProfilePicture' class='avatar avatar-70 photo' height='70' width='70' />
-                                            </a>
+                                           
                                         </div><!-- .avatar -->
                                         <div class="author-info" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
                                             <span class="vcard author">
                                                 <span class="fn">
-                                                    <a href="../author/jane/index.html" rel="author" itemprop="url">
+                                                   
                                                         <span itemprop="name">@Model.Author.FirstName @Model.Author.LastName</span>
-                                                    </a>
+                                                  
                                                 </span>
                                             </span>
                                             <p itemprop="description">
@@ -168,24 +188,30 @@
 
                                     <div id="author-posts">
                                         <div class="avatar">
-                                            <a href="../author/jane/index.html">
-                                                <img alt='Jane Doe' src='../wp-content/uploads/sites/2/2013/05/avatar-1.jpg' class='avatar avatar-109 photo' height='109' width='109' />
-                                            </a>
+
+                                            <img src='@Model.Author.ProfilePicture' class='avatar avatar-109 photo' height='109' width='109' />
+
                                         </div><!-- .avatar -->
                                         <div class="author-info">
-                                            Latest Posts By                    <a href="../author/jane/index.html" rel="author">
-                                                Jane Doe
-                                            </a>
+                                            
+                                            @Model.Author.FirstName @Model.Author.LastName Son Yazıları
+
                                             <ul>
-                                                <li>
-                                                    <a href="../gallery-post-format/index.html">Gallery Post Format</a>
-                                                </li>
-                                                <li>
-                                                    <a href="../typography/index.html">Typography</a>
-                                                </li>
-                                                <li>
-                                                    <a href="../sound-cloud-audio/index.html">Sound Cloud Audio</a>
-                                                </li>
+                                                @foreach (var sacma in last3post)
+                                                {
+                                                    if (sacma.HasGallery)
+                                                    {
+                                                        <li>
+                                                            <a href="~/haber/galeri/@sacma.Category.UrlSlug/@sacma.SubCategory.UrlSlug/@sacma.UrlSlug">@sacma.Headline</a>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li>
+                                                            <a href="~/haber/@sacma.Category.UrlSlug/@sacma.SubCategory.UrlSlug/@sacma.UrlSlug">@sacma.Headline</a>
+                                                        </li>
+                                                    }
+                                                }
                                             </ul>
                                         </div>
                                     </div><!-- #author-posts -->
@@ -195,16 +221,16 @@
 
                         </div><!-- .tabs -->
 
-              
 
 
-                  
+
+
 
 
                         <div id="comments" class="single-box comments-area">
 
-
-                            <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-numposts="5" data-colorscheme="light"></div>
+                            <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-width="750" data-numposts="5" data-colorscheme="light"></div>
+  
                         </div><!-- .grid-8 -->
 
                     </div><!-- .grids -->
@@ -216,4 +242,3 @@
     </main><!-- #content -->
 
 </body>
-</html>

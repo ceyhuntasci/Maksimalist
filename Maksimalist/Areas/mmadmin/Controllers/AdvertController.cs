@@ -10,6 +10,7 @@ using Maksimalist.Models;
 
 namespace Maksimalist.Areas.mmadmin.Controllers
 {
+    [Authorize]
     public class AdvertController : Controller
     {
         private MaksimalistContext db = new MaksimalistContext();

@@ -1,15 +1,21 @@
 ﻿@model Maksimalist.Models.Post
-@{
-    ViewBag.Title = "Galeri";
-}
 
+<div id="fb-root"></div>
+<script>
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&appId=780985738613644&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <section id="content-container" class="slideshow-container">
     <header class="bottom-ruler hide-overflow">
         <h1 class="slideshow-header">
-            The Best Red Carpet Looks From The British Fashion Awards
+            @Model.Headline
         </h1>
     </header>
-    <ol id="slideshow-78806" class="slideshow">
+    <ol id="slideshow-78806" class="slideshow" style="display:inline">
 
         @{
             int iter = 0;
@@ -36,15 +42,11 @@
                             <div class="menu-article-share">
                                <p>SHARES</p>
                             </div>
-                            <div class="col-right inset-right-half">
-                                <a class="share-button-email icon-mail" href="mailto:%20?subject=Refinery29:%20The%20Best%20Red%20Carpet%20Looks%20From%20The%20British%20Fashion%20Awards&amp;body=The%20Best%20Red%20Carpet%20Looks%20From%20The%20British%20Fashion%20Awards%0D%0Ahttp%3A%2F%2Fwww.refinery29.com%2F2014%2F12%2F78806%2Fbritish-fashion-awards-red-carpet-outfits%3Futm_source%3Demail%26utm_medium%3Demail_share" sl-processed="1"></a>
-                            </div>
                             <div class="col-right">
                                 <button class="share-button-pinterest icon-pinterest"></button>
                             </div>
-                            <div class="col-right">
-                                <button class="share-button-facebook icon-facebook"></button>
-                            </div>
+                            <div class="fb-share-button col-right" data-href="@Request.Url.AbsoluteUri" data-layout="button"></div>
+                           
                         </div>
 
                         <div class="inset-left-1">
@@ -65,18 +67,20 @@
         }
 
     </ol>
+    @Html.Partial("_rightnav", (Maksimalist.Models.RightNavViewModel)ViewBag.RightNav)
 
-
-    <div class="breadcrumb" itemscope="itemscope" itemprop="breadcrumb" itemtype="http://schema.org/WebPage">
-        <a href="/red-carpet-looks" itemprop="url"><span itemprop="name">Red-Carpet Patrol</span></a> /
-        <span itemprop="title" class="sub">British Fashion Awards Red Carpet Outfits - Rihanna</span>
+    <div class="breadcrumb" itemscope="itemscope" itemprop="breadcrumb">
+        <a href="~/kategori/@Model.Category.Name" itemprop="url"><span itemprop="name">@Model.Category.Name</span></a> /
+        <span itemprop="title" class="sub">@Model.Headline</span>
 
 
     </div><!--/.breadcrumb-->
+    <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-width="750" data-numposts="5" data-colorscheme="light"></div>
 
 </section>
 
 <script>
+    
     $(document).ready(function () {
         $(".slide").first().addClass("active isVisible");
     });

@@ -15,7 +15,7 @@ namespace Maksimalist.Models
         [DisplayName("Kategori")]
         public int CategoryId { get; set; }
         [DisplayName("Alt Kategori")]
-        public int SubCategoryId { get; set; }
+        public int? SubCategoryId { get; set; }
         [DisplayName("Yazar")]
         public int AuthorId { get; set; }
         
@@ -33,15 +33,18 @@ namespace Maksimalist.Models
         [DisplayName("İçerik Görseli")]
         public string ContentImage { get; set; }
         [DisplayName("Video Linki")]
+        [AllowHtml]
         public string VideoUrl { get; set; }
         [DisplayName("Tarih")]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime PostDate { get; set; }
 
         public Boolean Manset { get; set; }
         [DisplayName("Galerisi Var Mı?")]
         public Boolean HasGallery { get; set; }
         [DisplayName("Video Haberi")]
-        public Boolean HasVideo { get; set; } 
+        public Boolean HasVideo { get; set; }
+        public int HitCount { get; set; }
         public virtual Gallery Gallery { get; set; }
         public virtual Author Author { get; set; }
         public virtual Category Category { get; set; }

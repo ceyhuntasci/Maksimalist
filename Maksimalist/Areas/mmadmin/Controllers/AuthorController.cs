@@ -12,6 +12,7 @@ using System.Text;
 
 namespace Maksimalist.Areas.mmadmin.Controllers
 {
+    [Authorize]
     public class AuthorController : Controller
     {
         private MaksimalistContext db = new MaksimalistContext();

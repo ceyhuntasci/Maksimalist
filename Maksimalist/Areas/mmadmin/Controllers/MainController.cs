@@ -9,13 +9,13 @@ using System.Web.Security;
 namespace Maksimalist.Areas.mmadmin.Controllers
 {
     [Authorize]
-    public class HomeController : Controller
+    public class MainController : Controller
     {
         private MaksimalistContext db = new MaksimalistContext();
         
         public ActionResult Index()
         {
-            ViewBag.AuthorFirstName = Session["author"];
+           
             return View();
         }
     

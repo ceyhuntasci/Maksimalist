@@ -1,137 +1,14 @@
 ﻿@model Maksimalist.Models.HomeViewModel
-<head>
-    <title>Index</title>
-    <meta charset="utf-8" />
-    <link rel='stylesheet' id='sc-frontend-style-css' href='~/Content/frontend-style-ver=4.0.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='main-style-css' href='~/Content/style-ver=4.0.css' type='text/css' media='all' />
-    <link rel='stylesheet' id='redux-google-fonts-css' href='http://fonts.googleapis.com/css?family=Oswald%7CLato&subset=latin&ver=1411386557' type='text/css' media='all' />
-    <script type='text/javascript' src='~/Scripts/jquery-ver=1.11.1.js'></script>
-    <script type='text/javascript' src='~/Scripts/jquery-migrate.min-ver=1.2.1.js'></script>
-    <style>
-        #hero-stories {
-            color: rgb(34, 34, 34);
-            display: block;
-            font-family: TiemposText, serif;
-            height: 384px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            width: 1349px;
-        }
 
-            #hero-stories .wrapperzzz {
-                position: relative;
-                width: 1280px;
-                height: 384px;
-                margin: 0 auto;
-            }
-
-        .wrapperzzz {
-            width: 1050px;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-        }
-
-        .MansetList {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            list-style-image: none;
-        }
-
-        #hero-stories ul li {
-            position: relative;
-            float: left;
-            width: 25%;
-            display: list-item;
-            text-align: -webkit-match-parent;
-                    height:384px;
-
-        }
-
-            #hero-stories ul li img {
-                float: left;
-                width: 100%;
-                max-height: 384px;
-
-            }
-
-            #hero-stories ul li h2 {
-                width: 100%;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                margin: 0;
-                padding: 22px 0;
-                background: rgba(0,0,0,0.7);
-                color: #FFF;
-                text-align: center;
-                font-size: 26px;
-                display: table;
-            }
-
-        .One-Article {
-            -webkit-font-smoothing: antialiased;
-            color: rgb(68, 68, 68);
-            display: block;
-            font-family: Lato;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: normal;
-            height: 400px;
-            letter-spacing: 3.20000004768372px;
-            line-height: 24px;
-            margin-bottom: 30px;
-            text-align: center;
-            text-transform: uppercase;
-            width: 350px;
-            zoom: 1;
-            clear: none;
-        }
-
-        .One-Article-Div {
-            -webkit-background-clip: border-box;
-            -webkit-background-origin: padding-box;
-            -webkit-background-size: auto;
-            -webkit-font-smoothing: antialiased;
-            background-attachment: scroll;
-            background-clip: border-box;
-            background-color: rgba(0, 0, 0, 0);
-            background-origin: padding-box;
-            background-size: auto;
-            color: rgb(0, 0, 0);
-            display: block;
-            font-family: Lato;
-            font-size: 42px;
-            font-style: normal;
-            font-weight: normal;
-            height: 92px;
-            letter-spacing: 3.20000004768372px;
-            line-height: 42px;
-            text-align: center;
-            text-transform: uppercase;
-            width: 350px;
-            zoom: 1;
-            clear: none;
-        }
-    </style>
-
-</head>
-
-@{
-    ViewBag.Title = "Home Page";
-}
 <section id="hero-stories" class="wrapperzzz">
 
     <div class="wrapperzzz">
 
         <ul class="MansetList">
-            @Html.Partial("_Manset", Model.Manset.ElementAt(0))
-            @Html.Partial("_Manset", Model.Manset.ElementAt(1))
-            @Html.Partial("_Manset", Model.Manset.ElementAt(2))
-            @Html.Partial("_Manset", Model.Manset.ElementAt(3))
+           @foreach (var i in Model.Manset) 
+           { 
+            @Html.Partial("_Manset", i)
+           }
         </ul>
     </div>
 </section>
@@ -212,7 +89,7 @@
 
                         @foreach (var i in Model.SehirYasam)
                         {
-                            @Html.Partial("_Post", i)
+                            @Html.Partial("_Post2", i)
                         }
 
                     </div>
@@ -228,10 +105,24 @@
 
                         @foreach (var i in Model.Gelin)
                         {
-                            @Html.Partial("_Post", i)
+                            @Html.Partial("_Post2", i)
                         }
 
                     </div>
+                </div>
+                <header class="section-header">
+                    <div class="title-with-sep">
+                        <h2 class="title">VİDEO</h2>
+                    </div>
+                </header>
+
+                <div class="grids entries">
+
+                    @foreach (var i in Model.Video)
+                    {
+                        @Html.Partial("_Post", i)
+                    }
+
                 </div>
             </section>
         </div>
@@ -242,6 +133,8 @@
 
 
     </div><!-- .grid-8 -->
+    
+
 
 
 </div><!-- .wrapper -->

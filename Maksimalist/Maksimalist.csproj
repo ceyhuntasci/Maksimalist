@@ -162,7 +162,7 @@
     <Compile Include="Areas\mmadmin\Controllers\AuthorController.cs" />
     <Compile Include="Areas\mmadmin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\mmadmin\Controllers\GalleryController.cs" />
-    <Compile Include="Areas\mmadmin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\mmadmin\Controllers\MainController.cs" />
     <Compile Include="Areas\mmadmin\Controllers\LoginController.cs" />
     <Compile Include="Areas\mmadmin\Controllers\PostController.cs" />
     <Compile Include="Areas\mmadmin\Controllers\SubCategoryController.cs" />
@@ -173,7 +173,6 @@
     <Compile Include="Controllers\MatterController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
-    <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -212,6 +211,18 @@
     <Compile Include="Migrations\201412211820066_UrlSlug.cs" />
     <Compile Include="Migrations\201412211820066_UrlSlug.Designer.cs">
       <DependentUpon>201412211820066_UrlSlug.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412221914439_SubCategoryNul.cs" />
+    <Compile Include="Migrations\201412221914439_SubCategoryNul.Designer.cs">
+      <DependentUpon>201412221914439_SubCategoryNul.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412231447179_HitCount.cs" />
+    <Compile Include="Migrations\201412231447179_HitCount.Designer.cs">
+      <DependentUpon>201412231447179_HitCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412251508324_DateTimeCorrect.cs" />
+    <Compile Include="Migrations\201412251508324_DateTimeCorrect.Designer.cs">
+      <DependentUpon>201412251508324_DateTimeCorrect.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Advert.cs" />
@@ -612,6 +623,7 @@
     <Content Include="fonts\Simple-Line-Icons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\favicon.jpg" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\ruler.png" />
     <Content Include="Images\section-header.png" />
@@ -673,6 +685,7 @@
     <Content Include="fonts\arrowfont.woff" />
     <Content Include="fonts\FuturaStd-BookOblique.otf" />
     <Content Include="fonts\icomoon.eot" />
+    <Content Include="Areas\mmadmin\Views\Main\Index.cshtml" />
     <None Include="Properties\PublishProfiles\dotaanti.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\maksimalist.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\test.maksimalist.com - Web Deploy.pubxml" />
@@ -720,8 +733,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
     <Content Include="Views\Categories\Delete.cshtml" />
     <Content Include="Views\Categories\Details.cshtml" />
@@ -750,13 +761,12 @@
     <Content Include="Views\Matter\Details.cshtml" />
     <Content Include="Views\Matter\Edit.cshtml" />
     <Content Include="Views\Matter\Index.cshtml" />
-    <Content Include="Views\Shared\_Post2.cshtml" />
-    <Content Include="Views\Shared\_Post3.cshtml" />
     <Content Include="Views\Shared\_rightnav.cshtml" />
     <Content Include="Views\Shared\_ModaPost.cshtml" />
     <Content Include="Views\Post\Search.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Post\Galeri.cshtml" />
+    <Content Include="Views\Shared\_Post2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -793,6 +803,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412211820066_UrlSlug.resx">
       <DependentUpon>201412211820066_UrlSlug.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412221914439_SubCategoryNul.resx">
+      <DependentUpon>201412221914439_SubCategoryNul.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412231447179_HitCount.resx">
+      <DependentUpon>201412231447179_HitCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412251508324_DateTimeCorrect.resx">
+      <DependentUpon>201412251508324_DateTimeCorrect.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

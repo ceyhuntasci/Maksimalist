@@ -1,5 +1,5 @@
 ﻿@model Maksimalist.Models.RightNavViewModel
-<div class="grid-4 column-2" style="width:330px; float: right">
+<div class="grid-4 column-2" style="width:310px; float: right">
     <aside class="sidebar" role="complementary" itemscope="" itemtype="http://schema.org/WPSideBar">
         <div id="ti_latest_reviews-2" class="widget widget_ti_latest_reviews">
             <h3>Reklam Alanı.</h3>
@@ -13,41 +13,37 @@
             </figure>
 
         </div><div id="ti_latest_posts-3" class="widget widget_ti_latest_posts">
-            <h3>Latest Posts</h3>
+            <h3>Popüler İçerikler</h3>
             <div class="widget-posts-entries">
 
 
                 <ul class="clearfix">
 
+                    @foreach (var i in Model.Posts)
+                    {
+                        <li>
+                            <figure class="entry-image inview">
+                                @if (i.HasGallery)
+                                { <a href="~/haber/galeri/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">
+                                    <img width="330" height="220" src="@i.ImageUrl" class="attachment-rectangle-size wp-post-image">
+                                </a>}
+                                else
+                                {  <a href="~/haber/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">
+                                    <img width="330" height="220" src="@i.ImageUrl" class="attachment-rectangle-size wp-post-image">
+                                </a>}
+                                
+                            </figure>
+                            @if (i.HasGallery)
+                            { <span><a href="~/kategori/@i.Category.UrlSlug">@i.Category.Name</a></span><a class="widget-post-title" href="~/haber/galeri/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">@i.Headline</a>
+                            }
+                            else
+                            {  <span><a href="~/kategori/@i.Category.UrlSlug">@i.Category.Name</a></span><a class="widget-post-title" href="~/haber/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">@i.Headline</a>
+                            }
+                             </li>
+                    }
+                  
 
-                    <li>
-                        <figure class="entry-image inview">
-                            <a href="../gallery-post-format/index.html">
-                                <img width="330" height="220" src="@Model.Post.ImageUrl" class="attachment-rectangle-size wp-post-image" alt="8470852074_4031c64512_o">
-                            </a>
-                        </figure>
-                        <span><a href="../category/fashion/index.html">@Model.Post.Category.Name</a></span>                           	<a class="widget-post-title" href="../gallery-post-format/index.html">Gallery Post Format</a>
-                    </li>
 
-
-                    <li>
-                        <figure class="entry-image inview">
-                            <a href="../typography/index.html">
-                                <img width="330" height="220" src="../wp-content/uploads/sites/2/2013/05/typography-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="typography">
-                            </a>
-                        </figure>
-                        <span><a href="../category/travel/index.html">Travel</a></span>                           	<a class="widget-post-title" href="../typography/index.html">Typography</a>
-                    </li>
-
-
-                    <li>
-                        <figure class="entry-image inview">
-                            <a href="../sound-cloud-audio/index.html">
-                                <img width="330" height="220" src="../wp-content/uploads/sites/2/2013/05/street-330x220.jpg" class="attachment-rectangle-size wp-post-image" alt="street">
-                            </a>
-                        </figure>
-                        <span><a href="../category/music/index.html">Music</a></span>                           	<a class="widget-post-title" href="../sound-cloud-audio/index.html">Sound Cloud Audio</a>
-                    </li>
 
 
                 </ul>

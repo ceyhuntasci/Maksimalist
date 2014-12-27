@@ -11,17 +11,18 @@ namespace Maksimalist.Controllers
     public class HomeController : Controller
     {
         MaksimalistContext db = new MaksimalistContext();
+        [OutputCache(Duration=30)]
         public ActionResult Index()
         {
             HomeViewModel hmw = new HomeViewModel();
-            hmw.Manset = db.Post.Where(x=> x.Manset==true).OrderByDescending(x => x.PostDate).Take(4).ToList();
-            hmw.Moda = db.Post.Where(x => x.Category.UrlSlug == "Moda" && x.Manset == false).OrderByDescending(x => x.PostDate).Take(3).ToList();
-            hmw.Guzellik = db.Post.Where(x => x.Category.UrlSlug == "Guzellik" && x.Manset == false).OrderByDescending(x => x.PostDate).Take(3).ToList();
-            hmw.Alisveris = db.Post.Where(x => x.Category.UrlSlug == "Alışveriş" && x.Manset == false).OrderByDescending(x => x.PostDate).Take(3).ToList();
-            hmw.Unluler = db.Post.Where(x => x.Category.UrlSlug == "Ünlüler" && x.Manset == false).OrderByDescending(x => x.PostDate).Take(3).ToList();
-            hmw.SehirYasam = db.Post.Where(x => x.Category.UrlSlug == "Şehir-Yaşam" && x.Manset == false).OrderByDescending(x => x.PostDate).Take(1).ToList();
-            hmw.Gelin = db.Post.Where(x => x.Category.UrlSlug == "Gelin" && x.Manset == false).OrderByDescending(x => x.PostDate).Take(1).ToList();
-            hmw.Video = db.Post.Where(x => x.Category.UrlSlug == "Video" && x.Manset == false).OrderByDescending(x => x.PostDate).Take(3).ToList();
+            hmw.Manset = db.Post.Where(x=> x.Manset==true && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(4).ToList();
+            hmw.Moda = db.Post.Where(x => x.Category.UrlSlug == "Moda" && x.Manset == false && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(3).ToList();
+            hmw.Guzellik = db.Post.Where(x => x.Category.UrlSlug == "Guzellik" && x.Manset == false && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(3).ToList();
+            hmw.Alisveris = db.Post.Where(x => x.Category.UrlSlug == "Alisveris" && x.Manset == false && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(3).ToList();
+            hmw.Unluler = db.Post.Where(x => x.Category.UrlSlug == "Unluler" && x.Manset == false && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(3).ToList();
+            hmw.SehirYasam = db.Post.Where(x => x.Category.UrlSlug == "Sehir-Yasam" && x.Manset == false && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(1).ToList();
+            hmw.Gelin = db.Post.Where(x => x.Category.UrlSlug == "Gelin" && x.Manset == false && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(1).ToList();
+            hmw.Video = db.Post.Where(x => x.Category.UrlSlug == "Video" && x.Manset == false && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(3).ToList();
            
             
            
@@ -29,14 +30,16 @@ namespace Maksimalist.Controllers
             
             
             Advert ad = db.Advert.First();
-            Post popular = db.Post.First();
+            List<Post> popular = db.Post.OrderByDescending(x => x.HitCount).Take(3).ToList();
+            popular.OrderBy(x => x.HitCount).ToList();
             RightNavViewModel rn = new RightNavViewModel();
             rn.Advert = ad;
-            rn.Post = popular;
+            rn.Posts = popular;
             ViewBag.RightNav = rn;
+            ViewBag.Title = "Maksimalist";
             return View(hmw);
         }
-
+         [OutputCache(Duration = 30)]
         public ActionResult About(string Email)
         {
             return View();
