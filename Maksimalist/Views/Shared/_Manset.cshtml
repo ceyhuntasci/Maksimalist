@@ -1,10 +1,21 @@
 ﻿@model Maksimalist.Models.Post
 
 <li>
-    <a class="ga-trackable" href="~/haber/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">
+    @if (Model.HasGallery)
+    {
+        <a class="ga-trackable" href="~/post/galeri/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">
+            <img style=" height:initial" src="@Model.ImageUrl" width="320" height="384">
 
-        <img style=" height:initial" src="@Model.ImageUrl" width="320" height="384">
+            <h2 class="" style="word-wrap: break-word;"><span>@Model.Headline</span></h2>
+        </a>
+    }
+    else
+    {
+        <a class="ga-trackable" href="~/post/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">
+            <img style=" height:initial" src="@Model.ImageUrl" width="320" height="384">
 
-        <h2 class="" style="word-wrap: break-word;"><span>@Model.Headline</span></h2>
-    </a>
-</li>
+            <h2 class="" style="word-wrap: break-word;"><span>@Model.Headline</span></h2>
+        </a>
+    }
+                
+    </li>

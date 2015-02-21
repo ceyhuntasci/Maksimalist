@@ -1,4 +1,4 @@
-﻿@model Maksimalist.Models.Matter
+﻿@model Maksimalist.Models.Gallery
 <!DOCTYPE html>
 <html>
 
@@ -19,8 +19,6 @@
 
         #actions {
             margin: 2em 0;
-          
-         
         }
 
 
@@ -78,79 +76,78 @@
     var Dropzone = require("enyo-dropzone");
     Dropzone.autoDiscover = false;
 
-    
+
     </script>
 
 
 </head>
 <body>
-   
-    
-    
-         <input id="GalleryName" class="form-control " style="width:30%; margin: 2em 1em;"/>
-         <div id="actions" class="row">
-
-             <div class="col-lg-7">
-                 <!-- The fileinput-button span is used to style the file input field as button -->
-                 <span class="btn btn-success fileinput-button">
-                     <i class="glyphicon glyphicon-plus"></i>
-                     <span>Add files...</span>
-                 </span>
-                 <button type="submit" class="btn btn-primary start">
-                     <i class="glyphicon glyphicon-upload"></i>
-                     <span>Start upload</span>
-                 </button>
-                 <button value="Create" onclick="location.href='@Url.Action("Edit", "Gallery", new {area="mmadmin" })'" class="btn btn-warning cancel">
-                     <i class="glyphicon glyphicon-ban-circle"></i>
-                     <span>Next</span>
-                 </button>
-             </div>
-
-             <div class="col-lg-5">
-                 <!-- The global file processing state -->
-                 <span class="fileupload-process">
-                     <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                         <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
-                     </div>
-                 </span>
-             </div>
-
-         </div>
 
 
+    <input id="GalleryName" class="form-control " style="width:30%; margin: 2em 1em;" value="@Model.Name" disabled/>
+    <div id="actions" class="row">
 
-         <div class="table table-striped" class="files" id="previews">
+        <div class="col-lg-7">
+            <!-- The fileinput-button span is used to style the file input field as button -->
+            <span class="btn btn-success fileinput-button">
+                <i class="glyphicon glyphicon-plus"></i>
+                <span>Add files...</span>
+            </span>
+            <button type="submit" class="btn btn-primary start">
+                <i class="glyphicon glyphicon-upload"></i>
+                <span>Start upload</span>
+            </button>
+            <button value="Create" onclick="location.href='@Url.Action("Edit", "Gallery", new {area="mmadmin" })'" class="btn btn-warning cancel">
+                <i class="glyphicon glyphicon-ban-circle"></i>
+                <span>Next</span>
+            </button>
+        </div>
 
-             <div id="template" class="file-row">
-                 <!-- This is used as the file preview template -->
-                 <div>
-                     <span class="preview"><img data-dz-thumbnail /></span>
-                 </div>
-                 <div>
-                     <p class="name" data-dz-name></p>
-                     <strong class="error text-danger" data-dz-errormessage></strong>
-                 </div>
-                 <div>
-                     <p class="size" data-dz-size></p>
-                     <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                         <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
-                     </div>
-                 </div>
-                 <div>
-                     
-                     <button data-dz-remove class="btn btn-warning cancel">
-                         <i class="glyphicon glyphicon-ban-circle"></i>
-                         <span>Cancel</span>
-                     </button>
-                     <button data-dz-remove class="btn btn-danger delete">
-                         <i class="glyphicon glyphicon-trash"></i>
-                         <span>Delete</span>
-                     </button>
-                 </div>
-             </div>
+        <div class="col-lg-5">
+            <!-- The global file processing state -->
+            <span class="fileupload-process">
+                <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                </div>
+            </span>
+        </div>
 
-         </div>
-   
+    </div>
+
+
+
+    <div class="table table-striped" class="files" id="previews">
+
+        <div id="template" class="file-row">
+            <!-- This is used as the file preview template -->
+            <div>
+                <span class="preview"><img data-dz-thumbnail /></span>
+            </div>
+            <div>
+                <p class="name" data-dz-name></p>
+                <strong class="error text-danger" data-dz-errormessage></strong>
+            </div>
+            <div>
+                <p class="size" data-dz-size></p>
+                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                </div>
+            </div>
+            <div>
+
+                <button data-dz-remove class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>Cancel</span>
+                </button>
+                <button data-dz-remove class="btn btn-danger delete">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span>Delete</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
     <script>
     // Get the template HTML and remove it from the doument
     var previewNode = document.querySelector("#template");
@@ -159,7 +156,7 @@
     previewNode.parentNode.removeChild(previewNode);
 
     var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
-        url: "@Url.Action("Create", "Gallery", new { area = "mmadmin" })",
+        url: "@Url.Action("Add", "Gallery", new { area = "mmadmin" })",
         thumbnailWidth: 80,
         thumbnailHeight: 80,
         parallelUploads: 100,
@@ -172,34 +169,34 @@
         clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
     });
 
-    
+
 
     // Update the total progress bar
     myDropzone.on("totaluploadprogress", function (progress) {
         document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
     });
 
-   
+
     myDropzone.on("sending", function (file, xhr, formData) {
 
         formData.append("GalleryName", document.getElementById('GalleryName').value);
         document.querySelector("#total-progress").style.opacity = "1";
         // And disable the start button
-     
+
     });
 
 
     // Hide the total progress bar when nothing's uploading anymore
     myDropzone.on("queuecomplete", function (progress) {
         document.querySelector("#total-progress").style.opacity = "0";
-        window.location = '../Gallery/Index';
+        window.location = '../Index';
     });
 
     // Setup the buttons for all transfers
     // The "add files" button doesn't need to be setup because the config
     // `clickable` has already been specified.
     document.querySelector("#actions .start").onclick = function () {
-        
+
             var name = $.trim($('#GalleryName').val());
 
             // Check if empty of not
@@ -210,7 +207,7 @@
 
         myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
     };
-   
+
     </script>
 
 

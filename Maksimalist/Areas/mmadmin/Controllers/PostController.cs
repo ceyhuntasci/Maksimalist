@@ -29,7 +29,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                 posts.Include(p => p.Author).Include(p => p.Category);
                 return View(posts);
             }
-            posts = posts.OrderByDescending(x => x.Id).Take(10);
+            posts = posts.OrderByDescending(x => x.Id).Take(25);
             return View(posts);
 
 
@@ -207,7 +207,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
 
-        public ActionResult Edit([Bind(Include = "Id,CategoryId,AuthorId,GalleryId,SubCategoryId,Headline,Bottomline,Content,PostDate,HasGallery,Manset,HasVideo,VideoUrl")] Post post, HttpPostedFileBase file1, HttpPostedFileBase file2, string[] Tags)
+        public ActionResult Edit([Bind(Include = "Id,CategoryId,AuthorId,GalleryId,HitCount,SubCategoryId,Headline,Bottomline,Content,PostDate,HasGallery,Manset,HasVideo,VideoUrl")] Post post, HttpPostedFileBase file1, HttpPostedFileBase file2, string[] Tags)
         {
             Post post2 = db.Post.Find(post.Id);
             if (ModelState.IsValid)
@@ -220,7 +220,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                 post2.GalleryId = post.GalleryId;
                 post2.HasGallery = post.HasGallery;
                 post2.HasVideo = post.HasVideo;
-               
+                post2.HitCount = post.HitCount;
                 post2.Manset = post.Manset;
                 post2.PostDate = post.PostDate;
                 post2.SubCategoryId = post.SubCategoryId;
@@ -279,19 +279,21 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                     file1.SaveAs(path);
                     post2.ImageUrl = "/Images/Uploads/" + post2.UrlSlug + "/" + fileName;
 
-                    if (Directory.GetFiles(Server.MapPath("~/Images/Temp")) != null)
-                    {
-                        string[] tempfiles = System.IO.Directory.GetFiles(Server.MapPath("~/Images/Temp"));
-                        foreach (string s in tempfiles)
-                        {
-                            System.IO.File.Move(s, Path.Combine(Server.MapPath("~/Images/Uploads/" + post2.UrlSlug), Path.GetFileName(s)));
-
-
-                        }
-                        post2.Content = post2.Content.Replace("Images/Temp", "Images/Uploads/" + post2.UrlSlug);
-                    }
+                    
 
                 }
+                if (Directory.GetFiles(Server.MapPath("~/Images/Temp")) != null)
+                {
+                    string[] tempfiles = System.IO.Directory.GetFiles(Server.MapPath("~/Images/Temp"));
+                    foreach (string s in tempfiles)
+                    {
+                        System.IO.File.Move(s, Path.Combine(Server.MapPath("~/Images/Uploads/" + post2.UrlSlug), Path.GetFileName(s)));
+
+
+                    }
+                    post2.Content = post2.Content.Replace("Images/Temp", "Images/Uploads/" + post2.UrlSlug);
+                }
+                
                 if (file2 != null && file2.ContentLength > 0)
                 {
 
@@ -452,18 +454,18 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         public string toUrlSlug(string turkish)
         {
             string urlSlug = turkish.Replace("ı", "i");
-            urlSlug = urlSlug.Replace("İ", "i");
+            urlSlug = urlSlug.Replace("İ", "I");
             urlSlug = urlSlug.Replace(" ", "-");
             urlSlug = urlSlug.Replace("ö", "o");
             urlSlug = urlSlug.Replace("ç", "c");
             urlSlug = urlSlug.Replace("ü", "u");
             urlSlug = urlSlug.Replace("ş", "s");
             urlSlug = urlSlug.Replace("ğ", "g");
-            urlSlug = urlSlug.Replace("Ö", "o");
-            urlSlug = urlSlug.Replace("Ç", "c");
-            urlSlug = urlSlug.Replace("Ü", "u");
-            urlSlug = urlSlug.Replace("Ş", "s");
-            urlSlug = urlSlug.Replace("Ğ", "g");
+            urlSlug = urlSlug.Replace("Ö", "O");
+            urlSlug = urlSlug.Replace("Ç", "C");
+            urlSlug = urlSlug.Replace("Ü", "U");
+            urlSlug = urlSlug.Replace("Ş", "S");
+            urlSlug = urlSlug.Replace("Ğ", "G");
             return urlSlug;
         }
     }

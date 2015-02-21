@@ -1,19 +1,20 @@
 ﻿@model Maksimalist.Models.HomeViewModel
 
-<section id="hero-stories" class="wrapperzzz">
 
-    <div class="wrapperzzz">
-
-        <ul class="MansetList">
-           @foreach (var i in Model.Manset) 
-           { 
-            @Html.Partial("_Manset", i)
-           }
-        </ul>
-    </div>
-</section>
 
 <div class="wrapper">
+    <section id="hero-stories" class="wrapperzzz">
+
+        <div class="wrapperzzz">
+
+            <ul class="MansetList">
+                @foreach (var i in Model.Manset)
+                {
+                    @Html.Partial("_Manset", i)
+                }
+            </ul>
+        </div>
+    </section>
     <div class="grids" style="margin-top:20px;">
         <div class="grid-9">
 
@@ -22,8 +23,7 @@
 
                 <header class="section-header">
                     <div class="title-with-sep">
-                        <h2 class="title">MODA</h2>
-                        <span class="sub-title">Acayip Moda Haberleri</span>
+                        <h2 class="title">MODA</h2>            
                     </div>
                 </header>
 
@@ -36,8 +36,7 @@
 
                 <header class="section-header">
                     <div class="title-with-sep">
-                        <h2 class="title">GÜZELLİK</h2>
-                        <span class="sub-title">SİZ DE OLABİLİRSİNİZ</span>
+                        <h2 class="title">GÜZELLİK</h2>  
                     </div>
                 </header>
 
@@ -50,8 +49,7 @@
                 </div>
                 <header class="section-header">
                     <div class="title-with-sep">
-                        <h2 class="title">ALIŞVERİŞ</h2>
-                        <span class="sub-title">HE YA HE</span>
+                        <h2 class="title">ALIŞVERİŞ</h2>         
                     </div>
                 </header>
 
@@ -65,8 +63,7 @@
                 </div>
                 <header class="section-header">
                     <div class="title-with-sep">
-                        <h2 class="title">ÜNLÜLER</h2>
-                        <span class="sub-title">LOREOROEKRA</span>
+                        <h2 class="title">ÜNLÜLER</h2>                   
                     </div>
                 </header>
 
@@ -81,7 +78,7 @@
                 <div style="width:380px;display:inline-block">
                     <header class="section-header">
                         <div class="title-with-sep">
-                            <h2 class="title">ŞEHİR-YAŞAM</h2>
+                            <h2 class="title" style="width:375px">ŞEHİR-YAŞAM</h2>
                         </div>
                     </header>
 
@@ -97,7 +94,7 @@
                 <div style="width:380px;display:inline-block">
                     <header class="section-header">
                         <div class="title-with-sep">
-                            <h2 class="title">GELİN</h2>
+                            <h2 class="title" style="width:375px">GELİN</h2>
                         </div>
                     </header>
 

@@ -1,18 +1,50 @@
 ﻿@model Maksimalist.Models.RightNavViewModel
+<script src="//instansive.com/widget/js/instansive.js"></script>
 <div class="grid-4 column-2" style="width:310px; float: right">
     <aside class="sidebar" role="complementary" itemscope="" itemtype="http://schema.org/WPSideBar">
         <div id="ti_latest_reviews-2" class="widget widget_ti_latest_reviews">
-            <h3>Reklam Alanı.</h3>
-            <figure>
-                <a class="entry-link" href="gallery-post-format/index.html"></a>
-                <img width="330" height="220" src="@Model.Advert.Url" class="attachment-rectangle-size wp-post-image" alt="8470852074_4031c64512_o">
-            </figure>
-            <figure>
-                <a class="entry-link" href="gallery-post-format/index.html"></a>
-                <img width="330" height="220" src="@Model.Advert.Url" class="attachment-rectangle-size wp-post-image" alt="8470852074_4031c64512_o">
-            </figure>
+            <h3>#gününobjesi</h3>
+            <div class="widget-posts-entries">
+
+
+                <ul class="clearfix">
+
+                    @foreach (var i in Model.GununObjesi)
+                    {
+                        <li>
+                            <figure class="entry-image inview">
+                                @if (i.HasGallery)
+                                { <a href="~/post/galeri/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">
+                                    <img width="330" height="220" src="@i.ContentImage" class="attachment-rectangle-size wp-post-image">
+                                </a>}
+                                else
+                                {  <a href="~/post/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">
+                                    <img width="330" height="220" src="@i.ContentImage" class="attachment-rectangle-size wp-post-image">
+                                </a>}
+
+                            </figure>
+                            @if (i.HasGallery)
+                            { <a class="widget-post-title" href="~/post/galeri/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">@i.Headline</a>
+                            }
+                            else
+                            { <a class="widget-post-title" href="~/post/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">@i.Headline</a>
+                            }
+                        </li>
+                    }
+
+
+
+
+
+                </ul>
+            </div>
+
 
         </div><div id="ti_latest_posts-3" class="widget widget_ti_latest_posts">
+                  <div class="widget widget_ti_latest_posts">
+                      <h3>#maksimalistmag</h3>
+                      <iframe src="//instansive.com/widgets/7aee1727d699450db19c7a8990a7e7928c4d9cd1.html" id="instansive_7aee1727d6" name="instansive_7aee1727d6" scrolling="no" allowtransparency="true" class="instansive-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
+                  </div>
             <h3>Popüler İçerikler</h3>
             <div class="widget-posts-entries">
 
@@ -21,27 +53,27 @@
 
                     @foreach (var i in Model.Posts)
                     {
-                        <li>
-                            <figure class="entry-image inview">
-                                @if (i.HasGallery)
-                                { <a href="~/haber/galeri/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">
-                                    <img width="330" height="220" src="@i.ImageUrl" class="attachment-rectangle-size wp-post-image">
+                    <li>
+                        <figure class="entry-image inview">
+                            @if (i.HasGallery)
+                                { <a href="~/post/galeri/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">
+                                    <img width="330" height="220" src="@i.ContentImage" class="attachment-rectangle-size wp-post-image">
                                 </a>}
                                 else
-                                {  <a href="~/haber/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">
-                                    <img width="330" height="220" src="@i.ImageUrl" class="attachment-rectangle-size wp-post-image">
+                                {  <a href="~/post/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">
+                                    <img width="330" height="220" src="@i.ContentImage" class="attachment-rectangle-size wp-post-image">
                                 </a>}
-                                
-                            </figure>
-                            @if (i.HasGallery)
-                            { <span><a href="~/kategori/@i.Category.UrlSlug">@i.Category.Name</a></span><a class="widget-post-title" href="~/haber/galeri/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">@i.Headline</a>
+
+                        </figure>
+                        @if (i.HasGallery)
+                            { <span><a href="~/kategori/@i.Category.UrlSlug">@i.Category.Name</a></span><a class="widget-post-title" href="~/post/galeri/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">@i.Headline</a>
                             }
                             else
-                            {  <span><a href="~/kategori/@i.Category.UrlSlug">@i.Category.Name</a></span><a class="widget-post-title" href="~/haber/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">@i.Headline</a>
+                            {  <span><a href="~/kategori/@i.Category.UrlSlug">@i.Category.Name</a></span><a class="widget-post-title" href="~/post/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">@i.Headline</a>
                             }
-                             </li>
+                    </li>
                     }
-                  
+
 
 
 
@@ -49,12 +81,10 @@
                 </ul>
             </div>
 
-      
 
-       
-          
-       
 
-    
+
+
+
     </aside><!-- .sidebar -->
 </div>

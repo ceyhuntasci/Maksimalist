@@ -36,18 +36,49 @@ namespace Maksimalist.Controllers
         
             post.HitCount = post.HitCount + 1;
             db.SaveChanges();
+
+            if (Request.Browser.IsMobileDevice)
+            {
+                return View("MobilePostDetail", post);
+            }
            
-            Advert ad = db.Advert.First();
             List<Post> popular = db.Post.OrderByDescending(x => x.HitCount).Take(3).ToList();
             popular.OrderBy(x => x.HitCount).ToList();
             RightNavViewModel rn = new RightNavViewModel();
-            rn.Advert = ad;
+            rn.GununObjesi = db.Post.Where(x => x.SubCategory.UrlSlug == "GununObjesi" && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(1).ToList();
+           
             rn.Posts = popular;
             ViewBag.RightNav = rn;
             ViewBag.Title = post.Headline;
-            ViewBag.Image = post.ImageUrl;
+            ViewBag.Image = post.ContentImage;
+            ViewBag.Desc = post.Bottomline;
+            
             ViewBag.last3post = db.Post.Where(x => x.Author.UserName == post.Author.UserName).OrderByDescending(x => x.PostDate).Take(3).ToList();
-            return View(post);
+            #region BenzerPost
+            List<Post> benzerpost = new List<Post>();
+
+            foreach (var item in post.Tags.ToList())
+            {
+
+                benzerpost.AddRange(db.Post.Where(x => x.Tags.Any(c => c.Name == item.Name) && x.UrlSlug != post.UrlSlug).ToList());
+                benzerpost = benzerpost.Distinct().ToList();
+            }
+            int i = 0;
+            List<Post> benzerSub = db.Post.Where(x => x.SubCategory.Name == post.SubCategory.Name && x.UrlSlug != post.UrlSlug).OrderByDescending(x => x.HitCount).ToList();
+            if (benzerSub.Count < 3)
+            {
+                benzerSub.AddRange(db.Post.Where(x => x.Category.Name == post.Category.Name && x.UrlSlug != post.UrlSlug).OrderByDescending(x => x.HitCount).ToList());
+            }
+            benzerSub = benzerSub.Distinct().ToList();
+            benzerpost.AddRange(benzerSub);
+ 
+            benzerpost = benzerpost.Distinct().Take(3).ToList();
+            
+            ViewBag.Benzer = benzerpost; 
+            #endregion
+             
+   
+             return View(post);
         }
          [OutputCache(Duration = 30)]
         public ActionResult Galeri(string urlSlug, string kategori, string altKategori)
@@ -58,17 +89,48 @@ namespace Maksimalist.Controllers
             {
                 return HttpNotFound();
             }
+            post.HitCount = post.HitCount + 1;
             post.Gallery.Matter = post.Gallery.Matter.OrderByDescending(x => x.Order).ToList();
 
-            Advert ad = db.Advert.First();
-            List<Post> popular = db.Post.OrderBy(x => x.HitCount).Take(3).ToList();
+            if(Request.Browser.IsMobileDevice){
+                return View("MobileGaleri" ,post);
+            }
+           
+            List<Post> popular = db.Post.OrderByDescending(x => x.HitCount).Take(5).ToList();
             popular.OrderBy(x => x.HitCount).ToList();
             RightNavViewModel rn = new RightNavViewModel();
-            rn.Advert = ad;
+            rn.GununObjesi = db.Post.Where(x => x.SubCategory.UrlSlug == "GununObjesi" && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(1).ToList();
+           
+           
             rn.Posts = popular;
             ViewBag.RightNav = rn;
             ViewBag.Title = post.Headline;
-            ViewBag.Image = post.ImageUrl;
+            ViewBag.Image = post.ContentImage;
+            ViewBag.Desc = post.Bottomline;
+            ViewBag.last3post = db.Post.Where(x => x.Author.UserName == post.Author.UserName).OrderByDescending(x => x.PostDate).Take(3).ToList();
+           
+            #region BenzerPost
+            List<Post> benzerpost = new List<Post>();
+
+            foreach (var item in post.Tags.ToList())
+            {
+
+                benzerpost.AddRange(db.Post.Where(x => x.Tags.Any(c => c.Name == item.Name) && x.UrlSlug != post.UrlSlug).ToList());
+                benzerpost = benzerpost.Distinct().ToList();
+            }
+            int i = 0;
+            List<Post> benzerSub = db.Post.Where(x => x.SubCategory.Name == post.SubCategory.Name && x.UrlSlug != post.UrlSlug).OrderByDescending(x => x.HitCount).ToList();
+            if (benzerSub.Count < 3)
+            {
+                benzerSub.AddRange(db.Post.Where(x => x.Category.Name == post.Category.Name && x.UrlSlug != post.UrlSlug).OrderByDescending(x => x.HitCount).ToList());
+            }
+            benzerSub = benzerSub.Distinct().ToList();
+            benzerpost.AddRange(benzerSub);
+
+            benzerpost = benzerpost.Distinct().Take(3).ToList();
+           
+            ViewBag.Benzer = benzerpost;
+            #endregion
             return View(post);
         }
 

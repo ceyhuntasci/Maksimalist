@@ -1,21 +1,24 @@
 ﻿@model Maksimalist.Models.Post
-
+@{
+    List<Maksimalist.Models.Post> Benzer = ViewBag.Benzer;
+    List<Maksimalist.Models.Post> last3post = ViewBag.last3post;
+}
 <div id="fb-root"></div>
 <script>
-(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&appId=780985738613644&version=v2.0";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&appId=780985738613644&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 <section id="content-container" class="slideshow-container">
     <header class="bottom-ruler hide-overflow">
         <h1 class="slideshow-header">
             @Model.Headline
         </h1>
     </header>
-    <ol id="slideshow-78806" class="slideshow" style="display:inline">
+    <ol id="slideshow-78806" class="slideshow">
 
         @{
             int iter = 0;
@@ -40,13 +43,17 @@
                     <div class="small-col popout">
                         <div class="small-col bottom-ruler hide-overflow inset-left-1">
                             <div class="menu-article-share">
-                               <p>SHARES</p>
+                                <p>PAYLAS</p>
+                            </div>
+                            <div class="col-right inset-right-half">
+                                <a class="share-button-twitter icon-twitter" href="https://twitter.com/intent/tweet?original_referer=@Request.Url.AbsoluteUri;text=@Model.Headline;tw_p=tweetbutton&amp;url=@Request.Url.AbsoluteUri" target="_blank"></a>
                             </div>
                             <div class="col-right">
-                                <button class="share-button-pinterest icon-pinterest"></button>
+                                <a class="share-button-pinterest icon-pinterest" href="//pinterest.com/pin/create/button/?url=@Request.Url.AbsoluteUri;media=@Model.ContentImage;description=@Model.Headline" target="_blank"></a>
                             </div>
-                            <div class="fb-share-button col-right" data-href="@Request.Url.AbsoluteUri" data-layout="button"></div>
-                           
+                            <div class="col-right">
+                                <a class="share-button-facebook icon-facebook" href="http://www.facebook.com/sharer.php?u=@Request.Url.AbsoluteUri" target="blank"></a>
+                            </div>
                         </div>
 
                         <div class="inset-left-1">
@@ -59,7 +66,7 @@
 
                     <div class="left inset-left-1 inset-right-1 popout-drag">
 
-                        <p class="displayOnVisible slideshow-p-text">@i.Content</p>
+                        <p class="displayOnVisible slideshow-p-text">@Html.Raw(i.Content)</p>
 
                     </div>
                 </div>
@@ -75,29 +82,176 @@
 
 
     </div><!--/.breadcrumb-->
-    <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-width="750" data-numposts="5" data-colorscheme="light"></div>
+    <div class="single-box tag-box clearfix tags-section">
+
+        @foreach (Maksimalist.Models.Tag i in Model.Tags)
+        {
+            @Html.Partial("_Tag", i);
+        }
+
+    </div>
+
+    <div class="single-box related-posts tags-section">
+
+        <h3 class="title">Benzer Yazılar</h3>
+
+        <div class="grids entries">
+            <div class="carousel">
+
+
+                @foreach (var item in Benzer)
+                {
+                    <div class="item">
+                        <figure class="entry-image inview">
+                            @if (item.HasGallery)
+                            {
+                                <a href="~/post/galeri/@item.Category.UrlSlug/@item.SubCategory.UrlSlug/@item.UrlSlug">
+                                    <img width="296" height="197" src="@item.ContentImage" class="attachment-rectangle-size-small wp-post-image">
+                                </a>
+                            }
+                            else if (item.HasVideo)
+                            {  <a href="~/post/@item.Category.UrlSlug/@item.SubCategory.UrlSlug/@item.UrlSlug">
+                                <img width="296" height="197" src="@item.ContentImage" class="attachment-rectangle-size wp-post-image" />
+                            </a>}
+                            else
+                            {
+                                <a href="~/post/@item.Category.UrlSlug/@item.SubCategory.UrlSlug/@item.UrlSlug">
+                                    <img width="296" height="197" src="@item.ContentImage" class="attachment-rectangle-size wp-post-image" />
+                                </a>
+                            }
+                        </figure>
+                        <header class="entry-header">
+                            <h4>
+                                @if (item.HasGallery)
+                                {<a href="~/post/galeri/@item.Category.UrlSlug/@item.SubCategory.UrlSlug/@item.UrlSlug">@item.Headline</a>}
+                                else
+                                {  <a href="~/post/@item.Category.UrlSlug/@item.SubCategory.UrlSlug/@item.UrlSlug">@item.Headline</a>}
+                            </h4>
+                        </header>
+                    </div>
+                }
+
+
+
+
+
+
+
+            </div>
+        </div>
+        <a class="prev carousel-nav" href="#" style="display: none;"><i class="icomoon-chevron-left"></i></a>
+        <a class="next carousel-nav" href="#" style="display: none;"><i class="icomoon-chevron-right"></i></a>
+
+    </div>
+    <div class="single-box author-box single-author-box tags-section">
+        <ul class="author-tabs-button clearfix">
+            <li><a href="index.html#author-bio">Bio</a></li>
+            <li><a href="index.html#author-posts">Son Yazıları</a></li>
+        </ul>
+
+        <div class="author-tabs-content">
+            <div class="clearfix inner">
+
+                <div id="author-bio">
+                    <div class="avatar">
+
+                        <img alt='@Model.Author.FirstName @Model.Author.LastName' src='@Model.Author.ProfilePicture' class='avatar avatar-70 photo' height='70' width='70' />
+
+                    </div><!-- .avatar -->
+                    <div class="author-info" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
+                        <span class="vcard author">
+                            <span class="fn">
+
+                                <span itemprop="name">@Model.Author.FirstName @Model.Author.LastName</span>
+
+                            </span>
+                        </span>
+                        <p itemprop="description">
+                            @Model.Author.Bio
+                        </p>
+                    </div><!-- .info -->
+                    <ul class="author-social">
+
+                        <li>
+                            <a class="twitter-link" href="@Model.Author.TwitterUrl">
+                                Twitter
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="facebook-link" href="@Model.Author.FacebookUrl">
+                                Facebook
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="pinterest-link" href="@Model.Author.Pinterest">
+                                Pinterest
+                            </a>
+                        </li>
+
+
+                    </ul><!-- .author-social -->
+                </div><!-- #author-bio -->
+
+                <div id="author-posts">
+                    <div class="avatar">
+
+                        <img src='@Model.Author.ProfilePicture' class='avatar avatar-109 photo' height='109' width='109' />
+
+                    </div><!-- .avatar -->
+                    <div class="author-info">
+
+                        @Model.Author.FirstName @Model.Author.LastName Son Yazıları
+
+                        <ul>
+                            @foreach (var sacma in last3post)
+                            {
+                                if (sacma.HasGallery)
+                                {
+                                    <li>
+                                        <a href="~/post/galeri/@sacma.Category.UrlSlug/@sacma.SubCategory.UrlSlug/@sacma.UrlSlug">@sacma.Headline</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="~/post/@sacma.Category.UrlSlug/@sacma.SubCategory.UrlSlug/@sacma.UrlSlug">@sacma.Headline</a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div><!-- #author-posts -->
+
+            </div>
+        </div>
+
+    </div><!-- .tabs -->
+
+    <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-width="935" data-numposts="5" data-colorscheme="light"></div>
 
 </section>
 
 <script>
-    
+
     $(document).ready(function () {
-        $(".slide").first().addClass("active isVisible");
+        $(".slide").first().addClass("active isVisible secici");
     });
     $(".Prev-Arrow").click(function () {
-        if ($(".active").is(':first-child')) {
+        if ($(".secici").is(':first-child')) {
 
         }
         else {
-            $(".active").removeClass("active isVisible").prev().addClass("active isVisible");
+            $(".secici").removeClass("active isVisible secici").prev().addClass("active isVisible secici");
         }
     });
     $(".Next-Arrow").click(function () {
-        if ($(".active").is(':last-child')) {
+        if ($(".secici").is(':last-child')) {
 
         }
         else {
-            $(".active").removeClass("active isVisible").next().addClass("active isVisible");
+            $(".secici").removeClass("active isVisible secici").next().addClass("active isVisible secici");
         }
 
     });

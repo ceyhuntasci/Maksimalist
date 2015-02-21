@@ -1,0 +1,62 @@
+﻿@model Maksimalist.Models.Post
+@{
+    ViewBag.Title = "MobileGaleri";
+    Layout = "~/Views/Shared/_MobileLayout.cshtml";
+}
+
+<div class="category">
+    <a href="~/kategori/@Model.UrlSlug" title="@Model.Category.Name" class="category-link">@Model.Category.Name</a> | @String.Format("{0:dd MMMM yyyy}", Model.PostDate)
+</div>
+<article class="slideshow-detail">
+    <div id="article-header">
+        <h2>@Model.Headline</h2>
+                <div class="body-content">
+
+            <div style="clear:both"></div>
+        </div><!--/body-content-->
+    </div><!--/article-header-->
+    <section class="slides" id="working-from-home-outfits">
+        <ul>
+            @{
+                    int iter = 0;
+            }
+            @foreach (var i in Model.Gallery.Matter)
+               {
+                   iter++;
+                <li id="slide@iter" class="slide">
+                    <div class="slide-count">
+                        @iter <em>of</em> @Model.Gallery.Matter.Count()
+                    </div>
+                    <div class="slide-img">
+
+                        <img class="slide-img" src="@i.Url">
+
+
+                    </div>
+                    <div class="slide-body">
+                        <p>@i.Content</p>
+
+
+                    </div>
+                </li>
+               }
+        </ul>
+    </section>
+
+    <ul class="content-social">
+        <h4>PAYLAŞ!</h4>
+        <li class="facebook">
+            <a class="fb" href="http://www.facebook.com/sharer.php?u=@Request.Url.AbsoluteUri" target="_blank">
+                <i class="icon-facebook"></i><span>Paylaş</span>
+            </a>
+        </li>
+        <li class="twitter">
+            <a href="https://twitter.com/intent/tweet?original_referer=@Request.Url.AbsoluteUri;text=@Model.Headline;tw_p=tweetbutton&amp;url=@Request.Url.AbsoluteUri" target="_blank">
+                <i class="icon-twitter"></i><span>Tweet</span>
+            </a>
+        </li>
+    </ul>
+
+
+</article>
+

@@ -14,6 +14,14 @@ namespace Maksimalist.Controllers
         [OutputCache(Duration=30)]
         public ActionResult Index()
         {
+            if(Request.Browser.IsMobileDevice){
+                MobileHomeViewModel mhmw = new MobileHomeViewModel();
+                mhmw.Manset = db.Post.Where(x => x.Manset == true && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(1).FirstOrDefault();
+                mhmw.Postlar = db.Post.Where(x=> x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(10).ToList();
+            
+
+                return View("MobileHome",mhmw);
+            }
             HomeViewModel hmw = new HomeViewModel();
             hmw.Manset = db.Post.Where(x=> x.Manset==true && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(4).ToList();
             hmw.Moda = db.Post.Where(x => x.Category.UrlSlug == "Moda" && x.Manset == false && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(3).ToList();
@@ -29,14 +37,17 @@ namespace Maksimalist.Controllers
          
             
             
-            Advert ad = db.Advert.First();
-            List<Post> popular = db.Post.OrderByDescending(x => x.HitCount).Take(3).ToList();
+            List<Post> ad = db.Post.Take(2).ToList();
+            List<Post> popular = db.Post.OrderByDescending(x => x.HitCount).Take(5).ToList();
             popular.OrderBy(x => x.HitCount).ToList();
             RightNavViewModel rn = new RightNavViewModel();
-            rn.Advert = ad;
+            rn.GununObjesi = db.Post.Where(x => x.SubCategory.UrlSlug == "GununObjesi" && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(1).ToList();
+           
+            rn.Adverts = ad;
             rn.Posts = popular;
             ViewBag.RightNav = rn;
             ViewBag.Title = "Maksimalist";
+            
             return View(hmw);
         }
          [OutputCache(Duration = 30)]

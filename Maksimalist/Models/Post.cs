@@ -30,7 +30,7 @@ namespace Maksimalist.Models
         public string UrlSlug { get; set; }
         [DisplayName("Manşet Görseli")]
         public string ImageUrl { get; set; }
-        [DisplayName("İçerik Görseli")]
+        [DisplayName("330x220 Görseli")]
         public string ContentImage { get; set; }
         [DisplayName("Video Linki")]
         [AllowHtml]
@@ -40,7 +40,7 @@ namespace Maksimalist.Models
         public DateTime PostDate { get; set; }
 
         public Boolean Manset { get; set; }
-        [DisplayName("Galerisi Var Mı?")]
+        [DisplayName("Galeri Haberi")]
         public Boolean HasGallery { get; set; }
         [DisplayName("Video Haberi")]
         public Boolean HasVideo { get; set; }

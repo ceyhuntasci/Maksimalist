@@ -2,6 +2,7 @@
 
 @{
     List<Maksimalist.Models.Post> last3post = ViewBag.last3post;
+     List<Maksimalist.Models.Post> Benzer = ViewBag.Benzer;
 }
 
 <body class="single single-post postid-1 single-format-standard ltr" itemscope itemtype="http://schema.org/WebPage">
@@ -49,86 +50,118 @@
     <main id="content" class="clearfix animated" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
 
         <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion tag-music tag-video" itemscope itemtype="http://schema.org/Article">
-            <header class="wrapper entry-header page-header">
-                <div class="entry-meta">
-                    <span class="vcard author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
-                        <span>By</span>
-
-                        <span itemprop="name">@Model.Author.FirstName @Model.Author.LastName</span>
-
-                    </span>
-                    <span class="entry-category"><a href="/kategori/@Model.Category.Name">@Model.Category.Name</a></span><time class="entry-date updated">@String.Format("{0:dd MMMM yyyy}", Model.PostDate)</time>
-                </div>
-
-                <div class="title-with-sep ruler-background single-title">
-                    <h1 class="entry-title" itemprop="headline">@Model.Headline</h1>
-                </div>
-            </header>
+           
 
             <div class="wrapper">
                 <div class="grids">
                     <div class="grid-8 column-1">
+                        <header class="wrapper entry-header page-header">
+                            <div class="entry-meta">
+                                <span class="vcard author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
+                                    <span>By</span>
 
+                                    <span itemprop="name">@Model.Author.FirstName @Model.Author.LastName</span>
+
+                                </span>
+                                <span class="entry-category"><a href="/kategori/@Model.Category.UrlSlug">@Model.Category.Name</a></span><time class="entry-date updated">@String.Format("{0:dd MMMM yyyy}", Model.PostDate)</time>
+                            </div>
+
+                            <div class="title-with-sep ruler-background single-title">
+                                <h1 class="entry-title" itemprop="headline">@Model.Headline</h1>
+                            </div>
+                        </header>
                         @if (Model.HasVideo)
                         {@Html.Raw(@Model.VideoUrl)}
-                        else
-                        {
-
-                            <div class="entry-media">
-                                <figure class="base-image"><img width="690" height="460" src="@Model.ContentImage" class="attachment-medium-size wp-post-image" alt="see" itemprop="image" /></figure>
-                            </div>
-                        }
+                        
 
 
                         <div class="single-box clearfix entry-content" itemprop="articleBody">
                             @Html.Raw(@Model.Content)
                         </div><!-- .entry-content -->
                         <div class="single-box tag-box clearfix">
-                            <h3 class="title">Tags</h3>
+                           
                             @foreach (Maksimalist.Models.Tag i in Model.Tags)
                             {
                                 @Html.Partial("_Tag", i);
                             }
 
                         </div>
-                        <div class="clearfix single-box social-box social-minimal">
-                            <h3 class="title">Share on</h3>
+                        <div class="clearfix single-box social-box social-colors">
+                            <h3 class="title">PAYLAS</h3>
                             <ul>
                                 <li class="share-facebook">
-                                    <button id="Selam">Hello</button>
+                                    <a href="http://www.facebook.com/sharer.php?u=@Request.Url.AbsoluteUri" target="blank">
+                                        <i class="icomoon-facebook"></i>
+                                        FACEBOOK
+                                    </a>
                                 </li>
                                 <li class="share-twitter">
-                                    <a href="@Model.Author.TwitterUrl" target="_blank">
+                                    <a href="https://twitter.com/intent/tweet?original_referer=@Request.Url.AbsoluteUri;text=@Model.Headline;tw_p=tweetbutton&amp;url=@Request.Url.AbsoluteUri" target="_blank">
                                         <i class="icomoon-twitter"></i>
-                                        Twitter
+                                        TWITTER
                                     </a>
                                 </li>
                                 <li class="share-pinterest">
-                                    <a href="@Model.Author.Pinterest" target="_blank">
+                                    <a href="//pinterest.com/pin/create/button/?url=@Request.Url.AbsoluteUri;media=@Model.ContentImage;description=@Model.Headline" target="_blank">
                                         <i class="icomoon-pinterest"></i>
-                                        Pinterest
+                                        PINTEREST
                                     </a>
                                 </li>
-                                <li class="share-gplus">
-                                    <a href="@Model.Author.SpotifyUrl" target="_blank">
-                                        <i class="icomoon-google-plus"></i>
-                                        Google +
-                                    </a>
-                                </li>
-                                <li class="share-linkedin">
-                                    <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://themesindep.com/simplemag/standard-post/&title=Standard%20Post&source=SimpleMag">
-                                        <i class="icomoon-linkedin"></i>
-                                        LinkedIn
-                                    </a>
-                                </li>
-                                <li class="share-mail">
-                                    <a href="@Model.Author.Email">
-                                        <i class="icomoon-envelope"></i>
-                                        Email
-                                    </a>
-                                </li>
+                                
                             </ul>
-                        </div><!-- social-box -->
+                        </div>
+                         
+                        <div class="single-box related-posts">
+
+                            <h3 class="title">Benzer Yazılar</h3>
+
+                            <div class="grids entries">
+                                <div class="carousel">
+
+                                    
+                                   @foreach (var item in Benzer) { 
+                                    <div class="item">
+                                        <figure class="entry-image inview">
+                                            @if(item.HasGallery){
+                                                <a href="~/post/galeri/@item.Category.UrlSlug/@item.SubCategory.UrlSlug/@item.UrlSlug">
+                                                    <img width="296" height="197" src="@item.ContentImage" class="attachment-rectangle-size-small wp-post-image">
+                                                </a>
+                                            }
+                                            else if (item.HasVideo)
+                                            {  <a href="~/post/@item.Category.UrlSlug/@item.SubCategory.UrlSlug/@item.UrlSlug">
+                                                   <img width="296" height="197" src="@item.ContentImage" class="attachment-rectangle-size wp-post-image" />
+                                            </a>}
+                                            else
+                                            {
+                                                <a href="~/post/@item.Category.UrlSlug/@item.SubCategory.UrlSlug/@item.UrlSlug">
+                                                    <img width="296" height="197" src="@item.ContentImage" class="attachment-rectangle-size wp-post-image" />
+                                                </a>
+                                            }
+                                        </figure>
+                                        <header class="entry-header">
+                                            <h4>
+                                                @if (item.HasGallery)
+                                                {<a href="~/post/galeri/@item.Category.UrlSlug/@item.SubCategory.UrlSlug/@item.UrlSlug">@item.Headline</a>}
+                                                else
+                                                {  <a href="~/post/@item.Category.UrlSlug/@item.SubCategory.UrlSlug/@item.UrlSlug">@item.Headline</a>}
+                                            </h4>
+                                        </header>
+                                    </div>
+                                  } 
+
+
+                                 
+
+
+
+
+                                </div>
+                            </div>
+                            <a class="prev carousel-nav" href="#" style="display: none;"><i class="icomoon-chevron-left"></i></a>
+                            <a class="next carousel-nav" href="#" style="display: none;"><i class="icomoon-chevron-right"></i></a>
+
+                        </div>
+
                         <div class="single-box author-box single-author-box">
                             <ul class="author-tabs-button clearfix">
                                 <li><a href="index.html#author-bio">Bio</a></li>
@@ -159,25 +192,19 @@
                                         <ul class="author-social">
 
                                             <li>
-                                                <a class="twitter-link" href="https://twitter.com/twitter">
+                                                <a class="twitter-link" href="@Model.Author.TwitterUrl">
                                                     Twitter
                                                 </a>
                                             </li>
 
                                             <li>
-                                                <a class="facebook-link" href="http://facebook.com/facebook">
+                                                <a class="facebook-link" href="@Model.Author.FacebookUrl">
                                                     Facebook
                                                 </a>
                                             </li>
 
                                             <li>
-                                                <a class="google-link" href="http://plus.google.com/+google?rel=author">
-                                                    Google+
-                                                </a>
-                                            </li>
-
-                                            <li>
-                                                <a class="pinterest-link" href="http://pinterest.com/pinterest">
+                                                <a class="pinterest-link" href="@Model.Author.Pinterest">
                                                     Pinterest
                                                 </a>
                                             </li>
@@ -202,13 +229,13 @@
                                                     if (sacma.HasGallery)
                                                     {
                                                         <li>
-                                                            <a href="~/haber/galeri/@sacma.Category.UrlSlug/@sacma.SubCategory.UrlSlug/@sacma.UrlSlug">@sacma.Headline</a>
+                                                            <a href="~/post/galeri/@sacma.Category.UrlSlug/@sacma.SubCategory.UrlSlug/@sacma.UrlSlug">@sacma.Headline</a>
                                                         </li>
                                                     }
                                                     else
                                                     {
                                                         <li>
-                                                            <a href="~/haber/@sacma.Category.UrlSlug/@sacma.SubCategory.UrlSlug/@sacma.UrlSlug">@sacma.Headline</a>
+                                                            <a href="~/post/@sacma.Category.UrlSlug/@sacma.SubCategory.UrlSlug/@sacma.UrlSlug">@sacma.Headline</a>
                                                         </li>
                                                     }
                                                 }
@@ -229,14 +256,14 @@
 
                         <div id="comments" class="single-box comments-area">
 
-                            <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-width="750" data-numposts="5" data-colorscheme="light"></div>
+                            <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-width="850" data-numposts="5" data-colorscheme="light"></div>
   
                         </div><!-- .grid-8 -->
 
                     </div><!-- .grids -->
                     @Html.Partial("_rightnav", (Maksimalist.Models.RightNavViewModel)ViewBag.RightNav)
                 </div><!-- .wrapper -->
-
+            </div>
         </article>
 
     </main><!-- #content -->

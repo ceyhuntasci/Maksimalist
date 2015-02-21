@@ -15,5 +15,6 @@ namespace Maksimalist.Models
         public ICollection<Post> SehirYasam { get; set; }
         public ICollection<Post> Gelin { get; set; }
         public ICollection<Post> Video { get; set; }
+  
     }
 }

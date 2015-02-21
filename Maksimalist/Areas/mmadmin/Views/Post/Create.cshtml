@@ -113,17 +113,14 @@
                         if ($('#HasGallery').is(":checked")) {
                             $('#HasGallery').click()
                         }
-                        $("#ContentImage")
-                            .attr("disabled", "disabled")
-                            .val(null)
+                       
 
                     }
                     else {
                         $("#VideoUrl")
                             .attr("disabled", "disabled")
                             .val(null)
-                        $("#ContentImage")
-                         .removeAttr("disabled")
+                      
                     }
                 });
             </script>
@@ -142,6 +139,16 @@
                             .val(null)
 
                     }
+                });
+
+                $('#Yolla').bind("click", function () {
+                    var imgVal = $('#ContentImage').val();
+                    if (imgVal == '') {
+                        alert("330x220 görseli ekleyiniz");
+                        return false;
+                    }
+                  
+
                 });
             </script>
             <div class="form-group">
@@ -176,14 +183,14 @@
                 </div>
             </div>
             <script>
-                CKEDITOR.replace('Content', {
-                    filebrowserImageBrowseUrl: '../Post/uploadPartial',
-                    filebrowserImageUploadUrl: '../Post/uploadnow'
-                });
-                function updateValue(id, value) {
-                    // this gets called from the popup window and updates the field with a new value
-                    document.getElementById(id).value = value;
-                }
+    CKEDITOR.replace('Content', {
+        filebrowserImageBrowseUrl: '@Url.Action("uploadPartial", "Post", new{area="mmadmin"})',
+        filebrowserImageUploadUrl: '@Url.Action("uploadnow", "Post", new{area="mmadmin"})'
+    });
+    function updateValue(id, value) {
+        // this gets called from the popup window and updates the field with a new value
+        document.getElementById(id).value = value;
+    }
             </script>
 
 
@@ -220,7 +227,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" id="Yolla" value="Create" class="btn btn-default" />
                 </div>
             </div>
         </div>

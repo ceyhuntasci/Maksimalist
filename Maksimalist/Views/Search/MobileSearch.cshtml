@@ -1,0 +1,20 @@
+﻿@model Maksimalist.Models.MobileHomeViewModel
+@{
+    ViewBag.Title = "MobileSearch";
+    Layout = "~/Views/Shared/_MobileLayout.cshtml";
+}
+
+<div id="homepage" class="homepage">
+    <ul class="pagination-list list-container">
+      
+        @foreach (var i in Model.Postlar)
+        {
+            @Html.Partial("_MobilePost", i)
+        }
+    </ul>
+    <div id="more-btn">
+        <a href="/" class="more-label" title="Daha Fazla">
+            More&nbsp;Stories<em class="caret bottom"></em>
+        </a>
+    </div>
+</div>

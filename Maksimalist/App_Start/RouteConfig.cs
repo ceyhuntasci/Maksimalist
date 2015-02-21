@@ -16,7 +16,7 @@ namespace Maksimalist
             routes.MapRoute(
                  name: "Anasayfa",
                  url: "",
-                 defaults: new { controller = "Home", action = "About" },
+                 defaults: new { controller = "Home", action = "Index" },
                  namespaces: new[] { "Maksimalist.Controllers" }
              );
             routes.MapRoute(
@@ -28,7 +28,7 @@ namespace Maksimalist
            );
          
             routes.MapRoute(
-               name: "Haber",
+               name: "post",
                url: "post/{kategori}/{altKategori}/{urlSlug}",
                defaults: new { controller = "Post", action = "Details" },
                namespaces: new[] { "Maksimalist.Controllers" }
@@ -46,12 +46,7 @@ namespace Maksimalist
               namespaces: new[] { "Maksimalist.Controllers" }
               );
 
-            routes.MapRoute(
-                 name: "He Şu",
-                 url: "anasayfa/index/",
-                 defaults: new { controller = "Home", action = "Index" },
-                 namespaces: new[] { "Maksimalist.Controllers" }
-                 );
+            
             routes.MapRoute(
                  name: "getresult",
                  url: "getResult/{email}/kaydet",

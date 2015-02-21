@@ -3,6 +3,7 @@
 }
 <head>
     <title>Maksimalist</title>
+    <meta name="description" content="Moda ve Daha Fazlası, Yakında" />
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="~/Scripts/Popup.js"></script>
     <style>
@@ -15,11 +16,14 @@
             background-color: #fff;
             border-color: #ccc;
         }
-          @@font-face {
-                font-family: 'FuturaStd-BookOblique';
-                src: url('../../fonts/FuturaStd-BookOblique.otf') format('opentype');
-            }
-        p,form,button {
+
+        @@font-face {
+            font-family: 'FuturaStd-BookOblique';
+            src: url('../../fonts/FuturaTurkBook.ttf') format('truetype');
+        }
+
+
+        p, form, button {
             font-family: FuturaStd-BookOblique;
             font-size: 20px;
             text-align: center;
@@ -101,7 +105,6 @@
         }
 
         #Email {
-
             width: 83%;
             height: 34px;
             padding: 6px 12px;
@@ -121,17 +124,30 @@
 
         }
     </style>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-57948664-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
 </head>
 <body>
     <img src="~/Content/Soon_03.gif" />
-   
-        <div id="popup" style="height: 200px;left: 433px; position: absolute; top: 621.5px; z-index: 9999; opacity: 0; display: none;padding-top:50px;">
-            <span class="button b-close"><span>X</span></span>
-            <p>MODA VE DAHA FAZLASI, YAKINDA</p>
-            <input type="email" class="form-control" id="Email" placeholder="Email" name="Email">
-            <button type="button" class="btn btn-default">Kaydet</button>
-            <p id="Feedback"></p>
-        </div>
+
+    <div id="popup" style="height: 200px;left: 433px; position: absolute; top: 621.5px; z-index: 9999; opacity: 0; display: none;padding-top:50px;">
+        <span class="button b-close"><span>X</span></span>
+        <p>MODA VE DAHA FAZLASI, YAKINDA</p>
+        <input type="email" class="form-control" id="Email" placeholder="Email" name="Email">
+        <button type="button" class="btn btn-default">Kaydet</button>
+        <p id="Feedback"></p>
+    </div>
 
     <script>
         jQuery(document).ready(function () {
@@ -145,9 +161,9 @@
         $(".btn").click(function () {
             var self = $("#Email");
             var items = "";
-            $.getJSON("/getResult/" + self.val()+"/kaydet",
+            $.getJSON("/getResult/" + self.val() + "/kaydet",
                                                                 function (data) {
-                                                                    
+
                                                                     $("#Feedback").html(data);
                                                                 });
         });

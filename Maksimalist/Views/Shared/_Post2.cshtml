@@ -5,17 +5,17 @@
 
     <figure class="entry-image">
         @if (Model.HasGallery)
-        { <a href="~/haber/galeri/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">
-            <img width="270" height="180" src="@Model.ImageUrl" class="attachment-rectangle-size wp-post-image" /><i class="icomoon-camera-retro"></i>
+        { <a href="~/post/galeri/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">
+            <img width="270" height="180" src="@Model.ContentImage" class="attachment-rectangle-size wp-post-image" />
         </a>}
         else if (Model.HasVideo)
-        {  <a href="~/haber/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">
-            <img width="270" height="180" src="@Model.ImageUrl" class="attachment-rectangle-size wp-post-image" /><i class="icomoon-camera"></i>
+        {  <a href="~/post/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">
+            <img width="270" height="180" src="@Model.ContentImage" class="attachment-rectangle-size wp-post-image" />
         </a>}
         else
         {
-            <a href="~/haber/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">
-                <img width="270" height="180" src="@Model.ImageUrl" class="attachment-rectangle-size wp-post-image" />
+            <a href="~/post/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">
+                <img width="270" height="180" src="@Model.ContentImage" class="attachment-rectangle-size wp-post-image" />
             </a>
         }
     </figure>
@@ -26,9 +26,9 @@
         </div>
         <h2 class="entry-title">
             @if (Model.HasGallery)
-            {<a href="~/haber/galeri/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">@Model.Headline</a>}
+            {<a href="~/post/galeri/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">@Model.Headline</a>}
             else
-            {  <a href="~/haber/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">@Model.Headline</a>}
+            {  <a href="~/post/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug">@Model.Headline</a>}
 
         </h2>
 

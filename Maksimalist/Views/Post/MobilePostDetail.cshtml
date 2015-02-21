@@ -1,0 +1,97 @@
+﻿﻿@model Maksimalist.Models.Post
+@{
+    ViewBag.Title = "MobilePostDetail";
+    Layout = "~/Views/Shared/_MobileLayout.cshtml";
+
+}
+
+
+<body class="single single-post postid-1 single-format-standard ltr" itemscope itemtype="http://schema.org/WebPage">
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '780985738613644',
+                xfbml: true,
+                version: 'v2.1'
+            });
+        };
+
+        FB.ui({
+            method: 'share_open_graph',
+            action_type: 'og.likes',
+            action_properties: JSON.stringify({
+                object: 'https://developers.facebook.com/docs/',
+            })
+        }, function (response) { });
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        $("#Selam").click(function () {
+            fb.ui;
+        });
+    </script>
+
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&appId=780985738613644&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+
+    <main id="content" class="clearfix animated" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
+
+        <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion tag-music tag-video" itemscope itemtype="http://schema.org/Article">
+
+
+            <div class="wrapper">
+                <div class="grids">
+                    <div class="grid-8 column-1">
+                        <header class="wrapper entry-header page-header">
+
+
+                            <div class="title-with-sep ruler-background single-title">
+                                <h1 class="entry-title" itemprop="headline">@Model.Headline</h1>
+                            </div>
+                        </header>
+                        @if (Model.HasVideo)
+                        {@Html.Raw(@Model.VideoUrl)}
+
+
+
+                        <div class="single-box clearfix entry-content" itemprop="articleBody">
+                            @Html.Raw(@Model.Content)
+                        </div><!-- .entry-content -->
+                        <ul class="content-social">
+                            <h4> PAYLAŞ!</h4>
+                            <li class="facebook">
+                                <a class="fb" href="http://www.facebook.com/sharer.php?u=@Request.Url.AbsoluteUri" target="_blank">
+                                    <i class="icon-facebook"></i><span>Paylaş</span>
+                                </a>
+                            </li>
+                            <li class="twitter">
+                                <a href="https://twitter.com/intent/tweet?original_referer=@Request.Url.AbsoluteUri;text=@Model.Headline;tw_p=tweetbutton&amp;url=@Request.Url.AbsoluteUri" target="_blank">
+                                    <i class="icon-twitter"></i><span>Tweet</span>
+                                </a>
+                            </li>
+                        </ul>
+                      
+
+                        </div><!-- .grids -->
+
+                    </div><!-- .wrapper -->
+                </div>
+        </article>
+
+    </main><!-- #content -->
+
+</body>

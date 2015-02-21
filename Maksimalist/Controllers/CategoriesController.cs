@@ -32,7 +32,7 @@ namespace Maksimalist.Controllers
                 if (catgo != null)
                 {
                     ViewBag.CategoryName = catgo.Name;
-                    postCollection = catgo.Posts.Where(x => x.PostDate <= DateTime.Now).ToList();
+                    postCollection = catgo.Posts.Where(x => x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).ToList();
                     
                     if (altkategori != null)
                     {
@@ -67,11 +67,13 @@ namespace Maksimalist.Controllers
 
                     }
 
-                    Advert ad = db.Advert.First();
-                    List<Post> popular = db.Post.OrderByDescending(x => x.HitCount).Take(3).ToList();
+                   
+           
+                    List<Post> popular = db.Post.OrderByDescending(x => x.HitCount).Take(5).ToList();
                     popular.OrderBy(x => x.HitCount).ToList();
                     RightNavViewModel rn = new RightNavViewModel();
-                    rn.Advert = ad;
+                    rn.GununObjesi = db.Post.Where(x => x.SubCategory.UrlSlug == "GununObjesi" && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(1).ToList();
+           
                     rn.Posts = popular;
                     ViewBag.Title = ViewBag.CategoryName;
                     ViewBag.RightNav = rn;

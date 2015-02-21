@@ -236,6 +236,7 @@
     <Compile Include="Models\imagesviewmodel.cs" />
     <Compile Include="Models\MaksimalistContext.cs" />
     <Compile Include="Models\Matter.cs" />
+    <Compile Include="Models\MobileHomeViewModel.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\RightNavViewModel.cs" />
     <Compile Include="Models\SubCategory.cs" />
@@ -254,6 +255,7 @@
     <Content Include="Areas\mmadmin\Views\Advert\Details.cshtml" />
     <Content Include="Areas\mmadmin\Views\Advert\Edit.cshtml" />
     <Content Include="Areas\mmadmin\Views\Advert\Index.cshtml" />
+    <Content Include="Areas\mmadmin\Views\Gallery\Add.cshtml" />
     <None Include="Areas\mmadmin\Views\Home\Index.cshtml" />
     <Content Include="bootstrap-tagsinput\bootstrap-tagsinput-angular.js" />
     <Content Include="bootstrap-tagsinput\bootstrap-tagsinput-angular.min.js" />
@@ -607,6 +609,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Calmaca.css" />
+    <Content Include="Content\CSSMobil.css" />
     <Content Include="Content\dropzone.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\frontend-style-ver=4.0.css" />
@@ -626,6 +629,7 @@
     <Content Include="Images\favicon.jpg" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\ruler.png" />
+    <Content Include="Images\ruler2.png" />
     <Content Include="Images\section-header.png" />
     <Content Include="Images\spritemap.png" />
     <Content Include="Scripts\angular.min.js" />
@@ -686,12 +690,20 @@
     <Content Include="fonts\FuturaStd-BookOblique.otf" />
     <Content Include="fonts\icomoon.eot" />
     <Content Include="Areas\mmadmin\Views\Main\Index.cshtml" />
+    <Content Include="fonts\FuturaTurkBook.ttf" />
+    <Content Include="fonts\SourceSansPro-Regular.ttf" />
+    <Content Include="fonts\SourceSansPro-Light.ttf" />
+    <Content Include="fonts\SourceSansPro-Bold.ttf" />
+    <Content Include="fonts\SourceSansPro-Semibold.ttf" />
+    <Content Include="fonts\clique.woff" />
     <None Include="Properties\PublishProfiles\dotaanti.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\maksimalist.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\test.maksimalist.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\comment-reply.min-ver=4.0.js" />
     <Content Include="Scripts\dropzone.js" />
+    <Content Include="Scripts\fashion-mobile.footer.min.js" />
+    <Content Include="Scripts\fashion-mobile.header.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -733,10 +745,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Categories\Create.cshtml" />
-    <Content Include="Views\Categories\Delete.cshtml" />
     <Content Include="Views\Categories\Details.cshtml" />
-    <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Authors\Create.cshtml" />
     <Content Include="Views\Authors\Delete.cshtml" />
@@ -746,27 +755,23 @@
     <Content Include="Views\Shared\_Post.cshtml" />
     <Content Include="Views\Shared\_Tag.cshtml" />
     <Content Include="Views\Shared\_Manset.cshtml" />
-    <Content Include="Views\Post\Create.cshtml" />
-    <Content Include="Views\Post\Delete.cshtml" />
     <Content Include="Views\Post\Details.cshtml" />
-    <Content Include="Views\Post\Edit.cshtml" />
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\Tag\Create.cshtml" />
     <Content Include="Views\Tag\Delete.cshtml" />
     <Content Include="Views\Tag\Details.cshtml" />
     <Content Include="Views\Tag\Edit.cshtml" />
     <Content Include="Views\Tag\Index.cshtml" />
-    <Content Include="Views\Matter\Create.cshtml" />
-    <Content Include="Views\Matter\Delete.cshtml" />
-    <Content Include="Views\Matter\Details.cshtml" />
-    <Content Include="Views\Matter\Edit.cshtml" />
-    <Content Include="Views\Matter\Index.cshtml" />
     <Content Include="Views\Shared\_rightnav.cshtml" />
-    <Content Include="Views\Shared\_ModaPost.cshtml" />
-    <Content Include="Views\Post\Search.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Post\Galeri.cshtml" />
     <Content Include="Views\Shared\_Post2.cshtml" />
+    <Content Include="Views\Shared\_MobileLayout.cshtml" />
+    <Content Include="Views\Home\MobileHome.cshtml" />
+    <Content Include="Views\Shared\_MobilePost.cshtml" />
+    <Content Include="Views\Search\MobileSearch.cshtml" />
+    <Content Include="Views\Post\MobilePostDetail.cshtml" />
+    <Content Include="Views\Post\MobileGaleri.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

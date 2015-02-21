@@ -7,7 +7,8 @@ namespace Maksimalist.Models
 {
     public class RightNavViewModel
     {
-        public Advert Advert { get; set; }
+        public List<Post> Adverts { get; set; }
         public List<Post> Posts { get; set; }
+        public List<Post> GununObjesi { get; set; }
     }
 }

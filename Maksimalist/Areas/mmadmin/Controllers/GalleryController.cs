@@ -19,11 +19,10 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         // GET: mmadmin/Gallery
         public ActionResult Index(string searchString)
         {
-            var galleries = from m in db.Gallery
-                        select m; 
+            var galleries = db.Gallery.OrderByDescending(x => x.Id).Take(50).ToList(); 
             if (!String.IsNullOrEmpty(searchString))
             {
-                galleries = galleries.Where(s => s.Name.Contains(searchString));
+                galleries = galleries.Where(s => s.Name.ToLower().Contains(searchString.ToLower())).ToList();
             } 
             return View(galleries);
         }
@@ -58,7 +57,25 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         {
             List<Matter> matterList = new List<Matter>();
             Gallery gallery = new Gallery();
+
+            int j = 2;
+            var tempName = toUrlSlug(GalleryName);
             gallery.Name = toUrlSlug(GalleryName);
+            while (true)
+            {
+
+                if (db.Gallery.FirstOrDefault(x => x.Name == gallery.Name) == null)
+                {
+                    break;
+                }
+                else
+                {
+                    gallery.Name = tempName + "-" + j;
+                    j++;
+                }
+
+            }
+           
 
            
             for (int i = 0; i < Request.Files.Count; i++)
@@ -87,7 +104,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
             gallery.Matter = matterList;
             db.Gallery.Add(gallery);
             db.SaveChanges();
-
+            
             return RedirectToAction("Index");
             
         }
@@ -130,6 +147,55 @@ namespace Maksimalist.Areas.mmadmin.Controllers
             return View();
         }
 
+        public ActionResult Add(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Gallery gallery = db.Gallery.Find(id);
+            if (gallery == null)
+            {
+                return HttpNotFound();
+            }
+            return View(gallery);
+        }
+        [HttpPost]
+        public ActionResult Add(String GalleryName)
+        {
+            GalleryName = toUrlSlug(GalleryName);
+            Gallery gallery = db.Gallery.Where(x => x.Name == GalleryName).FirstOrDefault();
+            for (int i = 0; i < Request.Files.Count; i++)
+            {
+
+                HttpPostedFileBase file = Request.Files[i];
+                if (file.ContentLength > 0)
+                {
+                    Matter matter = new Matter();
+
+
+                    var fileName = Path.GetFileName(file.FileName);
+                    matter.Name = fileName;
+
+                    var path = Path.Combine(Server.MapPath("~/Images/Uploads/Galeri/" + gallery.Name), fileName);
+                    if (!System.IO.Directory.Exists(Server.MapPath("~/Images/Uploads/Galeri/" + gallery.Name)))
+                    {
+                        Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/Galeri/" + gallery.Name));
+                    }
+                    
+                    file.SaveAs(path);
+                    matter.Url = "/Images/Uploads/Galeri/" + gallery.Name + "/" + fileName;
+
+                    gallery.Matter.Add(matter);
+
+                }
+            }
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
         // GET: mmadmin/Gallery/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -163,7 +229,11 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                 db.Matter.Remove(m);
               
             }
-            Directory.Delete(Server.MapPath("~/Images/Uploads/Galeri/" + gallery.Name));
+
+            if (System.IO.Directory.Exists(Server.MapPath("~/Images/Uploads/Galeri/" + gallery.Name)) && gallery.Name != "")
+            {
+                Directory.Delete(Server.MapPath("~/Images/Uploads/Galeri/" + gallery.Name)); 
+            }
             if (db.Post.FirstOrDefault(m => m.GalleryId == gallery.Id) != null) 
             {
                 db.Post.FirstOrDefault(m => m.GalleryId == gallery.Id).GalleryId = null;
@@ -177,18 +247,18 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         public string toUrlSlug(string turkish)
         {
             string urlSlug = turkish.Replace("ı", "i");
-            urlSlug = urlSlug.Replace("İ", "i");
+            urlSlug = urlSlug.Replace("İ", "I");
             urlSlug = urlSlug.Replace(" ", "-");
             urlSlug = urlSlug.Replace("ö", "o");
             urlSlug = urlSlug.Replace("ç", "c");
             urlSlug = urlSlug.Replace("ü", "u");
             urlSlug = urlSlug.Replace("ş", "s");
             urlSlug = urlSlug.Replace("ğ", "g");
-            urlSlug = urlSlug.Replace("Ö", "o");
-            urlSlug = urlSlug.Replace("Ç", "c");
-            urlSlug = urlSlug.Replace("Ü", "u");
-            urlSlug = urlSlug.Replace("Ş", "s");
-            urlSlug = urlSlug.Replace("Ğ", "g");
+            urlSlug = urlSlug.Replace("Ö", "O");
+            urlSlug = urlSlug.Replace("Ç", "C");
+            urlSlug = urlSlug.Replace("Ü", "U");
+            urlSlug = urlSlug.Replace("Ş", "S");
+            urlSlug = urlSlug.Replace("Ğ", "G");
             return urlSlug;
         }
         protected override void Dispose(bool disposing)

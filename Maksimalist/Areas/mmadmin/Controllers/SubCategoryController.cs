@@ -138,18 +138,18 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         public string toUrlSlug(string turkish)
         {
             string urlSlug = turkish.Replace("ı", "i");
-            urlSlug = urlSlug.Replace("İ", "i");
+            urlSlug = urlSlug.Replace("İ", "I");
             urlSlug = urlSlug.Replace(" ", "-");
             urlSlug = urlSlug.Replace("ö", "o");
             urlSlug = urlSlug.Replace("ç", "c");
             urlSlug = urlSlug.Replace("ü", "u");
             urlSlug = urlSlug.Replace("ş", "s");
             urlSlug = urlSlug.Replace("ğ", "g");
-            urlSlug = urlSlug.Replace("Ö", "o");
-            urlSlug = urlSlug.Replace("Ç", "c");
-            urlSlug = urlSlug.Replace("Ü", "u");
-            urlSlug = urlSlug.Replace("Ş", "s");
-            urlSlug = urlSlug.Replace("Ğ", "g");
+            urlSlug = urlSlug.Replace("Ö", "O");
+            urlSlug = urlSlug.Replace("Ç", "C");
+            urlSlug = urlSlug.Replace("Ü", "U");
+            urlSlug = urlSlug.Replace("Ş", "S");
+            urlSlug = urlSlug.Replace("Ğ", "G");
             return urlSlug;
         }
     }
