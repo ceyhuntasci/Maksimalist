@@ -1,8 +1,11 @@
 ﻿@model Maksimalist.Models.Post
 @{
-    ViewBag.Title = "MobileGaleri";
+    
     Layout = "~/Views/Shared/_MobileLayout.cshtml";
+    int iter = 0;
 }
+
+
 
 <div class="category">
     <a href="~/kategori/@Model.UrlSlug" title="@Model.Category.Name" class="category-link">@Model.Category.Name</a> | @String.Format("{0:dd MMMM yyyy}", Model.PostDate)
@@ -15,11 +18,9 @@
             <div style="clear:both"></div>
         </div><!--/body-content-->
     </div><!--/article-header-->
-    <section class="slides" id="working-from-home-outfits">
+    <section class="slides" >
         <ul>
-            @{
-                    int iter = 0;
-            }
+         
             @foreach (var i in Model.Gallery.Matter)
                {
                    iter++;
@@ -59,4 +60,3 @@
 
 
 </article>
-

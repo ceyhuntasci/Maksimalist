@@ -3,39 +3,29 @@
 <head>
   
     <meta charset="utf-8">
-    <title>Celebrity Style and Fashion Trend Coverage | WhoWhatWear.com</title>
+  
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="@Request.Browser.ScreenPixelsWidth">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0,user-scalable=yes">
     <meta http-equiv="cleartype" content="on">
+    <meta property="og:url" content="@Request.Url.AbsoluteUri" />
+    <meta property="og:title" content="@ViewBag.Title" />
+    <meta property="og:description" content="@ViewBag.Desc" />
+    <meta property="og:image" content="@ViewBag.Image" />
+    <meta property="fb:app_id" content="780985738613644" />
+    <meta name="twitter:card" content="summary_large_image">
 
-    <link rel="icon" href="/img/www/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="60x60" href="/img/www/favicon_60x60.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/img/www/favicon_76x76.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/img/www/favicon_120x120.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/img/www/favicon_152x152.png">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <meta name="twitter:title" content="@ViewBag.Title">
+    <meta name="twitter:description" content="@ViewBag.Desc">
+    <meta name="twitter:image:src" content="@ViewBag.Image">
+
+    <link rel="shortcut icon" href="~/Images/favicon.jpg" type="image/x-icon" />
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="@ViewBag.Desc" />
+
     
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
    
-   
-    <meta name="description" content="Get the latest and greatest celebrity style, runway trends, and shopping suggestions
-                    from the fashion and beauty experts at WhoWhatWear.com!">
-    <meta name="keywords" content="WhoWhatWear,celebrity gossip,hollywood gossip,hollywood fashion,fashion style,fashion blog,fashion trends,fashion news,new fashion,celebrity fashion,celebrity style,women fashion,fashion blog">
-    <meta property="og:title" content="Celebrity Style and Fashion Trend Coverage | WhoWhatWear.com">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="http://www.whowhatwear.com/img/social/who-what-wear.jpg">
-    <meta property="og:url" content="http://www.whowhatwear.com">
-    <meta property="og:description" content="Get the latest and greatest celebrity style, runway trends, and shopping suggestions
-                    from the fashion and beauty experts at WhoWhatWear.com!">
-    <meta property="og:site_name" content="Who What Wear">
-    <meta property="fb:app_id" content="394714507294772">
-    <meta property="twitter:account_id" content="19212009">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:url" content="http://www.whowhatwear.com">
-    <meta name="twitter:title" content="Celebrity Style and Fashion Trend Coverage | WhoWhatWear.com">
-    <meta name="twitter:description" content="Get the latest and greatest celebrity style, runway trends, and shopping suggestions
-                    from the fashion and beauty experts at WhoWhatWear.com!">
-    <meta name="twitter:image" content="http://www.whowhatwear.com/img/social/who-what-wear.jpg">
     <link href="~/Content/CSSMobil.css" rel="stylesheet" />
     <script src="~/Scripts/fashion-mobile.header.min.js"></script>
     <style>
@@ -447,12 +437,11 @@
     </style>
 </head>
 <body data-twttr-rendered="true" class="">
-    <div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="http://static.ak.facebook.com/connect/xd_arbiter/DU1Ia251o0y.js?version=41#channel=f3bd3b3ff&amp;origin=http%3A%2F%2Fwww.whowhatwear.com" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="https://s-static.ak.facebook.com/connect/xd_arbiter/DU1Ia251o0y.js?version=41#channel=f3bd3b3ff&amp;origin=http%3A%2F%2Fwww.whowhatwear.com" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
     <header id="header">
         <div id="menu-btn" style="left: 2px; display: block;"><div></div></div>
         <div id="header-bar">
             <div id="logo">
-                <a href="http://www.maksimalist.com/" alt="Anasayfa">Maksimalist</a>
+                <a href="http://www.maksimalist.com/">Maksimalist</a>
             </div>
         </div>
         <div id="menu-bg" style="display: none;"></div>
@@ -472,7 +461,7 @@
                     <li><a href="~/kategori/unluler" title="Ünlüler">Ünlüler</a></li>
                     <li><a href="~/kategori/sehir-yasam" title="Şehir-Yaşam">Şehir-Yaşam</a></li>
                     <li><a href="/kategori/gelin" title="Gelin">Gelin</a></li>
-                    <li><a href="/kategori/video" title="Video">Maksimalist-Video</a></li>
+                    <li><a href="/kategori/video" title="Video" style="color: #7ed798;">Maksimalist-Video</a></li>
                 </ul>
                 <h2 class="social-header">Bizi Takip Edin:</h2>
                 <ul class="social-icons">
@@ -500,136 +489,7 @@
 
     <script src="~/Scripts/fashion-mobile.footer.min.js"></script> 
    
-    <script>
-        window.twttr = (function (d, s, id) {
-            var t, js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
-            js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
-            return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
-        }(document, "script", "twitter-wjs"));
-    </script>
-    <script type="text/javascript">
-        var googletag = googletag || {};
-        googletag.cmd = googletag.cmd || [];
 
-        googletag.target("env", "production");
-        googletag.target("Section", "main");
-        googletag.target("Layout", "homepage");
-    </script>
-   
-    <script type="text/javascript">
-
-    
-
-        window.fbAsyncInit = function () {
-            //facebook events
-            FB.Event.subscribe('edge.create', function (response) {
-                _gaq.push(['_trackSocial', 'facebook', 'like', response]);
-            });
-
-            FB.Event.subscribe('edge.remove', function (response) {
-                _gaq.push(['_trackSocial', 'facebook', 'unlike', response]);
-            });
-
-            FB.Event.subscribe('message.send', function (response) {
-                _gaq.push(['_trackSocial', 'facebook', 'share', response]);
-            });
-
-            FB.Event.subscribe('comment.create', function (response) {
-                _gaq.push(['_trackSocial', 'facebook', 'comment', response.href]);
-            });
-
-            FB.Event.subscribe('comment.remove', function (response) {
-                _gaq.push(['_trackSocial', 'facebook', 'remove', response.href]);
-            });
-        };
-
-        $(document).ready(function () {
-            //no facebook event for sharing a link.
-            $('a.fb').on('click', function () {
-                _gaq.push(['_trackSocial',
-                    'facebook',
-                    'Share Button',
-                    parseFBHref($(this).attr('href'))
-                ]);
-            });
-
-            function replaceAll(find, replace, str) {
-                return str.replace(new RegExp(find, 'g'), replace);
-            }
-
-            function parsePinterestHref(href) {
-                href = replaceAll('%3A', ':', href);
-                href = replaceAll('%2F', '/', href);
-                if (href.indexOf('url=') !== -1 && href.indexOf('&media=') !== -1) {
-                    href = href.substring((href.indexOf('url=') + 4), href.indexOf('&media='));
-                }
-                return href;
-            }
-
-            function parseTwitterHref(href) {
-                href = replaceAll('%3A', ':', href);
-                href = replaceAll('%2F', '/', href);
-                if (href.indexOf('url=') !== -1 && href.indexOf('&text') !== -1) {
-                    href = href.substring((href.indexOf('url=') + 4), href.indexOf('&text'));
-                }
-                return href;
-            }
-
-            function parseFBHref(href) {
-                href = replaceAll('%3A', ':', href);
-                href = replaceAll('%2F', '/', href);
-                if (href.indexOf('u=') !== -1) {
-                    href = href.substring((href.indexOf('u=') + 2));
-                }
-                return href;
-            }
-
-            //no pinterest api, track clicks on pinterest button
-            $('.pin').on('click', function () {
-                _gaq.push(['_trackSocial',
-                    'pinterest',
-                    'Pin button',
-                    parsePinterestHref($(this).attr('href'))
-                ]);
-            });
-
-            //twitter
-            twttr.ready(function (twttr) {
-                // Now bind our custom intent events
-                twttr.events.bind('click', clickIntentToAnalytics);
-                twttr.events.bind('tweet', tweetIntentToAnalytics);
-                twttr.events.bind('retweet', retweetIntentToAnalytics);
-                twttr.events.bind('favorite', favoriteIntentToAnalytics);
-                twttr.events.bind('follow', followIntentToAnalytics);
-            });
-
-            function tweetIntentToAnalytics() {
-                var href = $("meta[name='twitter:url']").attr('content');
-                _gaq.push(['_trackSocial', 'twitter', 'tweet', href]);
-            }
-
-            function clickIntentToAnalytics() {
-                var href = $("meta[name='twitter:url']").attr('content');
-                _gaq.push(['_trackSocial', 'twitter', 'click', href]);
-            }
-
-            function retweetIntentToAnalytics() {
-                var href = $("meta[name='twitter:url']").attr('content');
-                _gaq.push(['_trackSocial', 'twitter', 'retweet', href]);
-            }
-
-            function favoriteIntentToAnalytics() {
-                var href = $("meta[name='twitter:url']").attr('content');
-                _gaq.push(['_trackSocial', 'twitter', 'favorite', href]);
-            }
-
-            function followIntentToAnalytics() {
-                var href = $("meta[name='twitter:url']").attr('content');
-                _gaq.push(['_trackSocial', 'twitter', 'follow', href]);
-            }
-        });
-    </script>
  
 </body>
 </html>

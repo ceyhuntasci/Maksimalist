@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Maksimalist.Models;
+using Maksimalist.Areas.mmadmin.Models;
 
 namespace Maksimalist.Areas.mmadmin.Controllers
 {
@@ -53,7 +54,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         {
             if (ModelState.IsValid)
             {
-                subCategory.UrlSlug = toUrlSlug(subCategory.Name);
+                subCategory.UrlSlug = Tools.toUrlSlug(subCategory.Name);
                 db.SubCategory.Add(subCategory);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -135,22 +136,6 @@ namespace Maksimalist.Areas.mmadmin.Controllers
             }
             base.Dispose(disposing);
         }
-        public string toUrlSlug(string turkish)
-        {
-            string urlSlug = turkish.Replace("ı", "i");
-            urlSlug = urlSlug.Replace("İ", "I");
-            urlSlug = urlSlug.Replace(" ", "-");
-            urlSlug = urlSlug.Replace("ö", "o");
-            urlSlug = urlSlug.Replace("ç", "c");
-            urlSlug = urlSlug.Replace("ü", "u");
-            urlSlug = urlSlug.Replace("ş", "s");
-            urlSlug = urlSlug.Replace("ğ", "g");
-            urlSlug = urlSlug.Replace("Ö", "O");
-            urlSlug = urlSlug.Replace("Ç", "C");
-            urlSlug = urlSlug.Replace("Ü", "U");
-            urlSlug = urlSlug.Replace("Ş", "S");
-            urlSlug = urlSlug.Replace("Ğ", "G");
-            return urlSlug;
-        }
+       
     }
 }

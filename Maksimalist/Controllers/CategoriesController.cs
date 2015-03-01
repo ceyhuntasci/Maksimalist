@@ -78,7 +78,9 @@ namespace Maksimalist.Controllers
                     ViewBag.Title = ViewBag.CategoryName;
                     ViewBag.RightNav = rn;
 
-                    
+                    if(Request.Browser.IsMobileDevice){
+                        return View("MobileDetails",posts);
+                    }
                     return View(posts);
                 }
                 else

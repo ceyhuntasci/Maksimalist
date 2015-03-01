@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Maksimalist.Models;
 using System.IO;
+using Maksimalist.Areas.mmadmin.Models;
 
 namespace Maksimalist.Areas.mmadmin.Controllers
 {
@@ -89,47 +90,14 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                     }
 
                 }
-                post.UrlSlug = toUrlSlug(post.Headline);
-                if (file1 != null && file1.ContentLength > 0)
-                {
-
-                    var fileName = Path.GetFileName(file1.FileName);
-
-
-
-                    var path = Path.Combine(Server.MapPath("~/Images/Uploads/" + post.UrlSlug), fileName);
-
-                    Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/" + post.UrlSlug));
-                    file1.SaveAs(path);
-                    post.ImageUrl = "/Images/Uploads/" + post.UrlSlug + "/" + fileName;
-
-                    if (Directory.GetFiles(Server.MapPath("~/Images/Temp")) != null)
-                    {
-                        string[] tempfiles = System.IO.Directory.GetFiles(Server.MapPath("~/Images/Temp"));
-                        foreach (string s in tempfiles)
-                        {
-                            System.IO.File.Move(s, Path.Combine(Server.MapPath("~/Images/Uploads/" + post.UrlSlug), Path.GetFileName(s)));
-
-
-                        }
-                        post.Content = post.Content.Replace("Images/Temp", "Images/Uploads/" + post.UrlSlug);
-                    }
-
-                }
-                if (file2 != null && file2.ContentLength > 0)
-                {
-
-                    var fileName = Path.GetFileName(file2.FileName);
-
-
-
-                    var path = Path.Combine(Server.MapPath("~/Images/Uploads/" + post.UrlSlug), fileName);
-
-                    Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/" + post.UrlSlug));
-                    file2.SaveAs(path);
-                    post.ContentImage = "/Images/Uploads/" + post.UrlSlug + "/" + fileName;
-
-                }
+                post.UrlSlug = Tools.toUrlSlug(post.Headline);
+                
+                Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/" + post.UrlSlug));
+                
+                post.ImageUrl = Tools.SaveFile(file1,post);
+                post.ContentImage = Tools.SaveFile(file2,post);
+                post.Content = Tools.SaveContentImages(post);
+                
                 foreach (var i in Tags)
                 {
                     Tag x = new Tag();
@@ -248,67 +216,25 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                
 
                 string oldUrlSlug = post2.UrlSlug;
-                post2.UrlSlug = toUrlSlug(post.Headline);
-                #region FileControl
+                post2.UrlSlug = Tools.toUrlSlug(post.Headline);
+               
                 if (post2.Headline != post.Headline)
                 {
-                    Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/" + post2.UrlSlug));
-                    string[] tempfiles = System.IO.Directory.GetFiles(Server.MapPath("~/Images/Uploads/" + oldUrlSlug));
-                    foreach (string s in tempfiles)
-                    {
-                        System.IO.File.Move(s, Path.Combine(Server.MapPath("~/Images/Uploads/" + post2.UrlSlug), Path.GetFileName(s)));
-
-                    }
-                    Directory.Delete(Server.MapPath("~/Images/Uploads/" + oldUrlSlug));
+                    Tools.MoveFolder(post2,oldUrlSlug);
+                   
                     post2.ImageUrl = post2.ImageUrl.Replace(oldUrlSlug, post2.UrlSlug);
                     post2.ContentImage = post2.ContentImage.Replace(oldUrlSlug, post2.UrlSlug);
                     post2.Content = post2.Content.Replace("Images/Uploads/" + oldUrlSlug, "Images/Uploads/" + post2.UrlSlug);
                 }
-               
-
-                if (file1 != null && file1.ContentLength > 0)
-                {
-
-                    var fileName = Path.GetFileName(file1.FileName);
 
 
+                post2.ImageUrl = Tools.SaveFile(file1,post2);
+                post2.ContentImage = Tools.SaveFile(file2, post2);
+                post2.Content = Tools.SaveContentImages(post2);
 
-                    var path = Path.Combine(Server.MapPath("~/Images/Uploads/" + post2.UrlSlug), fileName);
-
-                    Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/" + post2.UrlSlug));
-                    file1.SaveAs(path);
-                    post2.ImageUrl = "/Images/Uploads/" + post2.UrlSlug + "/" + fileName;
-
-                    
-
-                }
-                if (Directory.GetFiles(Server.MapPath("~/Images/Temp")) != null)
-                {
-                    string[] tempfiles = System.IO.Directory.GetFiles(Server.MapPath("~/Images/Temp"));
-                    foreach (string s in tempfiles)
-                    {
-                        System.IO.File.Move(s, Path.Combine(Server.MapPath("~/Images/Uploads/" + post2.UrlSlug), Path.GetFileName(s)));
-
-
-                    }
-                    post2.Content = post2.Content.Replace("Images/Temp", "Images/Uploads/" + post2.UrlSlug);
-                }
                 
-                if (file2 != null && file2.ContentLength > 0)
-                {
-
-                    var fileName = Path.GetFileName(file2.FileName);
-
-
-
-                    var path = Path.Combine(Server.MapPath("~/Images/Uploads/" + post2.UrlSlug), fileName);
-
-                    Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/" + post2.UrlSlug));
-                    file2.SaveAs(path);
-                    post2.ContentImage = "/Images/Uploads/" + post2.UrlSlug + "/" + fileName;
-
-                } 
-                #endregion
+                
+              
                 post2.Headline = post.Headline;
                 #region TagControl
                 foreach (var i in post2.Tags)
@@ -451,22 +377,6 @@ namespace Maksimalist.Areas.mmadmin.Controllers
             }
             base.Dispose(disposing);
         }
-        public string toUrlSlug(string turkish)
-        {
-            string urlSlug = turkish.Replace("ı", "i");
-            urlSlug = urlSlug.Replace("İ", "I");
-            urlSlug = urlSlug.Replace(" ", "-");
-            urlSlug = urlSlug.Replace("ö", "o");
-            urlSlug = urlSlug.Replace("ç", "c");
-            urlSlug = urlSlug.Replace("ü", "u");
-            urlSlug = urlSlug.Replace("ş", "s");
-            urlSlug = urlSlug.Replace("ğ", "g");
-            urlSlug = urlSlug.Replace("Ö", "O");
-            urlSlug = urlSlug.Replace("Ç", "C");
-            urlSlug = urlSlug.Replace("Ü", "U");
-            urlSlug = urlSlug.Replace("Ş", "S");
-            urlSlug = urlSlug.Replace("Ğ", "G");
-            return urlSlug;
-        }
+       
     }
 }

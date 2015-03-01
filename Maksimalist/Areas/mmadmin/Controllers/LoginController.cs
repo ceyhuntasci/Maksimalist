@@ -24,7 +24,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index(Models.Author author)
+        public ActionResult Index(Author author)
         {
             if (ModelState.IsValid)
             {

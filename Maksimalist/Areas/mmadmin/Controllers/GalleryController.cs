@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Maksimalist.Models;
 using System.IO;
+using Maksimalist.Areas.mmadmin.Models;
 
 namespace Maksimalist.Areas.mmadmin.Controllers
 {
@@ -59,8 +60,8 @@ namespace Maksimalist.Areas.mmadmin.Controllers
             Gallery gallery = new Gallery();
 
             int j = 2;
-            var tempName = toUrlSlug(GalleryName);
-            gallery.Name = toUrlSlug(GalleryName);
+            var tempName = Tools.toUrlSlug(GalleryName);
+            gallery.Name = Tools.toUrlSlug(GalleryName);
             while (true)
             {
 
@@ -163,7 +164,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
         [HttpPost]
         public ActionResult Add(String GalleryName)
         {
-            GalleryName = toUrlSlug(GalleryName);
+            GalleryName = Tools.toUrlSlug(GalleryName);
             Gallery gallery = db.Gallery.Where(x => x.Name == GalleryName).FirstOrDefault();
             for (int i = 0; i < Request.Files.Count; i++)
             {
@@ -244,23 +245,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        public string toUrlSlug(string turkish)
-        {
-            string urlSlug = turkish.Replace("ı", "i");
-            urlSlug = urlSlug.Replace("İ", "I");
-            urlSlug = urlSlug.Replace(" ", "-");
-            urlSlug = urlSlug.Replace("ö", "o");
-            urlSlug = urlSlug.Replace("ç", "c");
-            urlSlug = urlSlug.Replace("ü", "u");
-            urlSlug = urlSlug.Replace("ş", "s");
-            urlSlug = urlSlug.Replace("ğ", "g");
-            urlSlug = urlSlug.Replace("Ö", "O");
-            urlSlug = urlSlug.Replace("Ç", "C");
-            urlSlug = urlSlug.Replace("Ü", "U");
-            urlSlug = urlSlug.Replace("Ş", "S");
-            urlSlug = urlSlug.Replace("Ğ", "G");
-            return urlSlug;
-        }
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing)

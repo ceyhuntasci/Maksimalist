@@ -1,12 +1,12 @@
 ﻿﻿@model Maksimalist.Models.Post
 @{
-    ViewBag.Title = "MobilePostDetail";
+
     Layout = "~/Views/Shared/_MobileLayout.cshtml";
 
 }
 
 
-<body class="single single-post postid-1 single-format-standard ltr" itemscope itemtype="http://schema.org/WebPage">
+
     <script>
         window.fbAsyncInit = function () {
             FB.init({
@@ -36,7 +36,11 @@
             fb.ui;
         });
     </script>
-
+    <script>
+        $(document).ready(function () {
+            $("img").css("width", "");
+        }); 
+    </script>
     <div id="fb-root"></div>
     <script>
         (function (d, s, id) {
@@ -47,8 +51,6 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
 
-
-    <main id="content" class="clearfix animated" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
 
         <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-fashion tag-music tag-video" itemscope itemtype="http://schema.org/Article">
 
@@ -92,6 +94,5 @@
                 </div>
         </article>
 
-    </main><!-- #content -->
 
-</body>
+

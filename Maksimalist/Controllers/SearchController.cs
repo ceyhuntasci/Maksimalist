@@ -60,6 +60,9 @@ namespace Maksimalist.Controllers
                 }
                
             }
+            if(Request.Browser.IsMobileDevice){
+                return View("MobileSearch",posts);
+            }
             return View(posts);
 
 

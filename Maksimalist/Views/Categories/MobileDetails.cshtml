@@ -1,0 +1,42 @@
+﻿@model ICollection<Maksimalist.Models.Post>
+@{
+
+    Layout = "~/Views/Shared/_MobileLayout.cshtml";
+}
+
+<h1 class="page-title">@ViewBag.CategoryName</h1>
+<ul class="pagination-list list-container">
+    @foreach(var x in Model){
+        @Html.Partial("_MobilePost", x);
+
+    }
+</ul>
+<nav class="navigation paging-navigation" role="navigation">
+    <div class="loop-pagination">
+        @if (ViewBag.Page != 1)
+        {
+            <a class="previous page-numbers" href="@Request.Url.GetLeftPart(UriPartial.Path)?page=@(ViewBag.Page-1)">Previous</a>
+        }
+        @for (int i = 1; i <= ViewBag.PageCount; i++)
+        {
+
+            if (ViewBag.Page == i)
+            {
+                <span class="page-numbers current">@i</span>
+            }
+            else
+            {
+                <a class="page-numbers" href="@Request.Url.GetLeftPart(UriPartial.Path)?page=@i">@i</a>
+            }
+
+        }
+        @if (ViewBag.Page != ViewBag.PageCount)
+        {
+            <a class="next page-numbers" href="@Request.Url.GetLeftPart(UriPartial.Path)?page=@(ViewBag.Page+1)">Next</a>
+        }
+
+    </div>
+</nav>
+
+
+

@@ -1,20 +1,48 @@
-﻿@model Maksimalist.Models.MobileHomeViewModel
+﻿@model IEnumerable<Maksimalist.Models.Post>
 @{
-    ViewBag.Title = "MobileSearch";
+
     Layout = "~/Views/Shared/_MobileLayout.cshtml";
 }
 
-<div id="homepage" class="homepage">
-    <ul class="pagination-list list-container">
-      
-        @foreach (var i in Model.Postlar)
-        {
-            @Html.Partial("_MobilePost", i)
-        }
-    </ul>
-    <div id="more-btn">
-        <a href="/" class="more-label" title="Daha Fazla">
-            More&nbsp;Stories<em class="caret bottom"></em>
-        </a>
-    </div>
-</div>
+<h1 class="page-title">@ViewBag.Search</h1>
+@if (Model.FirstOrDefault() == null)
+{
+    <p style="text-align:center">Hiçbir Sonuç Bulunamadı</p>
+}
+<ul class="pagination-list list-container">
+    @foreach (var x in Model)
+    {
+        @Html.Partial("_MobilePost", x);
+
+    }
+</ul>
+@if (Model.FirstOrDefault() != null)
+{
+    <nav class="navigation paging-navigation" role="navigation">
+        <div class="loop-pagination">
+            @if (ViewBag.Page != 1)
+            {
+                <a class="previous page-numbers" href="@Request.Url.GetLeftPart(UriPartial.Path)?page=@(ViewBag.Page-1)">Previous</a>
+            }
+            @for (int i = 1; i <= ViewBag.PageCount; i++)
+            {
+
+                if (ViewBag.Page == i)
+                {
+                    <span class="page-numbers current">@i</span>
+                }
+                else
+                {
+                    <a class="page-numbers" href="@Request.Url.GetLeftPart(UriPartial.Path)?page=@i">@i</a>
+                }
+
+            }
+            @if (ViewBag.Page != ViewBag.PageCount)
+            {
+                <a class="next page-numbers" href="@Request.Url.GetLeftPart(UriPartial.Path)?page=@(ViewBag.Page+1)">Next</a>
+            }
+
+        </div>
+    </nav>
+}
+

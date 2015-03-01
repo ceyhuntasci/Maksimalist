@@ -47,6 +47,7 @@ namespace Maksimalist.Controllers
             rn.Posts = popular;
             ViewBag.RightNav = rn;
             ViewBag.Title = "Maksimalist";
+            ViewBag.Desc = "Moda, güzellik, ünlüler, alışveriş ve şehir hayatına Maksimalist bir bakış açısı getiriyoruz! Eğlenceli, akıcı, esprili; yeni nesil moda platformu.";
             
             return View(hmw);
         }

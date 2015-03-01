@@ -167,6 +167,7 @@
     <Compile Include="Areas\mmadmin\Controllers\PostController.cs" />
     <Compile Include="Areas\mmadmin\Controllers\SubCategoryController.cs" />
     <Compile Include="Areas\mmadmin\mmadminAreaRegistration.cs" />
+    <Compile Include="Areas\mmadmin\Models\Tools.cs" />
     <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -628,10 +629,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\favicon.jpg" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\LogoWhite.png" />
     <Content Include="Images\ruler.png" />
     <Content Include="Images\ruler2.png" />
     <Content Include="Images\section-header.png" />
     <Content Include="Images\spritemap.png" />
+    <Content Include="Images\www-mobile.png" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -772,10 +775,10 @@
     <Content Include="Views\Search\MobileSearch.cshtml" />
     <Content Include="Views\Post\MobilePostDetail.cshtml" />
     <Content Include="Views\Post\MobileGaleri.cshtml" />
+    <Content Include="Views\Categories\MobileDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\mmadmin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
