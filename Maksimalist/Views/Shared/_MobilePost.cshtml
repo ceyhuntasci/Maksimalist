@@ -1,9 +1,6 @@
 ﻿﻿@model Maksimalist.Models.Post
-
-
 @if (Model.HasGallery)
-{
-    <li class="list-item">
+{<li class="list-item">
         <a class="img-thumb" href="~/post/galeri/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug" title="Read Full Post">
             <img src="@Model.ContentImage">
 
@@ -14,11 +11,9 @@
         <a class="list-content" href="~/post/galeri/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug" title="Read Full Post">
             <h4>@Model.Headline</h4>
         </a>
-    </li>
-}
+    </li>}
 else
-{
-    <li class="list-item">
+{<li class="list-item">
         <a class="img-thumb" href="~/post/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug" title="Read Full Post">
             <img src="@Model.ContentImage">
 
@@ -29,6 +24,4 @@ else
         <a class="list-content" href="~/post/@Model.Category.UrlSlug/@Model.SubCategory.UrlSlug/@Model.UrlSlug" title="Read Full Post">
             <h4>@Model.Headline</h4>
         </a>
-    </li>
-}
-
+    </li>}

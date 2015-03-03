@@ -1,45 +1,43 @@
 ﻿@model Maksimalist.Models.MobileHomeViewModel
 @{
-    ViewBag.Title = "MobileHome";
+
     Layout = "~/Views/Shared/_MobileLayout.cshtml";
 }
 
 <div id="homepage" class="homepage">
     <ul class="pagination-list list-container">
-        <li class="feature">
-            @if (Model.Manset.HasGallery)
-            {
-                <div class="list-meta">
-                    <div class="post-date">@String.Format("{0:dd MMMM yyyy}", Model.Manset.PostDate)</div><span class="pipe">|</span><div><a href="~/kategori/@Model.Manset.Category.UrlSlug" title="@Model.Manset.Category.Name">@Model.Manset.Category.Name</a></div>
-                </div>
-                <a class="list-content" href="~/post/galeri/@Model.Manset.Category.UrlSlug/@Model.Manset.SubCategory.UrlSlug/@Model.Manset.UrlSlug" title="Read Full Post">
-                    <h4>@Model.Manset.Headline</h4>
-                </a>
-                <a class="img-thumb" href="~/post/galeri/@Model.Manset.Category.UrlSlug/@Model.Manset.SubCategory.UrlSlug/@Model.Manset.UrlSlug" title="@Model.Manset.Headline">
-                    <img src="@Model.Manset.ContentImage">
-                </a>
-            }
-            else
-            {
-                <div class="list-meta">
-                    <div class="post-date">@String.Format("{0:dd MMMM yyyy}", Model.Manset.PostDate)</div><span class="pipe">|</span><div><a href="~/kategori/@Model.Manset.Category.UrlSlug" title="@Model.Manset.Category.Name">@Model.Manset.Category.Name</a></div>
-                </div>
-                <a class="list-content" href="~/post/@Model.Manset.Category.UrlSlug/@Model.Manset.SubCategory.UrlSlug/@Model.Manset.UrlSlug" title=" read full post">
-                    <h4>@Model.Manset.Headline</h4>
-                </a>
-                <a class="img-thumb" href="~/post/@Model.Manset.Category.UrlSlug/@Model.Manset.SubCategory.UrlSlug/@Model.Manset.UrlSlug" title="@Model.Manset.Headline">
-                    <img src="@Model.Manset.ContentImage">
-                </a>
-            }
-        </li>
+      
         @foreach (var i in Model.Postlar)
         {
-            @Html.Partial("_MobilePost", i)
+            if (i.HasGallery)
+            {
+                <li class="list-item">
+                    <a class="img-thumb" href="~/post/galeri/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug" title="Read Full Post">
+                        <img src="@i.ContentImage">
+
+                    </a>
+                    <div class="list-meta">
+                        <div class="post-date">@String.Format("{0:dd MMMM yyyy}", i.PostDate)</div><div><a href="~/kategori/@i.Category.UrlSlug" title="@i.Category.Name">@i.Category.Name</a></div>
+                    </div>
+                    <a class="list-content" href="~/post/galeri/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug" title="Read Full Post">
+                        <h4>@i.Headline</h4>
+                    </a>
+                </li>}
+            else
+            {
+                <li class="list-item">
+                    <a class="img-thumb" href="~/post/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug" title="Read Full Post">
+                        <img src="@i.ContentImage">
+
+                    </a>
+                    <div class="list-meta">
+                        <div class="post-date">@String.Format("{0:dd MMMM yyyy}", i.PostDate)</div><div><a href="~/kategori/@i.Category.UrlSlug" title="@i.Category.Name">@i.Category.Name</a></div>
+                    </div>
+                    <a class="list-content" href="~/post/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug" title="Read Full Post">
+                        <h4>@i.Headline</h4>
+                    </a>
+                </li>}
         }
     </ul>
-    <div id="more-btn">
-        <a href="/" class="more-label" title="Daha Fazla">
-            More&nbsp;Stories<em class="caret bottom"></em>
-        </a>
-    </div>
+
 </div>

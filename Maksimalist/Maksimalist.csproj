@@ -628,6 +628,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\favicon.jpg" />
+    <Content Include="Images\loading-dots-black.gif" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\LogoWhite.png" />
     <Content Include="Images\ruler.png" />
@@ -750,11 +751,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\Authors\Create.cshtml" />
-    <Content Include="Views\Authors\Delete.cshtml" />
-    <Content Include="Views\Authors\Details.cshtml" />
-    <Content Include="Views\Authors\Edit.cshtml" />
-    <Content Include="Views\Authors\Index.cshtml" />
     <Content Include="Views\Shared\_Post.cshtml" />
     <Content Include="Views\Shared\_Tag.cshtml" />
     <Content Include="Views\Shared\_Manset.cshtml" />

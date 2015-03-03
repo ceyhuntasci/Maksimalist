@@ -16,8 +16,7 @@ namespace Maksimalist.Controllers
         {
             if(Request.Browser.IsMobileDevice){
                 MobileHomeViewModel mhmw = new MobileHomeViewModel();
-                mhmw.Manset = db.Post.Where(x => x.Manset == true && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(1).FirstOrDefault();
-                mhmw.Postlar = db.Post.Where(x=> x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(10).ToList();
+               mhmw.Postlar = db.Post.Where(x=> x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(15).ToList();
             
 
                 return View("MobileHome",mhmw);

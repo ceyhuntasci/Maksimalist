@@ -2140,7 +2140,7 @@ ul {
     }
 
 #more-btn .loading {
-    background: #000000 url('../img/www/mobile/loading-dots-black.gif') no-repeat center center;
+    background: #000000 url('../Images/loading-dots-black.gif') no-repeat center center;
 }
 
 #menu-bar .social-icons a.facebook-icon:after {
