@@ -611,6 +611,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Calmaca.css" />
     <Content Include="Content\CSSMobil.css" />
+    <Content Include="Content\dropzone-v4.css" />
     <Content Include="Content\dropzone.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\frontend-style-ver=4.0.css" />
@@ -627,6 +628,7 @@
     <Content Include="fonts\Simple-Line-Icons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\cerceve.png" />
     <Content Include="Images\favicon.jpg" />
     <Content Include="Images\loading-dots-black.gif" />
     <Content Include="Images\logo.png" />
@@ -705,6 +707,7 @@
     <None Include="Properties\PublishProfiles\test.maksimalist.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\comment-reply.min-ver=4.0.js" />
+    <Content Include="Scripts\dropzone-v4.js" />
     <Content Include="Scripts\dropzone.js" />
     <Content Include="Scripts\fashion-mobile.footer.min.js" />
     <Content Include="Scripts\fashion-mobile.header.min.js" />
@@ -755,7 +758,6 @@
     <Content Include="Views\Shared\_Tag.cshtml" />
     <Content Include="Views\Shared\_Manset.cshtml" />
     <Content Include="Views\Post\Details.cshtml" />
-    <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\Tag\Create.cshtml" />
     <Content Include="Views\Tag\Delete.cshtml" />
     <Content Include="Views\Tag\Details.cshtml" />

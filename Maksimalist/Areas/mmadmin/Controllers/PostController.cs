@@ -91,13 +91,13 @@ namespace Maksimalist.Areas.mmadmin.Controllers
 
                 }
                 post.UrlSlug = Tools.toUrlSlug(post.Headline);
-                
+
                 Directory.CreateDirectory(Server.MapPath("~/Images/Uploads/" + post.UrlSlug));
-                
-                post.ImageUrl = Tools.SaveFile(file1,post);
-                post.ContentImage = Tools.SaveFile(file2,post);
+
+                post.ImageUrl = Tools.SaveFile(file1, post);
+                post.ContentImage = Tools.SaveFile(file2, post);
                 post.Content = Tools.SaveContentImages(post);
-                
+
                 foreach (var i in Tags)
                 {
                     Tag x = new Tag();
@@ -122,6 +122,8 @@ namespace Maksimalist.Areas.mmadmin.Controllers
 
                 }
                 post.HitCount = 0;
+
+
 
                 db.Post.Add(post);
 
@@ -180,7 +182,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
             Post post2 = db.Post.Find(post.Id);
             if (ModelState.IsValid)
             {
-               
+
                 post2.AuthorId = post.AuthorId;
                 post2.Bottomline = post.Bottomline;
                 post2.CategoryId = post.CategoryId;
@@ -213,28 +215,34 @@ namespace Maksimalist.Areas.mmadmin.Controllers
 
                     }
                 }
-               
+
 
                 string oldUrlSlug = post2.UrlSlug;
                 post2.UrlSlug = Tools.toUrlSlug(post.Headline);
-               
+
                 if (post2.Headline != post.Headline)
                 {
-                    Tools.MoveFolder(post2,oldUrlSlug);
-                   
+                    Tools.MoveFolder(post2, oldUrlSlug);
+
                     post2.ImageUrl = post2.ImageUrl.Replace(oldUrlSlug, post2.UrlSlug);
                     post2.ContentImage = post2.ContentImage.Replace(oldUrlSlug, post2.UrlSlug);
                     post2.Content = post2.Content.Replace("Images/Uploads/" + oldUrlSlug, "Images/Uploads/" + post2.UrlSlug);
                 }
 
+                if (file1 != null && file1.ContentLength > 0)
+                {
+                    post2.ImageUrl = Tools.SaveFile(file1, post2);
+                }
+                if (file2 != null && file2.ContentLength > 0)
+                {
+                    post2.ContentImage = Tools.SaveFile(file2, post2);
+                }
 
-                post2.ImageUrl = Tools.SaveFile(file1,post2);
-                post2.ContentImage = Tools.SaveFile(file2, post2);
                 post2.Content = Tools.SaveContentImages(post2);
 
-                
-                
-              
+
+
+
                 post2.Headline = post.Headline;
                 #region TagControl
                 foreach (var i in post2.Tags)
@@ -273,7 +281,7 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                         db.Tag.Add(x);
                     }
 
-                } 
+                }
                 #endregion
 
                 db.Entry(post2).State = EntityState.Modified;
@@ -330,22 +338,44 @@ namespace Maksimalist.Areas.mmadmin.Controllers
                     {
                         db.Tag.Remove(i);
                     }
-                } 
+                }
             }
 
             db.Post.Remove(post);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        public void uploadnow(HttpPostedFileWrapper upload)
+        public void uploadnow()
         {
-            if (upload != null)
+
+
+            for (int i = 0; i < Request.Files.Count; i++)
             {
-                string ImageName = upload.FileName;
-                System.IO.Directory.CreateDirectory(Server.MapPath("~/Images/Temp"));
-                string path = System.IO.Path.Combine(Server.MapPath("~/Images/Temp"), ImageName);
-                upload.SaveAs(path);
+
+                HttpPostedFileBase file = Request.Files[i];
+                if (file.ContentLength > 0)
+                {
+
+
+
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/Temp/"), fileName);
+
+                    if (System.IO.File.Exists(path))
+                    {
+                        fileName = Path.GetFileNameWithoutExtension(file.FileName) + "-x10" + Path.GetExtension(file.FileName);
+                        path = Path.Combine(Server.MapPath("~/Images/Temp/"), fileName);
+                    }
+                    Directory.CreateDirectory(Server.MapPath("~/Images/Temp/"));
+
+                    file.SaveAs(path);
+
+
+
+
+                }
             }
+
         }
         public ActionResult uploadPartial()
         {
@@ -377,6 +407,6 @@ namespace Maksimalist.Areas.mmadmin.Controllers
             }
             base.Dispose(disposing);
         }
-       
+
     }
 }

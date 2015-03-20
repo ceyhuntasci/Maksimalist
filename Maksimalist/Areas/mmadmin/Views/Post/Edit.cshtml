@@ -12,14 +12,16 @@
     <script src="~/bundles/jqueryval"></script>
 
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <link href="~/Content/dropzone.css" rel="stylesheet" />
+    <link href="~/Content/dropzone-v4.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/bootstrap-tagsinput/bootstrap-tagsinput.css">
-    <script src="~/Scripts/dropzone.js"></script>
+    <script src="~/Scripts/dropzone-v4.js"></script>
 
 </head>
 <body>
     <h2>Edit</h2>
-
+    <form action="/mm-admin/Post/uploadnow"
+          class="dropzone"
+          id="my-awesome-dropzone"></form>
 
     @using (Html.BeginForm("Edit", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -192,8 +194,8 @@
             </div>
             <script>
                 CKEDITOR.replace('Content', {
-                    filebrowserImageBrowseUrl: '../Post/uploadPartial',
-                    filebrowserImageUploadUrl: '../Post/uploadnow'
+                    filebrowserImageBrowseUrl: '/mm-admin/Post/uploadPartial'
+              
                 });
                 function updateValue(id, value) {
                     // this gets called from the popup window and updates the field with a new value

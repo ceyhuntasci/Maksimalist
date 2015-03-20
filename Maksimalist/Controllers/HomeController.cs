@@ -23,14 +23,20 @@ namespace Maksimalist.Controllers
             }
             HomeViewModel hmw = new HomeViewModel();
             hmw.Manset = db.Post.Where(x=> x.Manset==true && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(4).ToList();
-            hmw.Moda = db.Post.Where(x => x.Category.UrlSlug == "Moda" && x.Manset == false && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(3).ToList();
-            hmw.Guzellik = db.Post.Where(x => x.Category.UrlSlug == "Guzellik" && x.Manset == false && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(3).ToList();
-            hmw.Alisveris = db.Post.Where(x => x.Category.UrlSlug == "Alisveris" && x.Manset == false && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(3).ToList();
-            hmw.Unluler = db.Post.Where(x => x.Category.UrlSlug == "Unluler" && x.Manset == false && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(3).ToList();
-            hmw.SehirYasam = db.Post.Where(x => x.Category.UrlSlug == "Sehir-Yasam" && x.Manset == false && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(1).ToList();
-            hmw.Gelin = db.Post.Where(x => x.Category.UrlSlug == "Gelin" && x.Manset == false && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(1).ToList();
-            hmw.Video = db.Post.Where(x => x.Category.UrlSlug == "Video" && x.Manset == false && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(3).ToList();
-           
+            hmw.Moda = db.Post.Where(x => x.Category.UrlSlug == "Moda" && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(7).ToList();
+            hmw.Moda = hmw.Moda.Except(hmw.Manset).Take(3).ToList();
+            hmw.Guzellik = db.Post.Where(x => x.Category.UrlSlug == "Guzellik"  && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(7).ToList();
+            hmw.Guzellik = hmw.Guzellik.Except(hmw.Manset).Take(3).ToList();
+            hmw.Alisveris = db.Post.Where(x => x.Category.UrlSlug == "Alisveris"  && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(7).ToList();
+            hmw.Alisveris = hmw.Alisveris.Except(hmw.Manset).Take(3).ToList();
+            hmw.Unluler = db.Post.Where(x => x.Category.UrlSlug == "Unluler"  && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(7).ToList();
+            hmw.Unluler = hmw.Unluler.Except(hmw.Manset).Take(3).ToList();
+            hmw.SehirYasam = db.Post.Where(x => x.Category.UrlSlug == "Sehir-Yasam"  && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(4).ToList();
+            hmw.SehirYasam = hmw.SehirYasam.Except(hmw.Manset).Take(1).ToList();
+            hmw.Gelin = db.Post.Where(x => x.Category.UrlSlug == "Gelin" && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(4).ToList();
+            hmw.Gelin = hmw.Gelin.Except(hmw.Manset).Take(1).ToList();
+            hmw.Video = db.Post.Where(x => x.Category.UrlSlug == "Video" && x.PostDate <= DateTime.Now).OrderByDescending(x => x.PostDate).Take(7).ToList();
+            hmw.Video = hmw.Video.Except(hmw.Manset).Take(3).ToList();
             
            
          

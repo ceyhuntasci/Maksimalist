@@ -3849,15 +3849,17 @@ html .col-1 .widget-area {
 
 .widget-posts-entries .entry-image {
     float: left;
-    width: 45%;
+    width: 100%;
     margin-top: 5px;
     margin-right: 5%;
+
 }
 
 .widget-posts-entries span,
 .widget-posts-entries .widget-post-title {
     font-size: 90%;
     letter-spacing: 0;
+    text-align:center;
 }
 
 .widget-posts-classic-entries li {

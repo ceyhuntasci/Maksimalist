@@ -10,16 +10,24 @@
     <title>Create</title>
     <script src="~/ckeditor/ckeditor.js"></script>
     <script src="~/bundles/jqueryval"></script>
-
+    <link href="~/Content/dropzone-v4.css" rel="stylesheet" />
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <link href="~/Content/dropzone.css" rel="stylesheet" />
+    <script src="~/Scripts/dropzone-v4.js"></script>
     <link rel="stylesheet" href="~/bootstrap-tagsinput/bootstrap-tagsinput.css">
-    <script src="~/Scripts/dropzone.js"></script>
 
+    <style>
+        .dropzone {
+            border: 2px dashed #0087F7;
+            border-radius: 5px;
+            background: white;
+        }
+    </style>
 </head>
 <body>
     <h2>Create</h2>
-
+    <form action="/mm-admin/Post/uploadnow"
+          class="dropzone"
+          id="my-awesome-dropzone"></form>
 
     @using (Html.BeginForm("Create", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
@@ -113,14 +121,14 @@
                         if ($('#HasGallery').is(":checked")) {
                             $('#HasGallery').click()
                         }
-                       
+
 
                     }
                     else {
                         $("#VideoUrl")
                             .attr("disabled", "disabled")
                             .val(null)
-                      
+
                     }
                 });
             </script>
@@ -147,10 +155,10 @@
                         alert("330x220 görseli ekleyiniz");
                         return false;
                     }
-                  
+
 
                 });
-               
+
             </script>
             <div class="form-group">
                 @Html.LabelFor(model => model.GalleryId, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -179,19 +187,20 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.Content, new { htmlAttributes = new { @class = "form-control"} })
+                    @Html.TextAreaFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
                 </div>
             </div>
             <script>
-    CKEDITOR.replace('Content', {
-        filebrowserImageBrowseUrl: '@Url.Action("uploadPartial", "Post", new{area="mmadmin"})',
-        filebrowserImageUploadUrl: '@Url.Action("uploadnow", "Post", new{area="mmadmin"})'
-    });
-    function updateValue(id, value) {
-        // this gets called from the popup window and updates the field with a new value
-        document.getElementById(id).value = value;
-    }
+                CKEDITOR.replace('Content', {
+                    filebrowserImageBrowseUrl: '/mm-admin/Post/uploadPartial'
+
+
+                });
+                function updateValue(id, value) {
+                    // this gets called from the popup window and updates the field with a new value
+                    document.getElementById(id).value = value;
+                }
             </script>
 
 
@@ -202,7 +211,7 @@
                 @Html.LabelFor(model => model.PostDate, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     <input class="form-control text-box single-line input-validation-error" id="PostDate" name="PostDate" type="datetime" value="@DateTime.Now.ToString("dd.MM.yyyy")">
-                 
+
                 </div>
             </div>
 
@@ -239,7 +248,7 @@
     </div>
 
 
-   
+
 
 
     <script src="~/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>

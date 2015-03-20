@@ -109,25 +109,27 @@
                 </div>
                 <header class="section-header">
                     <div class="title-with-sep">
-                        <h2 class="title">VİDEO</h2>
+                        <h2 class="title" style="width:1150px">VİDEO</h2>
                     </div>
                 </header>
 
-                <div class="grids entries">
-
-                    @foreach (var i in Model.Video)
-                    {
-                        @Html.Partial("_Post", i)
-                    }
-
-                </div>
+               
             </section>
         </div>
 
 
 
         @Html.Partial("_rightnav", (Maksimalist.Models.RightNavViewModel)ViewBag.RightNav)
+        
+        
+        <div class="grids entries" style="margin-left:2px">
 
+            @foreach (var i in Model.Video)
+            {
+                @Html.Partial("_Post2", i)
+            }
+
+        </div>
 
     </div><!-- .grid-8 -->
     

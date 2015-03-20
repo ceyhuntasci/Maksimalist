@@ -57,19 +57,19 @@
                         <figure class="entry-image inview">
                             @if (i.HasGallery)
                                 { <a href="~/post/galeri/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">
-                                    <img width="330" height="220" src="@i.ContentImage" class="attachment-rectangle-size wp-post-image">
+                                    <img  src="@i.ContentImage" class="attachment-rectangle-size wp-post-image">
                                 </a>}
                                 else
                                 {  <a href="~/post/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">
-                                    <img width="330" height="220" src="@i.ContentImage" class="attachment-rectangle-size wp-post-image">
+                                    <img  src="@i.ContentImage" class="attachment-rectangle-size wp-post-image">
                                 </a>}
 
                         </figure>
                         @if (i.HasGallery)
-                            { <span><a href="~/kategori/@i.Category.UrlSlug">@i.Category.Name</a></span><a class="widget-post-title" href="~/post/galeri/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">@i.Headline</a>
+                            { <a class="widget-post-title" href="~/post/galeri/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">@i.Headline</a>
                             }
                             else
-                            {  <span><a href="~/kategori/@i.Category.UrlSlug">@i.Category.Name</a></span><a class="widget-post-title" href="~/post/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">@i.Headline</a>
+                            {  <a class="widget-post-title" href="~/post/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">@i.Headline</a>
                             }
                     </li>
                     }
