@@ -238,6 +238,34 @@
     $(document).ready(function () {
         $(".slide").first().addClass("active isVisible secici");
     });
+    $(document).keydown(function (e) {
+        switch (e.which) {
+            case 37:
+                if ($(".secici").is(':first-child')) {
+
+                }
+                else {
+                    $(".secici").removeClass("active isVisible secici").prev().addClass("active isVisible secici");
+                }// left
+                break;
+
+          
+
+            case 39: // right
+                if ($(".secici").is(':last-child')) {
+
+                }
+                else {
+                    $(".secici").removeClass("active isVisible secici").next().addClass("active isVisible secici");
+                }
+                break;
+
+           
+
+            default: return; // exit this handler for other keys
+        }
+        e.preventDefault(); // prevent the default action (scroll / move caret)
+    });
     $(".Prev-Arrow").click(function () {
         if ($(".secici").is(':first-child')) {
 

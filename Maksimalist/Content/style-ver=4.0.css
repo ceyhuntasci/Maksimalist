@@ -3852,14 +3852,13 @@ html .col-1 .widget-area {
     width: 100%;
     margin-top: 5px;
     margin-right: 5%;
-
 }
 
 .widget-posts-entries span,
 .widget-posts-entries .widget-post-title {
     font-size: 90%;
     letter-spacing: 0;
-    text-align:center;
+    text-align: center;
 }
 
 .widget-posts-classic-entries li {
@@ -4915,7 +4914,6 @@ img:not([height]) {
         height: 384px;
         margin-left: -40px;
         margin-right: 0px;
-
     }
 
 .wrapperzzz {
@@ -4957,7 +4955,6 @@ img:not([height]) {
         background: rgba(0,0,0,0.7);
         color: #FFF;
         text-align: center;
-       
         display: table;
     }
 
@@ -5035,4 +5032,29 @@ img:not([height]) {
     border-bottom: none;
     border-top: 3px solid #000;
     padding-top: 20px;
+}
+
+.videodiv {
+    background-image: url('../Images/VideoBackground.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+.gununObjesi{
+    background-image: url('../Images/gununObjesi.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+      background-size: cover;
+}
+.popularPost{
+     background-image: url('../Images/cerceve.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+      background-size: cover;
+        float: left;
+        padding-top: 17px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 15px;
+  margin-top: 5px;
+
 }

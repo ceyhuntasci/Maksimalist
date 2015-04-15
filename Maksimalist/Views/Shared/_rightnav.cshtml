@@ -2,8 +2,8 @@
 <script src="//instansive.com/widget/js/instansive.js"></script>
 <div class="grid-4 column-2" style="width:310px; float: right">
     <aside class="sidebar" role="complementary" itemscope="" itemtype="http://schema.org/WPSideBar">
-        <div id="ti_latest_reviews-2" class="widget widget_ti_latest_reviews">
-            <h3>#gününobjesi</h3>
+        <div id="ti_latest_reviews-2 " class="widget widget_ti_latest_reviews gununObjesi" style=" margin-left:-10px; margin-right: -10px; padding-top: 12px; padding-left: 10px; padding-right: 10px;">
+            <h3 style="color:#97ce8c">#gününobjesi</h3>
             <div class="widget-posts-entries">
 
 
@@ -45,7 +45,7 @@
                       <h3>#maksimalistmag</h3>
                       <iframe src="//instansive.com/widgets/7aee1727d699450db19c7a8990a7e7928c4d9cd1.html" id="instansive_7aee1727d6" name="instansive_7aee1727d6" scrolling="no" allowtransparency="true" class="instansive-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
                   </div>
-            <h3>Popüler İçerikler</h3>
+            <h3 style="color:#d41f7f">#ENPOPÜLER</h3>
             <div class="widget-posts-entries">
 
 
@@ -54,7 +54,7 @@
                     @foreach (var i in Model.Posts)
                     {
                     <li>
-                        <figure class="entry-image inview">
+                        <figure class="inview popularPost">
                             @if (i.HasGallery)
                                 { <a href="~/post/galeri/@i.Category.UrlSlug/@i.SubCategory.UrlSlug/@i.UrlSlug">
                                     <img  src="@i.ContentImage" class="attachment-rectangle-size wp-post-image">

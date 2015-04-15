@@ -628,8 +628,9 @@
     <Content Include="fonts\Simple-Line-Icons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\cerceve.png" />
+    <Content Include="Images\cerceve.jpg" />
     <Content Include="Images\favicon.jpg" />
+    <Content Include="Images\gununObjesi.jpg" />
     <Content Include="Images\loading-dots-black.gif" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\LogoWhite.png" />
@@ -637,6 +638,7 @@
     <Content Include="Images\ruler2.png" />
     <Content Include="Images\section-header.png" />
     <Content Include="Images\spritemap.png" />
+    <Content Include="Images\VideoBackground.jpg" />
     <Content Include="Images\www-mobile.png" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
