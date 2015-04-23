@@ -628,7 +628,10 @@
     <Content Include="fonts\Simple-Line-Icons.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\bizitakipedin.gif" />
     <Content Include="Images\cerceve.jpg" />
+    <Content Include="Images\cerceve_high.jpg" />
+    <Content Include="Images\cerceve_high2.jpg" />
     <Content Include="Images\favicon.jpg" />
     <Content Include="Images\gununObjesi.jpg" />
     <Content Include="Images\loading-dots-black.gif" />

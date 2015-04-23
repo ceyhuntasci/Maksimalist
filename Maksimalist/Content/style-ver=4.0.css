@@ -5046,15 +5046,15 @@ img:not([height]) {
       background-size: cover;
 }
 .popularPost{
-     background-image: url('../Images/cerceve.jpg');
+     background-image: url('../Images/cerceve_high2.jpg');
     background-repeat: no-repeat;
     background-position: center top;
       background-size: cover;
         float: left;
-        padding-top: 17px;
-  padding-left: 25px;
-  padding-right: 25px;
-  padding-bottom: 15px;
+        padding-top: 22px;
+  padding-left: 30px;
+  padding-right: 31px;
+  padding-bottom: 19px;
   margin-top: 5px;
 
 }
