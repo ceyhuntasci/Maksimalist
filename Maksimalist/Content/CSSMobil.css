@@ -4230,3 +4230,75 @@ h3.group-list {
 .entry-content img{
 
 }
+
+.single-author-box .author-tabs-content {
+    color: #666;
+    font-size: 90%;
+    padding: 10px;
+}
+
+.single-author-box .inner {
+    padding: 10px;
+    border: 1px solid #dfdfdf;
+}
+
+.single-author-box .avatar {
+    float: left;
+    width: 11%;
+    height: 11%;
+}
+.single-author-box .avatar img {
+        width: 100%;
+        height: auto;
+    }
+
+.single-author-box .author-info,
+.single-author-box .author-social {
+    margin-left: 20%;
+}
+
+    .single-author-box .author-info p {
+        margin: 5px 0;
+    }
+
+    .single-author-box .author-info ul {
+        margin-top: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .single-author-box .author-info li {
+        margin: 5px 0;
+        list-style: square;
+    }
+
+.author-social li {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 80%;
+    letter-spacing: 0.2em;
+}
+
+.single-author-box .author-tabs-button {
+    position: relative;
+    bottom: -1px;
+}
+
+    .single-author-box .author-tabs-button li {
+        float: left;
+        width: 50%;
+    }
+
+        .single-author-box .author-tabs-button li a {
+            display: block;
+            font-size: 14px;
+            padding: 8px 20px;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+        }
+
+            .single-author-box .author-tabs-content,
+            .single-author-box .author-tabs-button li a.active {
+                background-color: #f8f8f8;
+            }

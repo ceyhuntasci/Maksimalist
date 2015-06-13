@@ -39,6 +39,8 @@ namespace Maksimalist.Controllers
 
             if (Request.Browser.IsMobileDevice)
             {
+                ViewBag.last3post = db.Post.Where(x => x.Author.UserName == post.Author.UserName).OrderByDescending(x => x.PostDate).Take(3).ToList();
+           
                 return View("MobilePostDetail", post);
             }
            

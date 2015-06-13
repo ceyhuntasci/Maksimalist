@@ -2,6 +2,7 @@
 @{
 
     Layout = "~/Views/Shared/_MobileLayout.cshtml";
+        List<Maksimalist.Models.Post> last3post = ViewBag.last3post;
 
 }
 
@@ -76,7 +77,61 @@
 
                         <div class="single-box clearfix entry-content" itemprop="articleBody">
                             @Html.Raw(@Model.Content)
-                        </div><!-- .entry-content -->
+                        </div>
+                        <div class="single-box author-box single-author-box">
+                            
+
+                            <div class="author-tabs-content">
+                                <div class="clearfix inner">
+
+                                    <div id="author-bio">
+                                        <div class="avatar">
+
+                                            <img alt='@Model.Author.FirstName @Model.Author.LastName' src='@Model.Author.ProfilePicture' class='avatar avatar-70 photo' height='70' width='70' />
+
+                                        </div><!-- .avatar -->
+                                        <div class="author-info" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
+                                            <span class="vcard author">
+                                                <span class="fn">
+
+                                                    <span itemprop="name">@Model.Author.FirstName @Model.Author.LastName</span>
+
+                                                </span>
+                                            </span>
+                                            <p itemprop="description">
+                                             
+                                            </p>
+                                        </div><!-- .info -->
+                                        <ul class="author-social">
+
+                                            <li>
+                                                <a class="twitter-link" href="@Model.Author.TwitterUrl">
+                                                    Twitter
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a class="instagram-link" href="@Model.Author.InstagramUrl">
+                                                    Instagram
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a class="pinterest-link" href="@Model.Author.Pinterest">
+                                                    Pinterest
+                                                </a>
+                                            </li>
+
+
+                                        </ul><!-- .author-social -->
+                                    </div><!-- #author-bio -->
+                            
+                                 
+
+                                </div>
+                            </div>
+
+                        </div>
                         <ul class="content-social">
                             <h4> PAYLAŞ!</h4>
                             <li class="facebook">
